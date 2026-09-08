@@ -1,0 +1,292 @@
+---
+// Products Component
+import productMtb from '../assets/product-mtb.jpg';
+import productFolding from '../assets/product-folding.jpg';
+import productHelm from '../assets/product-helm.jpg';
+import productSparepart from '../assets/product-sparepart.jpg';
+---
+
+<!-- === PRODUCT & MARKETPLACE SECTION (IMPROVED) === -->
+<section id="products" class="py-20 bg-gray-900 text-white relative overflow-hidden">
+    
+    <!-- Background Decoration -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full filter blur-[120px]"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/10 rounded-full filter blur-[100px]"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Header -->
+        <div class="text-center mb-12 fade-in-up">
+            <span class="text-green-400 font-bold tracking-wider uppercase text-sm">Etalase Digital</span>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-2">Koleksi Terbaru</h2>
+            <div class="w-24 h-1.5 bg-gradient-to-r from-shopee to-tokopedia mx-auto rounded-full"></div>
+            <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
+                Intip koleksi kami di sini, lalu checkout dengan aman dan nyaman melalui Official Store kami di Marketplace kesayangan Anda.
+            </p>
+        </div>
+
+        <!-- Carousel Container (Visual Preview Only) -->
+        <div class="relative group/carousel fade-in-up">
+            <!-- Navigation Buttons -->
+            <button id="scroll-left" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 bg-white text-gray-900 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 translate-x-4 group-hover/carousel:-translate-x-4 cursor-pointer">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <button id="scroll-right" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-12 h-12 bg-white text-gray-900 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 -translate-x-4 group-hover/carousel:translate-x-4 cursor-pointer">
+                <i class="fas fa-arrow-right"></i>
+            </button>
+
+            <!-- Product Cards Container -->
+            <div id="product-container" class="flex gap-6 overflow-x-auto hide-scroll snap-x snap-mandatory py-8 px-8">
+                
+                <!-- Card 1 -->
+                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700 hover:border-primary/50 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
+                        <img src={productMtb.src} alt="MTB" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
+                        <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-full border border-gray-600 text-white">
+                            Ready Stock
+                        </div>
+                    </div>
+                    <div class="px-1">
+                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-primary transition-colors duration-200">MTB Cross Country</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">Frame alloy ringan, suspensi empuk cocok untuk medan berat dan tanjakan terjal.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700 hover:border-primary/50 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
+                        <img src={productFolding.src} alt="Sepeda Lipat" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
+                        <div class="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
+                            Best Seller
+                        </div>
+                    </div>
+                    <div class="px-1">
+                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-primary transition-colors duration-200">Folding Bike Premium</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">Praktis dibawa commuting (KRL/Busway), lipatan ringkas 3 langkah mudah.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700 hover:border-primary/50 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
+                        <img src={productSparepart.src} alt="Sparepart" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
+                    </div>
+                    <div class="px-1">
+                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-primary transition-colors duration-200">Sparepart Original</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">RD, FD, Rantai, dan Sprocket Shimano/Sram original untuk upgrade performa.</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700 hover:border-primary/50 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
+                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
+                        <img src={productHelm.src} alt="Aksesoris" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
+                    </div>
+                    <div class="px-1">
+                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-primary transition-colors duration-200">Aksesoris Safety</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">Helm standar SNI, lampu LED terang, dan sarung tangan gel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- THE BIG MARKETPLACE CTA -->
+        <div class="mt-16 fade-in-up" style="transition-delay: 200ms;">
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 md:p-12 border border-gray-700 relative overflow-hidden text-center shadow-2xl">
+                
+                <!-- Glow Effect Behind -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-orange-500/10 to-green-500/10 blur-3xl"></div>
+
+                <div class="relative z-10">
+                    <div class="text-container mb-3" id="text-animation-container"></div>
+                    <p class="text-gray-400 mb-8 max-w-xl mx-auto">Kunjungi Official Store kami untuk melihat katalog lengkap, harga terupdate, dan nikmati promo gratis ongkir hari ini.</p>
+                    
+                    <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+                        <!-- Shopee Button -->
+                        <a href="https://shopee.co.id/tokoal_id" target="_blank" class="group relative overflow-hidden bg-[#EE4D2D] text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-orange-900/50 hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                            <span class="bg-white text-[#EE4D2D] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-shopping-bag"></i></span>
+                            <span class="relative z-10">Buka Shopee</span>
+                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
+                        </a>
+
+                        <!-- Tokopedia Button -->
+                        <a href="https://www.tokopedia.com/tokoal-id" target="_blank" class="group relative overflow-hidden bg-[#42B549] text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-900/50 hover:scale-105 transition-all duration-300">
+                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                            <span class="bg-white text-[#42B549] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-store"></i></span>
+                            <span class="relative z-10">Buka Tokopedia</span>
+                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
+                        </a>
+                    </div>
+
+                    <div class="mt-8 flex justify-center gap-6 text-sm text-gray-500">
+                        <span class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Official Store</span>
+                        <span class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> 100% Original</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<style>
+    /* Text Animation Styles - Gunakan :global() untuk class yang dibuat via JS */
+    .text-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 60px;
+    }
+
+    :global(.word-line) {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        white-space: nowrap;
+    }
+
+    :global(.letter) {
+        display: inline-block;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 800;
+        font-size: clamp(1.5rem, 4vw, 2.5rem);
+        color: #ffffff;
+        line-height: 1;
+        opacity: 0;
+        transform-origin: bottom center;
+        margin-right: -0.03em;
+    }
+
+    :global(.pop-in) {
+        animation: bounceIn2D 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes bounceIn2D {
+        0% {
+            opacity: 0;
+            transform: translateY(50px) scale(0.5);
+        }
+        60% {
+            transform: translateY(-15px) scale(1.1);
+        }
+        80% {
+            transform: translateY(5px) scale(0.95);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    :global(.question-emphasis) {
+        animation: wiggleBig 1s ease-in-out infinite;
+        color: #10b981;
+        display: inline-block;
+        position: relative;
+        z-index: 10;
+    }
+
+    @keyframes wiggleBig {
+        0%, 100% {
+            transform: rotate(0deg) scale(1.5);
+        }
+        25% {
+            transform: rotate(-15deg) scale(1.8);
+        }
+        75% {
+            transform: rotate(15deg) scale(1.8);
+        }
+    }
+</style>
+
+<script>
+    // Text Animation Logic (Client-Side)
+    const lines = ["Siap Untuk Berbelanja?"];
+    const container = document.getElementById('text-animation-container');
+
+    function createMarkup() {
+        if (!container) return;
+        container.innerHTML = ''; 
+        
+        lines.forEach((lineText) => {
+            const lineDiv = document.createElement('div');
+            lineDiv.className = 'word-line';
+            
+            const characters = lineText.split('');
+
+            characters.forEach((char) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.className = 'letter';
+                
+                // Menandai tanda tanya
+                if (char === '?') {
+                    span.dataset.type = 'question-mark';
+                }
+
+                // Menangani spasi
+                if (char === ' ') {
+                    span.style.width = '0.4em'; 
+                    span.style.marginRight = '0';
+                }
+
+                lineDiv.appendChild(span);
+            });
+
+            container.appendChild(lineDiv);
+        });
+    }
+
+    function runSequence() {
+        createMarkup();
+
+        const letters = document.querySelectorAll('#text-animation-container .letter');
+        let totalDelay = 0;
+
+        letters.forEach((letter, index) => {
+            const delay = index * 60; // Kecepatan muncul huruf
+            totalDelay = delay;
+
+            setTimeout(() => {
+                letter.classList.add('pop-in');
+
+                const el = letter as HTMLElement;
+                if (el.dataset.type === 'question-mark') {
+                    setTimeout(() => {
+                        el.classList.remove('pop-in');
+                        el.style.opacity = '1';
+                        el.classList.add('question-emphasis');
+                    }, 600); // Tunggu animasi masuk selesai baru goyang
+                }
+
+            }, delay);
+        });
+
+        // Loop Logic
+        const animationDuration = 600;
+        const readTime = 2000; 
+        const totalCycleTime = totalDelay + animationDuration + readTime;
+
+        setTimeout(runSequence, totalCycleTime);
+    }
+
+    // Jalankan saat script dimuat di client
+    runSequence();
+
+    // Product Carousel Logic
+    const scrollLeftBtn = document.getElementById('scroll-left');
+    const scrollRightBtn = document.getElementById('scroll-right');
+    const productContainer = document.getElementById('product-container');
+    
+    if (scrollLeftBtn && productContainer) {
+        scrollLeftBtn.addEventListener('click', () => {
+            productContainer.scrollBy({ left: -340, behavior: 'smooth' });
+        });
+    }
+    
+    if (scrollRightBtn && productContainer) {
+        scrollRightBtn.addEventListener('click', () => {
+            productContainer.scrollBy({ left: 340, behavior: 'smooth' });
+        });
+    }
+</script>

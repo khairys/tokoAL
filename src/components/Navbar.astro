@@ -1,0 +1,80 @@
+---
+// Navbar Component
+---
+
+<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex justify-between items-center h-16">
+			<!-- Logo -->
+			<div class="flex-shrink-0 flex items-center gap-2 cursor-pointer group" onclick="window.scrollTo(0,0)">
+				<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg">
+					AL
+				</div>
+				<span class="font-bold text-xl tracking-wide text-dark group-hover:text-primary transition-colors duration-200">Toko AL</span>
+			</div>
+			
+			<!-- Desktop Menu -->
+			<div class="hidden md:flex space-x-8">
+				<a href="#home" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-110 hover:-translate-y-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Beranda</a>
+				<a href="#services" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-110 hover:-translate-y-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Servis</a>
+				<a href="#products" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-110 hover:-translate-y-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Produk</a>
+				<a href="#contact" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-110 hover:-translate-y-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Lokasi</a>
+			</div>
+
+			<!-- Mobile Menu Button -->
+			<div class="md:hidden flex items-center">
+				<button id="mobile-menu-btn" class="text-gray-600 hover:text-primary focus:outline-none transition-all duration-200 hover:scale-110 hover:rotate-90">
+					<i class="fas fa-bars text-2xl"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+	
+	<!-- Mobile Menu Panel -->
+	<div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full">
+		<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
+			<a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Beranda</a>
+			<a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Servis</a>
+			<a href="#products" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Produk</a>
+			<a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Lokasi</a>
+		</div>
+	</div>
+</nav>
+
+<script>
+	// Mobile Menu Toggle
+	const btn = document.getElementById('mobile-menu-btn');
+	const menu = document.getElementById('mobile-menu');
+
+	btn?.addEventListener('click', () => {
+		menu?.classList.toggle('hidden');
+	});
+
+	// Smooth Scroll for all navigation links
+	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+		anchor.addEventListener('click', function (e) {
+			e.preventDefault();
+			const target = document.querySelector(this.getAttribute('href'));
+			if (target) {
+				target.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
+			}
+			// Close mobile menu after clicking
+			menu?.classList.add('hidden');
+		});
+	});
+
+	// Navbar Scroll Effect
+	const navbar = document.getElementById('navbar');
+	window.addEventListener('scroll', () => {
+		if (window.scrollY > 10) {
+			navbar?.classList.add('shadow-md');
+			navbar?.classList.replace('bg-white/90', 'bg-white');
+		} else {
+			navbar?.classList.remove('shadow-md');
+			navbar?.classList.replace('bg-white', 'bg-white/90');
+		}
+	});
+</script>

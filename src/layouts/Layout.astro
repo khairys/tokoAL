@@ -1,0 +1,77 @@
+---
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Toko AL - Sepeda, Spareparts & Servis", 
+	description = "Pusat penjualan sepeda, spareparts terlengkap, dan layanan servis profesional di Serang. Kami memastikan sepeda Anda selalu dalam performa terbaik."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="id" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="description" content={description} />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+		
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+		
+		<title>{title}</title>
+		
+		<!-- Tailwind CSS with Config -->
+		<script is:inline src="https://cdn.tailwindcss.com"></script>
+		<script is:inline>
+			tailwind.config = {
+				theme: {
+					extend: {
+						colors: {
+							primary: '#059669',
+							secondary: '#10b981',
+							dark: '#064e3b',
+						},
+						fontFamily: {
+							sans: ['Poppins', 'sans-serif'],
+						},
+						animation: {
+							'bounce-slow': 'bounce 3s infinite',
+						}
+					}
+				}
+			}
+		</script>
+	</head>
+	<body class="bg-gray-50 text-gray-800 font-sans">
+		<slot />
+	</body>
+</html>
+
+<style is:global>
+	/* Hide scrollbar for carousel but allow functionality */
+	.hide-scroll::-webkit-scrollbar {
+		display: none;
+	}
+	.hide-scroll {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	
+	/* Custom Animation Classes */
+	.fade-in-up {
+		opacity: 0;
+		transform: translateY(20px);
+		transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+	}
+	.fade-in-up.visible {
+		opacity: 1;
+		transform: translateY(0);
+	}
+</style>
