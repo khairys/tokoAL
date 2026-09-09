@@ -1,69 +1,309 @@
 ---
-// Testimonials Component
-import videoThumbnail from '../assets/video-thumbnail.jpg';
-import userA from '../assets/user-a.jpg';
-import userB from '../assets/user-b.jpg';
+// Testimonials & Store Gallery Component
+import imgEtalase from '../assets/etalaseDepan.png';
+import imgKasir from '../assets/kasirAL.png';
+import imgViewBelakang from '../assets/viewbelakang.png';
+import imgDepanRumah from '../assets/depan rumah.png';
+import imgPelanggan from '../assets/Pelanggan.png';
+import imgMobilAnak from '../assets/MobilANAK.png';
+
+const storePhotos = [
+	{
+		src: imgEtalase.src,
+		alt: "Etalase Sepeda Toko AL",
+		tag: "Etalase Toko",
+		title: "Display Unit Sepeda Lengkap",
+		desc: "Pilihan MTB, sepeda lipat, dan sepeda anak ready stock"
+	},
+	{
+		src: imgKasir.src,
+		alt: "Area Kasir Toko AL",
+		tag: "Area Kasir & Aksesoris",
+		title: "Pelayanan Ramah & Transparan",
+		desc: "Konsultasi part sepeda dan transaksi mudah"
+	},
+	{
+		src: imgPelanggan.src,
+		alt: "Pelanggan Toko AL",
+		tag: "Goweser Cikande",
+		title: "Kepuasan Pelanggan Prioritas Kami",
+		desc: "Selalu senang membantu goweser mendapatkan sepeda impian"
+	},
+	{
+		src: imgViewBelakang.src,
+		alt: "Suasana Dalam Toko AL",
+		tag: "Suasana Toko",
+		title: "Koleksi Lengkap & Nyaman",
+		desc: "Tersedia sparepart dan perlengkapan sepeda terlengkap"
+	},
+	{
+		src: imgDepanRumah.src,
+		alt: "Tampak Depan Toko AL",
+		tag: "Lokasi Toko",
+		title: "Kunjungi Toko AL di Cikande Permai",
+		desc: "Jl. Cikande Permai No.6 Blok J2, Cikande, Serang"
+	},
+	{
+		src: imgMobilAnak.src,
+		alt: "Koleksi Sepeda dan Mainan Anak",
+		tag: "Koleksi Anak",
+		title: "Sepeda & Mainan Anak",
+		desc: "Pilihan sepeda roda tiga, push bike, dan mainan seru"
+	}
+];
 ---
 
-<section class="py-16 bg-green-50">
+<section class="py-16 bg-gradient-to-b from-green-50/70 to-white overflow-hidden">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+		<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 			
-			<!-- Video Section -->
-			<div class="fade-in-up">
-				<h2 class="text-2xl font-bold mb-6">Intip Keseruannya</h2>
-				<div class="rounded-2xl overflow-hidden shadow-2xl border-2 border-white hover:border-primary transition-all duration-200 hover:shadow-primary/20 hover:scale-105 group">
-					<!-- Placeholder for Youtube Embed -->
-					<div class="relative pb-[56.25%] h-0 bg-gray-300">
-						<img src={videoThumbnail.src} class="absolute top-0 left-0 w-full h-full object-cover" alt="Video Thumbnail">
-						<div class="absolute inset-0 flex items-center justify-center">
-							<button class="w-16 h-16 bg-red-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-125 transition-all duration-200 group-hover:animate-pulse hover:shadow-2xl">
-								<i class="fas fa-play ml-1"></i>
-							</button>
+			<!-- Store Gallery Auto-Carousel Section -->
+			<div class="lg:col-span-7 fade-in-up">
+				<div class="flex items-center justify-between mb-4">
+					<div>
+						<span class="text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+							<i class="fas fa-camera"></i> Galeri Toko AL
+						</span>
+						<h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-1">Suasana Nyata Toko</h2>
+					</div>
+					<span class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 bg-green-100 text-primary text-xs font-semibold rounded-full">
+						<span class="w-2 h-2 rounded-full bg-primary animate-ping"></span> Live View
+					</span>
+				</div>
+
+				<!-- Carousel Box -->
+				<div id="gallery-carousel" class="relative aspect-[16/11] sm:aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border-4 border-white group select-none bg-gray-900">
+					
+					<!-- Slide Items -->
+					{storePhotos.map((photo, index) => (
+						<div 
+							class={`gallery-slide absolute inset-0 transition-opacity duration-700 ease-in-out ${index === 0 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+							data-index={index}
+						>
+							<img 
+								src={photo.src} 
+								alt={photo.alt} 
+								class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" 
+								loading={index === 0 ? "eager" : "lazy"}
+							/>
+							<!-- Gradient Overlay -->
+							<div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none"></div>
+
+							<!-- Slide Captions -->
+							<div class="absolute bottom-4 left-4 right-16 sm:bottom-6 sm:left-6 sm:right-20 text-white z-10 pointer-events-none">
+								<span class="inline-block px-3 py-1 bg-primary text-white text-xs font-semibold rounded-full uppercase tracking-wider mb-2 shadow-sm">
+									{photo.tag}
+								</span>
+								<h3 class="text-lg sm:text-2xl font-bold leading-tight drop-shadow-sm">{photo.title}</h3>
+								<p class="text-xs sm:text-sm text-gray-200 mt-1 line-clamp-1 drop-shadow-sm">{photo.desc}</p>
+							</div>
 						</div>
+					))}
+
+					<!-- Top Counter Badge -->
+					<div class="absolute top-4 right-4 z-20">
+						<span id="carousel-counter" class="px-3 py-1 bg-black/60 backdrop-blur-md text-white text-xs font-semibold rounded-full border border-white/20 shadow">
+							1 / {storePhotos.length}
+						</span>
+					</div>
+
+					<!-- Navigation Arrows -->
+					<button 
+						id="gallery-prev" 
+						aria-label="Foto Sebelumnya"
+						class="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-primary text-white backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-80 group-hover:opacity-100 hover:scale-110 shadow-lg cursor-pointer"
+					>
+						<i class="fas fa-chevron-left text-sm"></i>
+					</button>
+
+					<button 
+						id="gallery-next" 
+						aria-label="Foto Selanjutnya"
+						class="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-black/40 hover:bg-primary text-white backdrop-blur-md flex items-center justify-center transition-all duration-200 opacity-80 group-hover:opacity-100 hover:scale-110 shadow-lg cursor-pointer"
+					>
+						<i class="fas fa-chevron-right text-sm"></i>
+					</button>
+
+					<!-- Dot Indicators -->
+					<div class="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 z-20 flex items-center gap-1.5">
+						{storePhotos.map((_, index) => (
+							<button 
+								class={`gallery-dot h-2 rounded-full transition-all duration-300 cursor-pointer ${index === 0 ? 'w-6 bg-primary' : 'w-2 bg-white/60 hover:bg-white'}`}
+								aria-label={`Lihat foto ${index + 1}`}
+								data-index={index}
+							></button>
+						))}
 					</div>
 				</div>
+
+				<p class="text-xs text-gray-500 mt-3 text-center sm:text-left flex items-center gap-1.5 justify-center sm:justify-start">
+					<i class="fas fa-info-circle text-primary"></i> Carousel otomatis berputar. Arahkan kursor untuk menjeda.
+				</p>
 			</div>
 
-			<!-- Testimonials -->
-			<div class="fade-in-up" style="transition-delay: 200ms;">
-				<h2 class="text-2xl font-bold mb-6">Apa Kata Goweser?</h2>
+			<!-- Testimonials Section -->
+			<div class="lg:col-span-5 fade-in-up" style="transition-delay: 200ms;">
+				<div class="mb-4">
+					<span class="text-primary font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+						<i class="fas fa-star text-yellow-500"></i> Ulasan Terpercaya
+					</span>
+					<h2 class="text-2xl md:text-3xl font-bold text-gray-900 mt-1">Apa Kata Goweser?</h2>
+				</div>
 				
 				<div class="space-y-4">
 					<!-- Review Card 1 -->
-					<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative transition-all duration-200 hover:shadow-xl hover:scale-105 hover:-translate-y-1 hover:border-primary group">
-						<i class="fas fa-quote-right absolute top-4 right-4 text-gray-100 text-4xl group-hover:text-primary/20 transition-colors duration-200"></i>
-						<div class="flex items-center gap-1 text-yellow-400 mb-2">
+					<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/40 group">
+						<i class="fas fa-quote-right absolute top-5 right-5 text-gray-100 text-4xl group-hover:text-primary/20 transition-colors duration-200"></i>
+						<div class="flex items-center gap-1 text-yellow-400 mb-2.5">
 							<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+							<span class="text-xs text-gray-400 font-semibold ml-1.5">5.0</span>
 						</div>
-						<p class="text-gray-600 italic text-sm mb-3">"Servisnya rapi banget, mekaniknya ramah dan enak diajak diskusi masalah settingan RD. Recommended di Serang!"</p>
+						<p class="text-gray-700 italic text-sm mb-4 leading-relaxed">
+							"Servisnya rapi banget, mekaniknya ramah dan enak diajak diskusi masalah settingan RD. Recommended banget di Cikande Serang!"
+						</p>
 						<div class="flex items-center gap-3">
-							<img src={userA.src} class="w-10 h-10 rounded-full" alt="User">
+							<div class="w-11 h-11 rounded-full bg-gradient-to-tr from-emerald-600 to-teal-400 text-white font-bold flex items-center justify-center shadow-md text-sm tracking-wider">
+								AS
+							</div>
 							<div>
-								<p class="font-bold text-sm">Andi Saputra</p>
+								<div class="flex items-center gap-1.5">
+									<p class="font-bold text-sm text-gray-900">Andi Saputra</p>
+									<span class="text-[10px] bg-emerald-100 text-emerald-800 font-semibold px-1.5 py-0.5 rounded">Verified</span>
+								</div>
 								<p class="text-xs text-gray-400">Komunitas Roadbike</p>
 							</div>
 						</div>
 					</div>
 
 					<!-- Review Card 2 -->
-					<div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative transition-all duration-200 hover:shadow-xl hover:scale-105 hover:-translate-y-1 hover:border-primary group">
-						 <i class="fas fa-quote-right absolute top-4 right-4 text-gray-100 text-4xl group-hover:text-primary/20 transition-colors duration-200"></i>
-						<div class="flex items-center gap-1 text-yellow-400 mb-2">
-							<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+					<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 relative transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/40 group">
+						<i class="fas fa-quote-right absolute top-5 right-5 text-gray-100 text-4xl group-hover:text-primary/20 transition-colors duration-200"></i>
+						<div class="flex items-center gap-1 text-yellow-400 mb-2.5">
+							<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+							<span class="text-xs text-gray-400 font-semibold ml-1.5">5.0</span>
 						</div>
-						<p class="text-gray-600 italic text-sm mb-3">"Beli sparepart lengkap disini, harganya bersaing sama online. Pemasangan juga cepat."</p>
+						<p class="text-gray-700 italic text-sm mb-4 leading-relaxed">
+							"Beli sparepart lengkap disini, harganya bersaing sama online. Pemasangan dan setting cepat bisa ditunggu sambil ngobrol."
+						</p>
 						<div class="flex items-center gap-3">
-							<img src={userB.src} class="w-10 h-10 rounded-full" alt="User">
+							<div class="w-11 h-11 rounded-full bg-gradient-to-tr from-green-600 to-emerald-400 text-white font-bold flex items-center justify-center shadow-md text-sm tracking-wider">
+								BS
+							</div>
 							<div>
-								<p class="font-bold text-sm">Budi Santoso</p>
-								<p class="text-xs text-gray-400">Pelanggan Setia</p>
+								<div class="flex items-center gap-1.5">
+									<p class="font-bold text-sm text-gray-900">Budi Santoso</p>
+									<span class="text-[10px] bg-emerald-100 text-emerald-800 font-semibold px-1.5 py-0.5 rounded">Verified</span>
+								</div>
+								<p class="text-xs text-gray-400">Pelanggan Setia Toko AL</p>
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<!-- Rating Summary Banner -->
+				<div class="mt-4 p-4 rounded-xl bg-white border border-gray-100 flex items-center justify-between shadow-xs">
+					<div class="flex items-center gap-2">
+						<div class="w-8 h-8 rounded-lg bg-yellow-100 text-yellow-600 flex items-center justify-center font-bold text-sm">
+							<i class="fas fa-map-marker-alt"></i>
+						</div>
+						<div>
+							<p class="text-xs font-bold text-gray-800">Toko Sepeda AL Cikande</p>
+							<p class="text-[11px] text-gray-500">Rating 4.9 ★ dari puluhan ulasan pelanggan</p>
+						</div>
+					</div>
+					<a href="#contact" class="text-xs font-semibold text-primary hover:underline flex items-center gap-1">
+						Lihat Rute <i class="fas fa-arrow-right text-[10px]"></i>
+					</a>
 				</div>
 			</div>
 
 		</div>
 	</div>
 </section>
+
+<script>
+	// Store Gallery Auto-Carousel Logic
+	const slides = document.querySelectorAll('.gallery-slide');
+	const dots = document.querySelectorAll('.gallery-dot');
+	const counter = document.getElementById('carousel-counter');
+	const prevBtn = document.getElementById('gallery-prev');
+	const nextBtn = document.getElementById('gallery-next');
+	const carousel = document.getElementById('gallery-carousel');
+
+	let currentIndex = 0;
+	let autoPlayTimer: any = null;
+	const total = slides.length;
+
+	function showSlide(index: number) {
+		if (total === 0) return;
+		
+		// Hide current
+		slides[currentIndex]?.classList.remove('opacity-100', 'pointer-events-auto');
+		slides[currentIndex]?.classList.add('opacity-0', 'pointer-events-none');
+		
+		dots[currentIndex]?.classList.remove('w-6', 'bg-primary');
+		dots[currentIndex]?.classList.add('w-2', 'bg-white/60');
+
+		// New index
+		currentIndex = (index + total) % total;
+
+		// Show next
+		slides[currentIndex]?.classList.remove('opacity-0', 'pointer-events-none');
+		slides[currentIndex]?.classList.add('opacity-100', 'pointer-events-auto');
+
+		dots[currentIndex]?.classList.remove('w-2', 'bg-white/60');
+		dots[currentIndex]?.classList.add('w-6', 'bg-primary');
+
+		if (counter) {
+			counter.textContent = `${currentIndex + 1} / ${total}`;
+		}
+	}
+
+	function nextSlide() {
+		showSlide(currentIndex + 1);
+	}
+
+	function prevSlide() {
+		showSlide(currentIndex - 1);
+	}
+
+	function startTimer() {
+		stopTimer();
+		autoPlayTimer = setInterval(nextSlide, 3500);
+	}
+
+	function stopTimer() {
+		if (autoPlayTimer) {
+			clearInterval(autoPlayTimer);
+			autoPlayTimer = null;
+		}
+	}
+
+	// Navigation listeners
+	nextBtn?.addEventListener('click', (e) => {
+		e.stopPropagation();
+		nextSlide();
+		startTimer();
+	});
+
+	prevBtn?.addEventListener('click', (e) => {
+		e.stopPropagation();
+		prevSlide();
+		startTimer();
+	});
+
+	dots.forEach((dot, idx) => {
+		dot.addEventListener('click', (e) => {
+			e.stopPropagation();
+			showSlide(idx);
+			startTimer();
+		});
+	});
+
+	// Pause on hover
+	carousel?.addEventListener('mouseenter', stopTimer);
+	carousel?.addEventListener('mouseleave', startTimer);
+
+	// Start auto-play
+	startTimer();
+</script>
