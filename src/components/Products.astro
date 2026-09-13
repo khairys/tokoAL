@@ -10,16 +10,19 @@ import productHelm from '../assets/helmSEPEDA.jpg';
 <section id="products" class="py-20 bg-gray-900 text-white relative overflow-hidden">
     
     <!-- Background Decoration -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full filter blur-[120px]"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/10 rounded-full filter blur-[100px]"></div>
+    <div class="absolute top-0 right-0 w-96 h-96 bg-secondary/15 rounded-full filter blur-[120px]"></div>
+    <div class="absolute bottom-0 left-0 w-80 h-80 bg-primary/20 rounded-full filter blur-[100px]"></div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <!-- Header -->
         <div class="text-center mb-12 fade-in-up">
-            <span class="text-green-400 font-bold tracking-wider uppercase text-sm">Etalase Digital</span>
+            <span class="text-neon font-bold tracking-wider uppercase text-sm inline-flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
+                Etalase Digital
+            </span>
             <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-2">Koleksi Terbaru</h2>
-            <div class="w-24 h-1.5 bg-gradient-to-r from-shopee to-tokopedia mx-auto rounded-full"></div>
+            <div class="w-24 h-1.5 bg-gradient-to-r from-primary via-secondary to-neon mx-auto rounded-full"></div>
             <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
                 Intip koleksi kami di sini, lalu checkout dengan aman dan nyaman melalui Official Store kami di Marketplace kesayangan Anda.
             </p>
@@ -39,7 +42,7 @@ import productHelm from '../assets/helmSEPEDA.jpg';
             <div id="product-container" class="flex gap-6 overflow-x-auto hide-scroll snap-x snap-mandatory py-8 px-8">
                 
                 <!-- Card 1 -->
-                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700 hover:border-primary/50 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
+                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/60 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700/80 hover:border-secondary/60 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
                     <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
                         <img src={productMtb.src} alt="MTB" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
                         <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-full border border-gray-600 text-white">
@@ -47,13 +50,13 @@ import productHelm from '../assets/helmSEPEDA.jpg';
                         </div>
                     </div>
                     <div class="px-1">
-                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-primary transition-colors duration-200">MTB Cross Country</h3>
+                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-neon transition-colors duration-200">MTB Cross Country</h3>
                         <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">Frame alloy ringan, suspensi empuk cocok untuk medan berat dan tanjakan terjal.</p>
                     </div>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700 hover:border-primary/50 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
+                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/60 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700/80 hover:border-secondary/60 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
                     <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
                         <img src={productFolding.src} alt="Sepeda Lipat" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
                         <div class="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
@@ -61,29 +64,29 @@ import productHelm from '../assets/helmSEPEDA.jpg';
                         </div>
                     </div>
                     <div class="px-1">
-                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-primary transition-colors duration-200">Folding Bike Premium</h3>
+                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-neon transition-colors duration-200">Folding Bike Premium</h3>
                         <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">Praktis dibawa commuting (KRL/Busway), lipatan ringkas 3 langkah mudah.</p>
                     </div>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700 hover:border-primary/50 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
+                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/60 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700/80 hover:border-secondary/60 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
                     <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
                         <img src={productSparepart.src} alt="Sparepart" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
                     </div>
                     <div class="px-1">
-                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-primary transition-colors duration-200">Sparepart Original</h3>
+                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-neon transition-colors duration-200">Sparepart Original</h3>
                         <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">RD, FD, Rantai, dan Sprocket Shimano/Sram original untuk upgrade performa.</p>
                     </div>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/50 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700 hover:border-primary/50 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
+                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/60 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700/80 hover:border-secondary/60 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
                     <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
                         <img src={productHelm.src} alt="Aksesoris" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
                     </div>
                     <div class="px-1">
-                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-primary transition-colors duration-200">Aksesoris Safety</h3>
+                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-neon transition-colors duration-200">Aksesoris Safety</h3>
                         <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">Helm standar SNI, lampu LED terang, dan sarung tangan gel.</p>
                     </div>
                 </div>
@@ -92,10 +95,10 @@ import productHelm from '../assets/helmSEPEDA.jpg';
 
         <!-- THE BIG MARKETPLACE CTA -->
         <div class="mt-16 fade-in-up" style="transition-delay: 200ms;">
-            <div class="bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl p-8 md:p-12 border border-gray-700 relative overflow-hidden text-center shadow-2xl">
+            <div class="bg-gradient-to-br from-black via-gray-900 to-[#116530]/40 rounded-3xl p-8 md:p-12 border border-gray-800 relative overflow-hidden text-center shadow-2xl">
                 
                 <!-- Glow Effect Behind -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-orange-500/10 to-green-500/10 blur-3xl"></div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-secondary/15 to-primary/15 blur-3xl"></div>
 
                 <div class="relative z-10">
                     <div class="text-container mb-3" id="text-animation-container"></div>
@@ -119,7 +122,7 @@ import productHelm from '../assets/helmSEPEDA.jpg';
                         </a>
                     </div>
 
-                    <div class="mt-8 flex justify-center gap-6 text-sm text-gray-500">
+                    <div class="mt-8 flex justify-center gap-6 text-sm text-gray-400">
                         <span class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Official Store</span>
                         <span class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> 100% Original</span>
                     </div>
@@ -180,7 +183,7 @@ import productHelm from '../assets/helmSEPEDA.jpg';
 
     :global(.question-emphasis) {
         animation: wiggleBig 1s ease-in-out infinite;
-        color: #10b981;
+        color: #A3EBB1;
         display: inline-block;
         position: relative;
         z-index: 10;

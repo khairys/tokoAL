@@ -1,15 +1,14 @@
 ---
 // Navbar Component
+import logoNavbar from '../assets/Logo navbar.png';
 ---
 
 <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex justify-between items-center h-16">
 			<!-- Logo -->
-			<div class="flex-shrink-0 flex items-center gap-2 cursor-pointer group" onclick="window.scrollTo(0,0)">
-				<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl transition-all duration-200 group-hover:scale-110 group-hover:shadow-lg">
-					AL
-				</div>
+			<div class="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group" onclick="window.scrollTo(0,0)">
+				<img src={logoNavbar.src} alt="Logo Toko AL" class="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-110 drop-shadow-sm" />
 				<span class="font-bold text-xl tracking-wide text-dark group-hover:text-primary transition-colors duration-200">Toko AL</span>
 			</div>
 			
@@ -31,12 +30,12 @@
 	</div>
 	
 	<!-- Mobile Menu Panel -->
-	<div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full">
-		<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-lg">
-			<a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Beranda</a>
-			<a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Servis</a>
-			<a href="#products" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Produk</a>
-			<a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-gray-50">Lokasi</a>
+	<div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
+		<div class="px-3 pt-2 pb-4 space-y-1">
+			<a href="#home" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Beranda</a>
+			<a href="#services" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Servis</a>
+			<a href="#products" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Produk</a>
+			<a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Lokasi</a>
 		</div>
 	</div>
 </nav>

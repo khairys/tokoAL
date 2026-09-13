@@ -5,7 +5,7 @@ interface Props {
 }
 
 const { 
-	title = "Toko AL - Sepeda, Spareparts & Servis", 
+	title = "Toko AL", 
 	description = "Pusat penjualan sepeda, spareparts terlengkap, dan layanan servis profesional di Serang. Kami memastikan sepeda Anda selalu dalam performa terbaik."
 } = Astro.props;
 ---
@@ -17,10 +17,12 @@ const {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/png" href="/favicon.png" />
 		
 		<!-- Google Fonts -->
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 		
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -34,9 +36,21 @@ const {
 				theme: {
 					extend: {
 						colors: {
-							primary: '#059669',
-							secondary: '#10b981',
-							dark: '#064e3b',
+							// Official Requested Palette
+							'brand-green': '#116530',
+							'brand-bluegreen': '#21B6A8',
+							'brand-neongreen': '#A3EBB1',
+							'brand-kelly': '#18A558',
+							'brand-black': '#000000',
+							'brand-white': '#FFFFFF',
+
+							// Semantic Mappings
+							primary: '#18A558',      // Kelly Green (Primary Action)
+							secondary: '#21B6A8',    // Blue Green (Accent & Gradients)
+							dark: '#116530',         // Green / Deep Forest (Brand & Text)
+							neon: '#A3EBB1',         // Neon Green (Micro-accents & Highlights)
+							shopee: '#EE4D2D',
+							tokopedia: '#42B549',
 						},
 						fontFamily: {
 							sans: ['Poppins', 'sans-serif'],
@@ -49,12 +63,18 @@ const {
 			}
 		</script>
 	</head>
-	<body class="bg-gray-50 text-gray-800 font-sans">
+	<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-[#A3EBB1] selection:text-[#116530]">
 		<slot />
 	</body>
 </html>
 
 <style is:global>
+	/* Custom Text Selection */
+	::selection {
+		background-color: #A3EBB1;
+		color: #116530;
+	}
+
 	/* Hide scrollbar for carousel but allow functionality */
 	.hide-scroll::-webkit-scrollbar {
 		display: none;
