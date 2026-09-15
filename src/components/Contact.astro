@@ -1,0 +1,112 @@
+---
+// Contact & Location Component
+import logoNavbar from '../assets/branding/Logo navbar.png';
+---
+
+<!-- === LOCATION & CONTACT SECTION === -->
+<section id="contact" class="bg-white pt-16 pb-20 border-t border-gray-100 relative">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<!-- Section Header -->
+		<div class="text-center mb-12 fade-in-up">
+			<span class="inline-block px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-dark bg-[#A3EBB1]/25 border border-[#A3EBB1]/50 rounded-full mb-3 shadow-sm">
+				Kunjungi Toko Kami
+			</span>
+			<h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+				Lokasi & Kontak Toko AL
+			</h2>
+			<div class="w-24 h-1.5 bg-gradient-to-r from-[#116530] via-primary to-secondary mx-auto mt-4 rounded-full"></div>
+			<p class="mt-4 text-gray-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+				Datang langsung untuk melihat koleksi unit sepeda, konsultasi sparepart, atau perawatan servis bersama tim mekanik kami.
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+			<!-- Info Toko Card -->
+			<div class="lg:col-span-5 bg-gray-50/90 rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm fade-in-up">
+				<!-- Brand Header -->
+				<div class="flex items-center gap-3 mb-5">
+					<img src={logoNavbar.src} alt="Logo Toko AL" class="h-10 w-auto object-contain drop-shadow-sm" />
+					<span class="font-extrabold text-2xl tracking-wide text-dark">Toko AL</span>
+				</div>
+				<p class="text-gray-600 mb-6 text-sm leading-relaxed">
+					Partner terbaik untuk hobi bersepeda dan keceriaan keluarga Anda di Cikande Permai, Serang.
+				</p>
+				
+				<div class="space-y-4">
+					<!-- Address -->
+					<div class="flex items-start gap-3.5">
+						<div class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm border border-[#A3EBB1]/60">
+							<i class="fas fa-map-marker-alt text-primary text-base"></i>
+						</div>
+						<div class="text-sm leading-relaxed">
+							<span class="font-bold text-gray-900 block text-xs uppercase tracking-wider mb-0.5">Alamat Resmi</span>
+							<span class="text-gray-600">Jl. Cikande Permai Blok J2 No.6 , Cikande Permai,<br>Kec. Cikande, Kabupaten Serang, Banten 42186</span>
+						</div>
+					</div>
+
+					<!-- Symmetrical Operating Hours -->
+					<div class="bg-white border border-gray-200/80 rounded-2xl p-4 shadow-sm">
+						<div class="flex items-center justify-between mb-3">
+							<div class="flex items-center gap-2 text-xs font-bold text-dark uppercase tracking-wider">
+								<i class="fas fa-clock text-primary"></i>
+								<span>Jam Operasional</span>
+							</div>
+							<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#A3EBB1]/30 text-dark border border-[#A3EBB1]/60">
+								<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+								Buka Tiap Hari
+							</span>
+						</div>
+						<div class="grid grid-cols-2 gap-2.5 text-center">
+							<div class="bg-gray-50 rounded-xl p-3 border border-gray-100 flex flex-col justify-center">
+								<span class="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Senin – Sabtu</span>
+								<span class="text-base font-extrabold text-gray-900 mt-1">09.00 – 20.00</span>
+								<span class="text-[10px] text-gray-400 mt-0.5">WIB</span>
+							</div>
+							<div class="bg-gray-50 rounded-xl p-3 border border-gray-100 flex flex-col justify-center">
+								<span class="text-[11px] font-semibold text-gray-500 uppercase tracking-wider">Minggu</span>
+								<span class="text-base font-extrabold text-gray-900 mt-1">09.00 – 17.00</span>
+								<span class="text-[10px] text-gray-400 mt-0.5">WIB</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- WhatsApp Contact -->
+					<div class="flex items-center gap-3.5">
+						<div class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 shadow-sm border border-[#A3EBB1]/60">
+							<i class="fab fa-whatsapp text-primary text-lg"></i>
+						</div>
+						<div class="text-sm">
+							<span class="text-gray-500 text-xs block">WhatsApp & Telepon</span>
+							<a href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL" target="_blank" rel="noopener noreferrer" class="font-bold text-gray-900 hover:text-primary transition-colors text-base">
+								+62 819-9653-5525
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Map Embed -->
+			<div class="lg:col-span-7 rounded-3xl overflow-hidden shadow-lg border border-gray-100 h-[430px] fade-in-up hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 relative group" style="transition-delay: 100ms;">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.121542874621!2d106.34663471463!3d-6.217914962436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42034cad66013f%3A0x172b9ecbe51c0c05!2sToko%20Sepeda%20AL!5e0!3m2!1sid!2sid!4v1735218000000!5m2!1sid!2sid"
+					width="100%"
+					height="100%"
+					style="border:0;"
+					allowfullscreen=""
+					loading="lazy"
+					class="grayscale hover:grayscale-0 transition-all duration-500"
+				></iframe>
+				<!-- Direct Maps Link Button -->
+				<a
+					href="https://maps.app.goo.gl/uXpQYw8dKrn5U22P8"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="absolute bottom-5 right-5 bg-white/95 hover:bg-primary hover:text-white text-gray-800 text-xs font-bold px-5 py-3 rounded-full shadow-xl border border-gray-200 backdrop-blur-md transition-all duration-200 flex items-center gap-2 hover:scale-105 active:scale-95 cursor-pointer"
+				>
+					<i class="fas fa-directions text-primary group-hover:text-white text-sm"></i>
+					<span>Buka Rute di Google Maps</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>

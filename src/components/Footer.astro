@@ -1,59 +1,267 @@
 ---
 // Footer Component
+import logoNavbar from '../assets/branding/Logo navbar.png';
 ---
 
-<section id="contact" class="bg-white pt-16 border-t border-gray-100">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-			
-			<!-- Info Toko -->
-			<div class="fade-in-up">
-				<div class="flex items-center gap-2 mb-6">
-					<div class="w-10 h-10 bg-gradient-to-br from-[#116530] to-primary rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md">AL</div>
-					<span class="font-bold text-2xl text-dark">Toko AL</span>
-				</div>
-				<p class="text-gray-500 mb-6">Partner terbaik untuk hobi bersepeda Anda. Melayani dengan hati dan profesionalitas tinggi.</p>
-				
-				<div class="space-y-3 text-gray-600">
-					<div class="flex items-start gap-3">
-						<i class="fas fa-map-marker-alt mt-1 text-primary"></i>
-						<span>Jl. Cikande Permai No.6 Blok J2, Cikande Permai,<br>Kec. Cikande, Kabupaten Serang, Banten 42186</span>
-					</div>
-					<div class="flex items-start gap-3">
-						<i class="fas fa-clock text-primary mt-1"></i>
-						<div>
-							<div>Senin - Sabtu: 09.00 - 20.00</div>
-							<div>Minggu: 09.00 - 17.00</div>
-						</div>
-					</div>
-					<div class="flex items-center gap-3">
-						<i class="fas fa-phone text-primary"></i>
-						<span>+62 819-9653-5525</span>
-					</div>
-				</div>
+<!-- === MODERN RICH FOOTER === -->
+<footer class="bg-gray-950 text-gray-400 relative overflow-hidden border-t-2 border-primary/40">
+    <!-- Ambient Glow Decoration -->
+    <div class="absolute top-0 right-1/4 w-96 h-96 bg-primary/10 rounded-full filter blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-0 left-10 w-80 h-80 bg-secondary/10 rounded-full filter blur-[100px] pointer-events-none"></div>
 
-				<!-- Social Icons -->
-				<div class="flex gap-4 mt-8">
-                    <a href="https://www.instagram.com/tokoal_id" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:via-pink-500 hover:to-orange-500 hover:text-white transition-all duration-200 hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:rotate-12"><i class="fab fa-instagram"></i></a>
-					<a href="https://www.tiktok.com/@tokoal.id" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-200 hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:-rotate-12 hover:animate-pulse"><i class="fab fa-tiktok"></i></a>
-					<a href="https://www.facebook.com/admintokoalid" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-200 hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:rotate-12"><i class="fab fa-facebook-f"></i></a>
-					<a href="https://x.com/tokoal_id" target="_blank" class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center hover:bg-black hover:text-white transition-all duration-200 hover:scale-110 hover:-translate-y-1 hover:shadow-lg hover:rotate-12">
-                        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor">
-                            <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
-                        </svg>
-                    </a>
-				</div>
-			</div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-16 pb-12">
+        
+        <!-- 4 Core Columns -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-gray-800/80">
+            
+            <!-- Kolom 1: Brand & Profil (lg:col-span-4) -->
+            <div class="lg:col-span-4 space-y-4">
+                <a href="#home" class="inline-flex items-center gap-3 group">
+                    <img src={logoNavbar.src} alt="Logo Toko AL" class="h-10 w-auto object-contain drop-shadow-sm group-hover:scale-105 transition-transform" />
+                    <span class="font-extrabold text-2xl tracking-wide text-white group-hover:text-primary transition-colors">Toko AL</span>
+                </a>
+                <p class="text-sm text-gray-400 leading-relaxed pr-2">
+                    Pusat penjualan sepeda berkualitas, mainan anak edukatif, sparepart lengkap, dan bengkel servis terpercaya sejak melayani goweser di Cikande Permai, Serang, Banten.
+                </p>
+                <div class="pt-2">
+                    <span class="text-xs font-bold text-gray-300 uppercase tracking-wider block mb-3">Saluran Media Sosial</span>
+                    <div class="flex items-center gap-2.5">
+                        <a
+                            href="https://www.youtube.com/@tokoal_id"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="YouTube Toko AL"
+                            class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 text-gray-400 flex items-center justify-center hover:bg-red-600 hover:text-white hover:border-red-600 transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
+                            title="YouTube Toko AL"
+                        >
+                            <i class="fab fa-youtube text-base"></i>
+                        </a>
+                        <a
+                            href="https://www.instagram.com/tokoal_id"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram Toko AL"
+                            class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 text-gray-400 flex items-center justify-center hover:bg-gradient-to-br hover:from-purple-500 hover:via-pink-500 hover:to-orange-500 hover:text-white hover:border-transparent transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
+                            title="Instagram Toko AL"
+                        >
+                            <i class="fab fa-instagram text-base"></i>
+                        </a>
+                        <a
+                            href="https://www.tiktok.com/@tokoal.id"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="TikTok Toko AL"
+                            class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 text-gray-400 flex items-center justify-center hover:bg-white hover:text-black hover:border-white transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
+                            title="TikTok Toko AL"
+                        >
+                            <i class="fab fa-tiktok text-base"></i>
+                        </a>
+                        <a
+                            href="https://www.facebook.com/admintokoalid"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Facebook Toko AL"
+                            class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 text-gray-400 flex items-center justify-center hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
+                            title="Facebook Toko AL"
+                        >
+                            <i class="fab fa-facebook-f text-sm"></i>
+                        </a>
+                        <a
+                            href="https://x.com/tokoal_id"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="X Twitter Toko AL"
+                            class="w-9 h-9 rounded-full bg-gray-900 border border-gray-800 text-gray-400 flex items-center justify-center hover:bg-white hover:text-black hover:border-white transition-all duration-200 hover:scale-110 active:scale-95 shadow-sm"
+                            title="X Twitter Toko AL"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" height="13" width="13" viewBox="0 0 512 512" fill="currentColor">
+                                <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-			<!-- Map Embed -->
-			<div class="lg:col-span-2 rounded-2xl overflow-hidden shadow-lg h-80 fade-in-up hover:shadow-2xl hover:shadow-primary/20 transition-all duration-200 hover:scale-105" style="transition-delay: 100ms;">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.121542874621!2d106.34663471463!3d-6.217914962436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42034cad66013f%3A0x172b9ecbe51c0c05!2sToko%20Sepeda%20AL!5e0!3m2!1sid!2sid!4v1735218000000!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" class="grayscale hover:grayscale-0 transition-all duration-300"></iframe>
-			</div>
-		</div>
-	</div>
+            <!-- Kolom 2: Navigasi Cepat (lg:col-span-2) -->
+            <div class="lg:col-span-2 space-y-3">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-primary pl-2.5">
+                    Navigasi Cepat
+                </h4>
+                <ul class="space-y-2.5 text-sm">
+                    <li>
+                        <a href="#home" class="hover:text-neon transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-chevron-right text-[10px] text-primary"></i>
+                            <span>Beranda</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#services" class="hover:text-neon transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-chevron-right text-[10px] text-primary"></i>
+                            <span>Layanan & Servis</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#products" class="hover:text-neon transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-chevron-right text-[10px] text-primary"></i>
+                            <span>Katalog Produk</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#gallery" class="hover:text-neon transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-chevron-right text-[10px] text-primary"></i>
+                            <span>Galeri & Suasana</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#partners" class="hover:text-neon transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-chevron-right text-[10px] text-primary"></i>
+                            <span>Mitra & Komunitas</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#contact" class="hover:text-neon transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-chevron-right text-[10px] text-primary"></i>
+                            <span>Lokasi Toko</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
 
-	<!-- Copyright -->
-	<div class="bg-black py-6 text-center text-gray-500 text-sm border-t border-gray-900">
-		<p>&copy; 2024 Toko AL Sepeda. All rights reserved.</p>
-	</div>
-</section>
+            <!-- Kolom 3: Kategori Unggulan (lg:col-span-3) -->
+            <div class="lg:col-span-3 space-y-3">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-secondary pl-2.5">
+                    Kategori Unggulan
+                </h4>
+                <ul class="space-y-2.5 text-sm">
+                    <li>
+                        <a href="https://wa.me/p/8388943097813259/21908728856695" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-bicycle text-xs text-secondary"></i>
+                            <span>Sepeda MTB Premium</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/p/8388943097813259/21908728856695" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-bicycle text-xs text-secondary"></i>
+                            <span>Fixie, Balap, & Gravel</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/p/7373130436045125/21908728856695" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-bicycle text-xs text-secondary"></i>
+                            <span>Sepeda Lipat Praktis</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/p/6901147263339387/21908728856695" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-bicycle text-xs text-secondary"></i>
+                            <span>Sepeda BMX Freestyle</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/c/21908728856695" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-baby text-xs text-secondary"></i>
+                            <span>Sepeda & Mainan Anak</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/c/21908728856695" target="_blank" rel="noopener noreferrer" class="hover:text-secondary transition-colors duration-200 flex items-center gap-1.5">
+                            <i class="fas fa-cogs text-xs text-secondary"></i>
+                            <span>Sparepart & Aksesoris</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Kolom 4: Layanan & Jam Operasional (lg:col-span-3) -->
+            <div class="lg:col-span-3 space-y-3">
+                <h4 class="text-sm font-bold text-white uppercase tracking-wider mb-4 border-l-2 border-neon pl-2.5">
+                    Layanan & Marketplace
+                </h4>
+                <div class="space-y-3 text-sm">
+                    <div class="bg-gray-900/80 p-3 rounded-xl border border-gray-800">
+                        <span class="text-xs text-gray-400 block mb-1">Jam Operasional Toko:</span>
+                        <p class="text-white text-xs font-semibold">Senin – Sabtu: 09.00 – 20.00 WIB</p>
+                        <p class="text-white text-xs font-semibold mt-0.5">Minggu: 09.00 – 17.00 WIB</p>
+                    </div>
+
+                    <div class="pt-1">
+                        <span class="text-xs text-gray-400 block mb-2">Toko Online Resmi:</span>
+                        <div class="flex items-center gap-2">
+                            <a
+                                href="https://shopee.co.id/tokoal_id"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex-1 px-3 py-2 bg-[#EE4D2D]/15 hover:bg-[#EE4D2D] text-white border border-[#EE4D2D]/40 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95"
+                            >
+                                <i class="fas fa-shopping-bag text-xs"></i>
+                                <span>Shopee</span>
+                            </a>
+                            <a
+                                href="https://www.tokopedia.com/tokoal-id"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex-1 px-3 py-2 bg-[#42B549]/15 hover:bg-[#42B549] text-white border border-[#42B549]/40 rounded-lg text-xs font-bold flex items-center justify-center gap-1.5 transition-all duration-200 active:scale-95"
+                            >
+                                <i class="fas fa-store text-xs"></i>
+                                <span>Tokopedia</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Trust & Payment Badges Bar -->
+        <div class="py-6 border-b border-gray-800/80 flex flex-wrap items-center justify-center md:justify-between gap-4 text-xs text-gray-400">
+            <div class="flex flex-wrap items-center justify-center gap-6">
+                <span class="flex items-center gap-1.5">
+                    <i class="fas fa-certificate text-primary"></i>
+                    <span>100% Suku Cadang Original</span>
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <i class="fas fa-tools text-secondary"></i>
+                    <span>Mekanik Berpengalaman</span>
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <i class="fas fa-hand-holding-heart text-neon"></i>
+                    <span>Bisa Dicoba di Lokasi</span>
+                </span>
+                <span class="flex items-center gap-1.5">
+                    <i class="fas fa-money-bill-wave text-primary"></i>
+                    <span>Tunai, QRIS, & Transfer Bank</span>
+                </span>
+            </div>
+            <div class="text-gray-500 text-[11px]">
+                <span>Wilayah Layanan: Cikande, Kragilan, Serang & Sekitarnya</span>
+            </div>
+        </div>
+
+        <!-- Bottom Bar (Copyright & Back to Top) -->
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
+            <p>
+                &copy; {new Date().getFullYear()} <span class="text-gray-300 font-semibold">Toko AL</span>. Hak Cipta Dilindungi.
+            </p>
+            <button
+                id="back-to-top"
+                aria-label="Kembali ke atas"
+                class="inline-flex items-center gap-2 text-gray-400 hover:text-white px-4 py-2 rounded-full bg-gray-900 border border-gray-800 hover:border-gray-700 transition-all duration-200 active:scale-95 cursor-pointer shadow-sm group"
+            >
+                <span>Kembali ke Atas</span>
+                <i class="fas fa-arrow-up text-xs text-primary group-hover:-translate-y-0.5 transition-transform"></i>
+            </button>
+        </div>
+
+    </div>
+</footer>
+
+<script>
+    // Back to Top Button Logic
+    const backToTopBtn = document.getElementById('back-to-top');
+    backToTopBtn?.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>

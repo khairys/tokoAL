@@ -1,12 +1,132 @@
 ---
 // Products Component
-import productMtb from '../assets/MTB.jpg';
-import productFolding from '../assets/sepedaLipat.jpg';
-import productSparepart from '../assets/sparepart.jpg';
-import productHelm from '../assets/helmSEPEDA.jpg';
+import productFixie from '../assets/products/sepeda fixie.png';
+import productMtb from '../assets/products/MTB.jpg';
+import productBmx from '../assets/products/sepeda bmx.jpg';
+import productFolding from '../assets/products/sepedaLipat.jpg';
+import productAnak from '../assets/products/sepeda anak.jpg';
+import productSparepart from '../assets/products/sparepart.jpg';
+import productAksesoris from '../assets/products/aksesoris.png';
+
+const catalogUrl = "https://wa.me/c/21908728856695";
+
+const products = [
+    {
+        id: 'fixie',
+        title: 'Sepeda Fixie, Balap, Gravel, Hybrid',
+        category: 'Balap & Urban',
+        image: productFixie,
+        link: 'https://wa.me/p/8388943097813259/21908728856695',
+        badge: 'Banyak Pilihan',
+        badgeColor: 'bg-primary/90 text-white',
+        specs: [
+            'Balap: 2x7, 2x8, 2x9, 3x7, 3x8, 3x9 Speed',
+            'Fixie Full Warna & Desain Dinamis',
+            'Rem: Torpedo, Cakram, U-Brake',
+            'Stang: Dropbar, Flatbar, Hornbar',
+            'Bottom Bracket (BB) & Bearing Presisi',
+        ]
+    },
+    {
+        id: 'mtb',
+        title: 'Sepeda MTB Premium',
+        category: 'Mountain Bike',
+        image: productMtb,
+        link: 'https://wa.me/p/8388943097813259/21908728856695',
+        badge: 'Ready Stock',
+        badgeColor: 'bg-emerald-600/90 text-white',
+        specs: [
+            'Usia: 12 Tahun - Dewasa',
+            'Ukuran Roda: 24", 26", 27.5"',
+            'Groupset: Shimano, RRC, dll.',
+            'Rem: Cakram Mekanik & Hidrolik',
+            'Frame: Alloy, Carbon, Steel Ringan',
+        ]
+    },
+    {
+        id: 'bmx',
+        title: 'Sepeda BMX',
+        category: 'Freestyle & Street',
+        image: productBmx,
+        link: 'https://wa.me/p/6901147263339387/21908728856695',
+        badge: 'Best Seller',
+        badgeColor: 'bg-red-600/90 text-white animate-pulse',
+        specs: [
+            'Usia: 6 Tahun - Dewasa',
+            'Frame: Alloy & Steel Kokoh Ekstra',
+            'Rem: V-Brake, Cakram, dll.',
+            'Roda: 3.0 (Jumbo), 2.4, dll.',
+            'Stang Rotor, Gir Torpedo, Jalu & Stiker',
+        ]
+    },
+    {
+        id: 'folding',
+        title: 'Sepeda Lipat',
+        category: 'Commuter & Praktis',
+        image: productFolding,
+        link: 'https://wa.me/p/7373130436045125/21908728856695',
+        badge: 'Ringkas & Praktis',
+        badgeColor: 'bg-secondary/90 text-white',
+        specs: [
+            'Usia: 6 Tahun - Dewasa',
+            'Frame: Steel & Alloy Ringan',
+            'Rem: V-Brake, Cakram, dll.',
+            'Speed: 1 Speed, 7 Speed, dll.',
+            'Lipatan Ringkas Praktis Masuk Mobil/KRL',
+        ]
+    },
+    {
+        id: 'anak',
+        title: 'Sepeda Anak',
+        category: 'Keluarga & Balita',
+        image: productAnak,
+        link: catalogUrl,
+        badge: 'Koleksi Anak',
+        badgeColor: 'bg-amber-500/90 text-white',
+        specs: [
+            'Usia: 2 Tahun - 8 Tahun',
+            'Varian: Roda Tiga, Roda Bantu, & Push Bike',
+            'Frame Kokoh, Aman, & Ergonomis',
+            'Pilihan Warna & Karakter Kartun Ceria',
+            'Bisa Dicoba & Disetel Langsung di Toko',
+        ]
+    },
+    {
+        id: 'sparepart',
+        title: 'Sparepart Sepeda',
+        category: 'Suku Cadang & Komponen',
+        image: productSparepart,
+        link: catalogUrl,
+        badge: '100% Original',
+        badgeColor: 'bg-secondary/90 text-white',
+        specs: [
+            'RD, FD, Rantai, Sprocket, & Shifter',
+            'Ban Luar & Ban Dalam Segala Ukuran',
+            'Rem, Rotor Cakram, & Kampas Rem',
+            'Komponen Original Berbagai Merk Teruji',
+            'Tersedia Jasa Pasang & Setel Langsung',
+        ]
+    },
+    {
+        id: 'aksesoris',
+        title: 'Aksesoris Sepeda',
+        category: 'Perlengkapan & Safety',
+        image: productAksesoris,
+        link: catalogUrl,
+        badge: 'Safety & Style',
+        badgeColor: 'bg-[#18A558]/90 text-white',
+        specs: [
+            'Helm Standar SNI & Lampu LED Terang',
+            'Bel Nyaring & Kunci Gembok Pengaman',
+            'Jersey, Sarung Tangan Gel, & Botol Minum',
+            'Pompa Angin Portabel, Spatbor, & Tas Frame',
+            'Perlengkapan Gowes Nyaman & Aman',
+        ]
+    },
+];
 ---
 
-<!-- === PRODUCT & MARKETPLACE SECTION (IMPROVED) === -->
+<!-- === PRODUCT & MARKETPLACE SECTION === -->
 <section id="products" class="py-20 bg-gray-900 text-white relative overflow-hidden">
     
     <!-- Background Decoration -->
@@ -21,76 +141,106 @@ import productHelm from '../assets/helmSEPEDA.jpg';
                 <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
                 Etalase Digital
             </span>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-2">Koleksi Terbaru</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-2">Koleksi Produk & Sepeda</h2>
             <div class="w-24 h-1.5 bg-gradient-to-r from-primary via-secondary to-neon mx-auto rounded-full"></div>
-            <p class="mt-6 text-gray-400 max-w-2xl mx-auto text-lg">
-                Intip koleksi kami di sini, lalu checkout dengan aman dan nyaman melalui Official Store kami di Marketplace kesayangan Anda.
+            <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+                Pilih kategori favorit Anda di bawah ini dan klik pada kartu untuk langsung melihat detail unit serta konsultasi ketersediaan di WhatsApp.
             </p>
         </div>
 
-        <!-- Carousel Container (Visual Preview Only) -->
+        <!-- Carousel Container with Navigation Buttons -->
         <div class="relative group/carousel fade-in-up">
             <!-- Navigation Buttons -->
-            <button id="scroll-left" class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-20 w-12 h-12 bg-white text-gray-900 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 translate-x-4 group-hover/carousel:-translate-x-4 cursor-pointer">
-                <i class="fas fa-arrow-left"></i>
+            <button
+                id="scroll-left"
+                aria-label="Geser ke kiri"
+                class="absolute left-1 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gray-800/90 hover:bg-primary text-white rounded-full shadow-2xl border border-gray-700 flex items-center justify-center transition-all duration-200 opacity-90 sm:opacity-0 group-hover/carousel:opacity-100 cursor-pointer active:scale-90"
+            >
+                <i class="fas fa-chevron-left text-lg"></i>
             </button>
-            <button id="scroll-right" class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-20 w-12 h-12 bg-white text-gray-900 rounded-full shadow-lg flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 opacity-0 group-hover/carousel:opacity-100 -translate-x-4 group-hover/carousel:translate-x-4 cursor-pointer">
-                <i class="fas fa-arrow-right"></i>
+            <button
+                id="scroll-right"
+                aria-label="Geser ke kanan"
+                class="absolute right-1 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gray-800/90 hover:bg-primary text-white rounded-full shadow-2xl border border-gray-700 flex items-center justify-center transition-all duration-200 opacity-90 sm:opacity-0 group-hover/carousel:opacity-100 cursor-pointer active:scale-90"
+            >
+                <i class="fas fa-chevron-right text-lg"></i>
             </button>
 
             <!-- Product Cards Container -->
-            <div id="product-container" class="flex gap-6 overflow-x-auto hide-scroll snap-x snap-mandatory py-8 px-8">
-                
-                <!-- Card 1 -->
-                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/60 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700/80 hover:border-secondary/60 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
-                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
-                        <img src={productMtb.src} alt="MTB" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
-                        <div class="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-full border border-gray-600 text-white">
-                            Ready Stock
+            <div
+                id="product-container"
+                class="flex gap-6 overflow-x-auto hide-scroll snap-x snap-mandatory py-6 px-2 sm:px-6"
+            >
+                {products.map((product) => (
+                    <a
+                        href={product.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="group/card min-w-[290px] sm:min-w-[320px] md:min-w-[340px] max-w-[360px] bg-gray-800/60 backdrop-blur-md rounded-2xl p-5 snap-center border border-gray-700/80 hover:border-secondary/70 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 flex flex-col justify-between active:scale-[0.98] cursor-pointer"
+                    >
+                        <div>
+                            <!-- Product Image & Badge -->
+                            <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-950 border border-gray-700/50 flex items-center justify-center">
+                                <img
+                                    src={product.image.src}
+                                    alt={product.title}
+                                    class="w-full h-full object-cover group-hover/card:scale-108 group-hover/card:rotate-1 transition-all duration-500"
+                                    loading="lazy"
+                                />
+                                <div class={`absolute top-3 right-3 text-[11px] font-bold px-3 py-1 rounded-full shadow-md backdrop-blur-sm ${product.badgeColor}`}>
+                                    {product.badge}
+                                </div>
+                                <div class="absolute bottom-2 left-2 bg-black/70 backdrop-blur-md text-[10px] font-semibold text-gray-300 px-2.5 py-0.5 rounded-md border border-white/10">
+                                    {product.category}
+                                </div>
+                            </div>
+
+                            <!-- Title -->
+                            <h3 class="text-lg sm:text-xl font-bold mb-3 text-white group-hover/card:text-neon transition-colors duration-200 line-clamp-2 leading-snug">
+                                {product.title}
+                            </h3>
+
+                            <!-- Specs List -->
+                            <ul class="space-y-1.5 text-xs text-gray-300 mb-4">
+                                {product.specs.map((spec) => (
+                                    <li class="flex items-start gap-2">
+                                        <i class="fas fa-check-circle text-primary mt-0.5 flex-shrink-0"></i>
+                                        <span class="leading-tight">{spec}</span>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
-                    </div>
-                    <div class="px-1">
-                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-neon transition-colors duration-200">MTB Cross Country</h3>
-                        <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">Frame alloy ringan, suspensi empuk cocok untuk medan berat dan tanjakan terjal.</p>
-                    </div>
-                </div>
 
-                <!-- Card 2 -->
-                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/60 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700/80 hover:border-secondary/60 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
-                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
-                        <img src={productFolding.src} alt="Sepeda Lipat" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
-                        <div class="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg animate-pulse">
-                            Best Seller
+                        <!-- Card Action Footer (No Price, Direct WA CTA) -->
+                        <div class="pt-3.5 border-t border-gray-700/60 flex items-center justify-between text-xs font-bold text-primary group-hover/card:text-neon transition-colors duration-200">
+                            <span class="inline-flex items-center gap-1.5">
+                                <i class="fab fa-whatsapp text-sm"></i>
+                                <span>Lihat di WhatsApp</span>
+                            </span>
+                            <span class="w-7 h-7 rounded-full bg-gray-700/60 group-hover/card:bg-primary group-hover/card:text-white flex items-center justify-center transition-all duration-200 group-hover/card:translate-x-1">
+                                <i class="fas fa-arrow-right text-xs"></i>
+                            </span>
                         </div>
-                    </div>
-                    <div class="px-1">
-                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-neon transition-colors duration-200">Folding Bike Premium</h3>
-                        <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">Praktis dibawa commuting (KRL/Busway), lipatan ringkas 3 langkah mudah.</p>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/60 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700/80 hover:border-secondary/60 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
-                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
-                        <img src={productSparepart.src} alt="Sparepart" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
-                    </div>
-                    <div class="px-1">
-                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-neon transition-colors duration-200">Sparepart Original</h3>
-                        <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">RD, FD, Rantai, dan Sprocket Shimano/Sram original untuk upgrade performa.</p>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="group/card min-w-[280px] md:min-w-[320px] bg-gray-800/60 backdrop-blur-sm rounded-2xl p-4 snap-center border border-gray-700/80 hover:border-secondary/60 transition-all duration-200 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105">
-                    <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-700">
-                        <img src={productHelm.src} alt="Aksesoris" class="w-full h-full object-cover group-hover/card:scale-110 group-hover/card:rotate-2 transition-all duration-300">
-                    </div>
-                    <div class="px-1">
-                        <h3 class="text-xl font-bold mb-2 group-hover/card:text-neon transition-colors duration-200">Aksesoris Safety</h3>
-                        <p class="text-gray-400 text-sm line-clamp-2 group-hover/card:text-gray-300 transition-colors duration-200">Helm standar SNI, lampu LED terang, dan sarung tangan gel.</p>
-                    </div>
-                </div>
+                    </a>
+                ))}
             </div>
+        </div>
+
+        <!-- Big Catalog Button (Selengkapnya / Lebih Banyak) -->
+        <div class="mt-10 text-center fade-in-up">
+            <a
+                href={catalogUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] text-white font-bold text-base md:text-lg rounded-full shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-secondary/30 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer border border-white/15 hover:border-white/30"
+            >
+                <i class="fab fa-whatsapp text-2xl group-hover:animate-bounce"></i>
+                <span>Lihat Selengkapnya di Katalog WhatsApp</span>
+                <i class="fas fa-arrow-right text-sm group-hover:translate-x-1.5 transition-transform duration-200"></i>
+            </a>
+            <p class="text-xs text-gray-400 mt-3">
+                *Klik untuk membuka etalase lengkap Toko AL di WhatsApp Catalog dengan foto unit terbaru.
+            </p>
         </div>
 
         <!-- THE BIG MARKETPLACE CTA -->
@@ -106,7 +256,7 @@ import productHelm from '../assets/helmSEPEDA.jpg';
                     
                     <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
                         <!-- Shopee Button -->
-                        <a href="https://shopee.co.id/tokoal_id" target="_blank" class="group relative overflow-hidden bg-[#EE4D2D] text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-orange-900/50 hover:scale-105 transition-all duration-300">
+                        <a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#EE4D2D] text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-orange-900/50 hover:scale-105 active:scale-95 transition-all duration-300">
                             <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                             <span class="bg-white text-[#EE4D2D] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-shopping-bag"></i></span>
                             <span class="relative z-10">Buka Shopee</span>
@@ -114,7 +264,7 @@ import productHelm from '../assets/helmSEPEDA.jpg';
                         </a>
 
                         <!-- Tokopedia Button -->
-                        <a href="https://www.tokopedia.com/tokoal-id" target="_blank" class="group relative overflow-hidden bg-[#42B549] text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-900/50 hover:scale-105 transition-all duration-300">
+                        <a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#42B549] text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-900/50 hover:scale-105 active:scale-95 transition-all duration-300">
                             <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                             <span class="bg-white text-[#42B549] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-store"></i></span>
                             <span class="relative z-10">Buka Tokopedia</span>
@@ -283,13 +433,13 @@ import productHelm from '../assets/helmSEPEDA.jpg';
     
     if (scrollLeftBtn && productContainer) {
         scrollLeftBtn.addEventListener('click', () => {
-            productContainer.scrollBy({ left: -340, behavior: 'smooth' });
+            productContainer.scrollBy({ left: -360, behavior: 'smooth' });
         });
     }
     
     if (scrollRightBtn && productContainer) {
         scrollRightBtn.addEventListener('click', () => {
-            productContainer.scrollBy({ left: 340, behavior: 'smooth' });
+            productContainer.scrollBy({ left: 360, behavior: 'smooth' });
         });
     }
 </script>
