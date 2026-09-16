@@ -13,7 +13,7 @@ const catalogUrl = "https://wa.me/c/21908728856695";
 const products = [
     {
         id: 'fixie',
-        title: 'Sepeda Fixie, Balap, Gravel, Hybrid',
+        title: 'Sepeda Fixie dan Roadbike',
         category: 'Balap & Urban',
         image: productFixie,
         link: 'https://wa.me/p/8388943097813259/21908728856695',
@@ -29,7 +29,7 @@ const products = [
     },
     {
         id: 'mtb',
-        title: 'Sepeda MTB Premium',
+        title: 'Sepeda MTB',
         category: 'Mountain Bike',
         image: productMtb,
         link: 'https://wa.me/p/8388943097813259/21908728856695',
@@ -124,6 +124,8 @@ const products = [
         ]
     },
 ];
+
+const loopProducts = [...products, ...products, ...products];
 ---
 
 <!-- === PRODUCT & MARKETPLACE SECTION === -->
@@ -137,11 +139,7 @@ const products = [
         
         <!-- Header -->
         <div class="text-center mb-12 fade-in-up">
-            <span class="text-neon font-bold tracking-wider uppercase text-sm inline-flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-neon animate-pulse"></span>
-                Etalase Digital
-            </span>
-            <h2 class="text-3xl md:text-4xl font-bold mb-4 mt-2">Koleksi Produk & Sepeda</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Koleksi Produk & Sepeda</h2>
             <div class="w-24 h-1.5 bg-gradient-to-r from-primary via-secondary to-neon mx-auto rounded-full"></div>
             <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
                 Pilih kategori favorit Anda di bawah ini dan klik pada kartu untuk langsung melihat detail unit serta konsultasi ketersediaan di WhatsApp.
@@ -169,33 +167,29 @@ const products = [
             <!-- Product Cards Container -->
             <div
                 id="product-container"
-                class="flex gap-6 overflow-x-auto hide-scroll snap-x snap-mandatory py-6 px-2 sm:px-6"
+                class="flex gap-6 overflow-x-auto hide-scroll py-6 px-2 sm:px-6 cursor-grab active:cursor-grabbing"
             >
-                {products.map((product) => (
+                {loopProducts.map((product, idx) => (
                     <a
                         href={product.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="group/card min-w-[290px] sm:min-w-[320px] md:min-w-[340px] max-w-[360px] bg-gray-800/60 backdrop-blur-md rounded-2xl p-5 snap-center border border-gray-700/80 hover:border-secondary/70 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 flex flex-col justify-between active:scale-[0.98] cursor-pointer"
+                        class="group/card min-w-[290px] sm:min-w-[320px] md:min-w-[340px] max-w-[360px] bg-gray-800/60 backdrop-blur-md rounded-2xl p-5 border border-gray-700/80 hover:border-secondary/70 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 flex flex-col justify-between active:scale-[0.98] cursor-pointer flex-shrink-0"
+                        data-index={idx}
                     >
                         <div>
-                            <!-- Product Image & Badge -->
+                            <!-- Product Image (Clean without text overlays) -->
                             <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-950 border border-gray-700/50 flex items-center justify-center">
                                 <img
                                     src={product.image.src}
                                     alt={product.title}
-                                    class="w-full h-full object-cover group-hover/card:scale-108 group-hover/card:rotate-1 transition-all duration-500"
+                                    class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
                                     loading="lazy"
                                 />
-                                <div class={`absolute top-3 right-3 text-[11px] font-bold px-3 py-1 rounded-full shadow-md backdrop-blur-sm ${product.badgeColor}`}>
-                                    {product.badge}
-                                </div>
-                                <div class="absolute bottom-2 left-2 bg-black/70 backdrop-blur-md text-[10px] font-semibold text-gray-300 px-2.5 py-0.5 rounded-md border border-white/10">
-                                    {product.category}
-                                </div>
                             </div>
 
-                            <!-- Title -->
+                            <!-- Category & Title -->
+                            <span class="text-[11px] font-bold text-secondary uppercase tracking-wider block mb-1.5">{product.category}</span>
                             <h3 class="text-lg sm:text-xl font-bold mb-3 text-white group-hover/card:text-neon transition-colors duration-200 line-clamp-2 leading-snug">
                                 {product.title}
                             </h3>
@@ -211,11 +205,11 @@ const products = [
                             </ul>
                         </div>
 
-                        <!-- Card Action Footer (No Price, Direct WA CTA) -->
-                        <div class="pt-3.5 border-t border-gray-700/60 flex items-center justify-between text-xs font-bold text-primary group-hover/card:text-neon transition-colors duration-200">
-                            <span class="inline-flex items-center gap-1.5">
-                                <i class="fab fa-whatsapp text-sm"></i>
-                                <span>Lihat di WhatsApp</span>
+                        <!-- Card Action Footer (Enticing interest prompt) -->
+                        <div class="pt-3.5 border-t border-gray-700/60 flex items-center justify-between text-xs font-semibold text-gray-300 group-hover/card:text-neon transition-colors duration-200">
+                            <span class="inline-flex items-center gap-2 font-bold">
+                                <i class="fas fa-arrow-up-right-from-square text-[11px] text-primary group-hover/card:text-neon transition-colors"></i>
+                                <span>Tertarik? Cek Ketersediaan Unit</span>
                             </span>
                             <span class="w-7 h-7 rounded-full bg-gray-700/60 group-hover/card:bg-primary group-hover/card:text-white flex items-center justify-center transition-all duration-200 group-hover/card:translate-x-1">
                                 <i class="fas fa-arrow-right text-xs"></i>
@@ -226,7 +220,7 @@ const products = [
             </div>
         </div>
 
-        <!-- Big Catalog Button (Selengkapnya / Lebih Banyak) -->
+        <!-- Big Catalog Button (Selengkapnya) -->
         <div class="mt-10 text-center fade-in-up">
             <a
                 href={catalogUrl}
@@ -234,13 +228,9 @@ const products = [
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] text-white font-bold text-base md:text-lg rounded-full shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-secondary/30 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer border border-white/15 hover:border-white/30"
             >
-                <i class="fab fa-whatsapp text-2xl group-hover:animate-bounce"></i>
-                <span>Lihat Selengkapnya di Katalog WhatsApp</span>
-                <i class="fas fa-arrow-right text-sm group-hover:translate-x-1.5 transition-transform duration-200"></i>
+                <span>Selengkapnya</span>
+                <i class="fas fa-arrow-right text-base group-hover:translate-x-1.5 transition-transform duration-200"></i>
             </a>
-            <p class="text-xs text-gray-400 mt-3">
-                *Klik untuk membuka etalase lengkap Toko AL di WhatsApp Catalog dengan foto unit terbaru.
-            </p>
         </div>
 
         <!-- THE BIG MARKETPLACE CTA -->
@@ -254,9 +244,9 @@ const products = [
                     <div class="text-container mb-3" id="text-animation-container"></div>
                     <p class="text-gray-400 mb-8 max-w-xl mx-auto">Kunjungi Official Store kami untuk melihat katalog lengkap, harga terupdate, dan nikmati promo gratis ongkir hari ini.</p>
                     
-                    <div class="flex flex-col md:flex-row justify-center gap-4 md:gap-6">
+                    <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 md:gap-5">
                         <!-- Shopee Button -->
-                        <a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#EE4D2D] text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-orange-900/50 hover:scale-105 active:scale-95 transition-all duration-300">
+                        <a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#EE4D2D] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-orange-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
                             <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                             <span class="bg-white text-[#EE4D2D] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-shopping-bag"></i></span>
                             <span class="relative z-10">Buka Shopee</span>
@@ -264,10 +254,18 @@ const products = [
                         </a>
 
                         <!-- Tokopedia Button -->
-                        <a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#42B549] text-white px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-900/50 hover:scale-105 active:scale-95 transition-all duration-300">
+                        <a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#42B549] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
                             <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                             <span class="bg-white text-[#42B549] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-store"></i></span>
                             <span class="relative z-10">Buka Tokopedia</span>
+                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
+                        </a>
+
+                        <!-- WhatsApp Catalog Button -->
+                        <a href={catalogUrl} target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#25D366] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-emerald-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
+                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                            <span class="bg-white text-[#25D366] w-8 h-8 rounded flex items-center justify-center text-base shadow-sm relative z-10"><i class="fab fa-whatsapp"></i></span>
+                            <span class="relative z-10">Katalog WhatsApp</span>
                             <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
                         </a>
                     </div>
@@ -426,20 +424,101 @@ const products = [
     // Jalankan saat script dimuat di client
     runSequence();
 
-    // Product Carousel Logic
+    // Product Carousel Infinite Auto-Scroll Logic
     const scrollLeftBtn = document.getElementById('scroll-left');
     const scrollRightBtn = document.getElementById('scroll-right');
     const productContainer = document.getElementById('product-container');
     
-    if (scrollLeftBtn && productContainer) {
-        scrollLeftBtn.addEventListener('click', () => {
-            productContainer.scrollBy({ left: -360, behavior: 'smooth' });
+    if (productContainer) {
+        const originalItemCount = 7; // jumlah item asli sebelum duplikasi loop
+        
+        function getCardStep() {
+            if (!productContainer || !productContainer.firstElementChild) return 360;
+            const firstCard = productContainer.firstElementChild as HTMLElement;
+            const style = window.getComputedStyle(productContainer);
+            const gap = parseFloat(style.columnGap || style.gap) || 24;
+            return firstCard.offsetWidth + gap;
+        }
+
+        function getSetWidth() {
+            return getCardStep() * originalItemCount;
+        }
+
+        // Posisi awal di tengah (Set 2) agar bisa scroll mulus bolak-balik tanpa batas
+        const initMiddlePosition = () => {
+            const setWidth = getSetWidth();
+            if (setWidth > 0 && productContainer.scrollLeft === 0) {
+                productContainer.scrollLeft = setWidth;
+            }
+        };
+
+        // Jalankan inisialisasi posisi awal
+        setTimeout(initMiddlePosition, 150);
+        window.addEventListener('resize', initMiddlePosition);
+
+        // Infinite loop wrap-around check
+        let isWrapping = false;
+        productContainer.addEventListener('scroll', () => {
+            if (isWrapping) return;
+            const setWidth = getSetWidth();
+            if (setWidth <= 0) return;
+
+            // Jika geser mendekati akhir Set 2, reset mulus ke Set 1 secara instan tanpa jeda
+            if (productContainer.scrollLeft >= setWidth * 2 - 10) {
+                isWrapping = true;
+                productContainer.scrollLeft -= setWidth;
+                setTimeout(() => { isWrapping = false; }, 50);
+            } 
+            // Jika geser mendekati awal (ke arah 0), lompatkan ke Set 2
+            else if (productContainer.scrollLeft <= 10) {
+                isWrapping = true;
+                productContainer.scrollLeft += setWidth;
+                setTimeout(() => { isWrapping = false; }, 50);
+            }
+        }, { passive: true });
+
+        // Auto slide timer
+        let autoSlideTimer: number | null = null;
+        const startAutoSlide = () => {
+            if (autoSlideTimer) clearInterval(autoSlideTimer);
+            autoSlideTimer = window.setInterval(() => {
+                if (!productContainer) return;
+                const step = getCardStep();
+                productContainer.scrollBy({ left: step, behavior: 'smooth' });
+            }, 3000);
+        };
+
+        const pauseAutoSlide = () => {
+            if (autoSlideTimer) {
+                clearInterval(autoSlideTimer);
+                autoSlideTimer = null;
+            }
+        };
+
+        // Jalankan auto-scroll otomatis
+        startAutoSlide();
+
+        // Pause saat kursor mouse di-hover atau layar disentuh
+        productContainer.addEventListener('mouseenter', pauseAutoSlide);
+        productContainer.addEventListener('mouseleave', startAutoSlide);
+        productContainer.addEventListener('touchstart', pauseAutoSlide, { passive: true });
+        productContainer.addEventListener('touchend', () => {
+            setTimeout(startAutoSlide, 2000);
         });
-    }
-    
-    if (scrollRightBtn && productContainer) {
-        scrollRightBtn.addEventListener('click', () => {
-            productContainer.scrollBy({ left: 360, behavior: 'smooth' });
+
+        // Tombol Geser Kiri & Kanan
+        scrollLeftBtn?.addEventListener('click', () => {
+            pauseAutoSlide();
+            const step = getCardStep();
+            productContainer.scrollBy({ left: -step, behavior: 'smooth' });
+            setTimeout(startAutoSlide, 4000);
+        });
+        
+        scrollRightBtn?.addEventListener('click', () => {
+            pauseAutoSlide();
+            const step = getCardStep();
+            productContainer.scrollBy({ left: step, behavior: 'smooth' });
+            setTimeout(startAutoSlide, 4000);
         });
     }
 </script>

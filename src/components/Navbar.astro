@@ -7,8 +7,8 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex justify-between items-center h-16">
 			<!-- Logo -->
-			<a href="#home" class="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group">
-				<img src={logoNavbar.src} alt="Logo Toko AL" class="h-9 w-auto object-contain transition-transform duration-200 group-hover:scale-110 drop-shadow-sm" />
+			<a href="#home" class="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group transition-all duration-200 hover:scale-105 active:scale-95 origin-left">
+				<img src={logoNavbar.src} alt="Logo Toko AL" class="h-9 w-auto object-contain drop-shadow-sm transition-opacity duration-200 group-hover:opacity-90" />
 				<span class="font-bold text-xl tracking-wide text-dark group-hover:text-primary transition-colors duration-200">Toko AL</span>
 			</a>
 			
@@ -19,7 +19,7 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 				<a href="#products" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Produk</a>
 				<a href="#gallery" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Galeri</a>
 				<a href="#partners" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Mitra</a>
-				<a href="#contact" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Lokasi</a>
+				<a href="#contact" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Kontak</a>
 			</div>
 
 			<!-- Mobile Menu Button -->
@@ -39,7 +39,7 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 			<a href="#products" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Produk</a>
 			<a href="#gallery" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Galeri</a>
 			<a href="#partners" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Mitra</a>
-			<a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Lokasi</a>
+			<a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Kontak</a>
 		</div>
 	</div>
 </nav>
@@ -50,7 +50,15 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 	const menu = document.getElementById('mobile-menu');
 
 	btn?.addEventListener('click', () => {
-		menu?.classList.toggle('hidden');
+		const isHidden = menu?.classList.toggle('hidden');
+		const icon = btn.querySelector('i');
+		if (icon) {
+			if (isHidden) {
+				icon.className = 'fas fa-bars text-2xl';
+			} else {
+				icon.className = 'fas fa-times text-2xl';
+			}
+		}
 	});
 
 	// Smooth Scroll for all navigation links
@@ -66,6 +74,10 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 			}
 			// Close mobile menu after clicking
 			menu?.classList.add('hidden');
+			const icon = btn?.querySelector('i');
+			if (icon) {
+				icon.className = 'fas fa-bars text-2xl';
+			}
 		});
 	});
 
