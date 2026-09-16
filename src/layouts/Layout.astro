@@ -2,12 +2,113 @@
 interface Props {
 	title?: string;
 	description?: string;
+	canonical?: string;
+	image?: string;
 }
 
 const { 
-	title = "Toko AL", 
-	description = "Pusat penjualan sepeda, spareparts terlengkap, dan layanan servis profesional di Serang. Kami memastikan sepeda Anda selalu dalam performa terbaik."
+	title = "Toko AL | Toko Sepeda, Sparepart & Bengkel Servis di Cikande Serang", 
+	description = "Pusat penjualan sepeda (Fixie, Roadbike, MTB), suku cadang orisinil terlengkap, dan bengkel servis sepeda profesional terpercaya di Cikande Permai, Serang, Banten.",
+	canonical = "https://tokoal.id/",
+	image = "/favicon.png"
 } = Astro.props;
+
+const siteUrl = "https://tokoal.id";
+const fullImageUrl = new URL(image, siteUrl).href;
+const fullCanonicalUrl = new URL(canonical, siteUrl).href;
+
+// Schema.org JSON-LD Structured Data
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BikeStore",
+      "@id": `${siteUrl}/#store`,
+      "name": "Toko AL",
+      "alternateName": "Toko Sepeda AL Cikande",
+      "description": description,
+      "url": siteUrl,
+      "logo": `${siteUrl}/favicon.png`,
+      "image": fullImageUrl,
+      "telephone": "+6281996535525",
+      "priceRange": "$$",
+      "currenciesAccepted": "IDR",
+      "paymentAccepted": "Cash, QRIS, Bank Transfer",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Cikande Permai Blok J2 No.6",
+        "addressLocality": "Cikande",
+        "addressRegion": "Banten",
+        "postalCode": "42186",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -6.1956,
+        "longitude": 106.3536
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "08:00",
+          "closes": "21:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/tokoal_id",
+        "https://www.tiktok.com/@tokoal.id",
+        "https://www.youtube.com/@tokoal_id",
+        "https://www.facebook.com/admintokoalid"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Katalog Produk & Layanan Toko AL",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Penjualan Sepeda",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Sepeda Fixie" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Sepeda Roadbike" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Sepeda MTB (Mountain Bike)" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Sepeda BMX & Sepeda Anak" } }
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Layanan Bengkel Sepeda",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tune-Up Sepeda Lengkap" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bleeding Rem Hidrolik" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stel Roda Velg (Truing)" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Perakitan Sepeda Kustom" } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": siteUrl,
+      "name": "Toko AL",
+      "description": description,
+      "publisher": {
+        "@id": `${siteUrl}/#store`
+      },
+      "inLanguage": "id-ID"
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -15,10 +116,42 @@ const {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="canonical" href={fullCanonicalUrl} />
+
+		<!-- Search Engine Robots -->
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+		<!-- Geographic Meta Tags (Local SEO Serang, Banten) -->
+		<meta name="geo.region" content="ID-BT" />
+		<meta name="geo.placename" content="Cikande, Serang" />
+		<meta name="geo.position" content="-6.1956;106.3536" />
+		<meta name="ICBM" content="-6.1956, 106.3536" />
+
+		<!-- Open Graph (Facebook, WhatsApp, LinkedIn, iMessage) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="id_ID" />
+		<meta property="og:site_name" content="Toko AL" />
+		<meta property="og:url" content={fullCanonicalUrl} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={fullImageUrl} />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={fullImageUrl} />
+
+		<!-- Favicons & Theme -->
 		<link rel="icon" type="image/png" href="/favicon.png" />
+		<meta name="theme-color" content="#116530" />
 		
+		<!-- Schema.org JSON-LD Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
 		<!-- Google Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +160,6 @@ const {
 		<!-- Font Awesome -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 		
-		<title>{title}</title>
-		
 		<!-- Tailwind CSS with Config -->
 		<script is:inline src="https://cdn.tailwindcss.com"></script>
 		<script is:inline>
@@ -36,7 +167,6 @@ const {
 				theme: {
 					extend: {
 						colors: {
-							// Official Requested Palette
 							'brand-green': '#116530',
 							'brand-bluegreen': '#21B6A8',
 							'brand-neongreen': '#A3EBB1',
@@ -44,11 +174,10 @@ const {
 							'brand-black': '#000000',
 							'brand-white': '#FFFFFF',
 
-							// Semantic Mappings
-							primary: '#18A558',      // Kelly Green (Primary Action)
-							secondary: '#21B6A8',    // Blue Green (Accent & Gradients)
-							dark: '#116530',         // Green / Deep Forest (Brand & Text)
-							neon: '#A3EBB1',         // Neon Green (Micro-accents & Highlights)
+							primary: '#18A558',
+							secondary: '#21B6A8',
+							dark: '#116530',
+							neon: '#A3EBB1',
 							shopee: '#EE4D2D',
 							tokopedia: '#42B549',
 						},
@@ -69,13 +198,11 @@ const {
 </html>
 
 <style is:global>
-	/* Custom Text Selection */
 	::selection {
 		background-color: #A3EBB1;
 		color: #116530;
 	}
 
-	/* Hide scrollbar for carousel but allow functionality */
 	.hide-scroll::-webkit-scrollbar {
 		display: none;
 	}
@@ -84,7 +211,6 @@ const {
 		scrollbar-width: none;
 	}
 	
-	/* Custom Animation Classes */
 	.fade-in-up {
 		opacity: 0;
 		transform: translateY(20px);
