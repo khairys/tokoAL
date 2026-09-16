@@ -1,5 +1,5 @@
 ---
-// Partners & Community Sponsorship Component
+// Partners & Community Component - Fluid Precision Prototype
 import logoPacific from '../assets/partners/Pacific Bike Logo vector (_cdr).jpg';
 import logoElement from '../assets/partners/elementlogo.jpeg';
 import logoUnited from '../assets/partners/united logo.png';
@@ -25,60 +25,50 @@ const partnerCommunities = [
         name: 'Gorikat',
         category: 'Gowes Kompak & Rutin',
         avatarText: 'GK',
-        avatarBg: 'from-[#116530] to-primary',
-        desc: 'Komunitas pesepeda aktif yang rutin menggelar riding mingguan, jelajah rute lokal, dan bakti sosial di Serang.',
+        avatarBg: 'from-emerald-700 to-emerald-500',
+        desc: 'Komunitas goweser aktif yang rutin menggelar riding mingguan, jelajah rute lokal, dan bakti sosial di Serang.',
     },
     {
         name: 'East Cycle',
         category: 'Roadbike & Urban',
         avatarText: 'EC',
-        avatarBg: 'from-secondary to-primary',
+        avatarBg: 'from-teal-600 to-emerald-500',
         desc: 'Komunitas pesepeda rute aspal dan gowes kota, aktif dalam agenda touring jarak jauh dan edukasi safety riding.',
     },
     {
         name: 'Desavora',
         category: 'MTB & Adventure',
         avatarText: 'DV',
-        avatarBg: 'from-emerald-600 to-teal-500',
+        avatarBg: 'from-emerald-800 to-teal-600',
         desc: 'Komunitas penjelajah jalur tanah dan perbukitan, mengedepankan petualangan alam terbuka dan kebersamaan.',
     },
     {
         name: 'Ciruas Bike Sport',
         category: 'All-Terrain Cycling',
         avatarText: 'CBS',
-        avatarBg: 'from-amber-600 to-red-500',
+        avatarBg: 'from-zinc-800 to-zinc-600',
         desc: 'Wadah pesepeda lintas genre di wilayah Ciruas dan sekitarnya, rutin berkegiatan fun bike dan silaturahmi goweser.',
     },
 ];
 ---
 
-<!-- === PARTNERS & COMMUNITY SECTION === -->
-<section id="partners" class="py-20 bg-gradient-to-b from-white via-gray-50/70 to-white relative overflow-hidden border-t border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<section id="partners" class="py-24 bg-white border-b border-zinc-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Section Header -->
-        <div class="text-center mb-14 fade-in-up">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-                Mitra Resmi & Komunitas Gowes
-            </h2>
-            <div class="w-24 h-1.5 bg-gradient-to-r from-[#116530] via-primary to-secondary mx-auto mt-4 rounded-full"></div>
-            <p class="mt-4 text-gray-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-                Menyediakan unit sepeda & suku cadang dari brand ternama, serta aktif berkolaborasi mendukung kegiatan positif komunitas pesepeda di Cikande dan sekitarnya.
-            </p>
-        </div>
-
-        <!-- Brand Partners Showcase (Clean Floating Brand Ribbon) -->
-        <div class="mb-16 fade-in-up">
+        <!-- Brand Ribbon (Clean Floating Logo Cloud) -->
+        <div class="mb-20">
             <div class="text-center mb-8">
-                <span class="text-xs font-bold uppercase tracking-widest text-gray-400">Merek Resmi & Terpercaya di Toko AL</span>
+                <span class="text-xs font-bold uppercase tracking-widest text-zinc-400">
+                    Merek Resmi & Terpercaya di Toko Kami
+                </span>
             </div>
             <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 md:gap-14 max-w-5xl mx-auto px-4">
                 {brands.map((brand) => (
-                    <div class="flex items-center justify-center h-12 sm:h-14 w-28 sm:w-32 transition-transform duration-200 hover:scale-110" title={brand.name}>
+                    <div class="flex items-center justify-center h-12 sm:h-14 w-28 sm:w-32 transition-transform duration-150 hover:scale-110 active:scale-95 cursor-default" title={brand.name}>
                         <img
                             src={brand.logo.src}
                             alt={brand.name}
-                            class="max-h-10 sm:max-h-12 max-w-full object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.05)]"
+                            class="max-h-10 sm:max-h-12 max-w-full object-contain"
                             loading="lazy"
                         />
                     </div>
@@ -86,38 +76,44 @@ const partnerCommunities = [
             </div>
         </div>
 
-        <!-- Community & Sponsorship 2-Column Section -->
+        <!-- Section Header -->
+        <div class="max-w-3xl mb-14">
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 block mb-2">
+                Kolaborasi Komunitas
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-zinc-950 tracking-tight">
+                Tumbuh & Bergerak Bersama Pesepeda Banten
+            </h2>
+            <p class="text-zinc-600 text-sm sm:text-base mt-2">
+                Toko AL aktif mendukung berbagai agenda gowes di Serang dan sekitarnya. Pintu bengkel kami terbuka untuk kerjasama komunitas, servis bersama, maupun sponsorship.
+            </p>
+        </div>
+
+        <!-- 2-Column Section -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
             
-            <!-- Kolom Kiri: Contoh Komunitas Rekanan (lg:col-span-7) -->
-            <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm flex flex-col justify-between fade-in-up">
+            <!-- Left: 4 Real Communities -->
+            <div class="lg:col-span-7 bg-zinc-50 rounded-3xl p-6 sm:p-8 border border-zinc-200/80 flex flex-col justify-between">
                 <div>
-                    <div class="flex items-center gap-3 mb-2">
-                        <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-900">Komunitas Rekanan</h3>
-                            <p class="text-xs text-gray-500">Komunitas pesepeda yang aktif berkegiatan bersama Toko AL</p>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-bold text-zinc-950 mb-1">Komunitas Rekanan</h3>
+                    <p class="text-xs text-zinc-500 mb-5">Komunitas pesepeda yang aktif berkolaborasi dengan Toko AL</p>
 
-                    <div class="space-y-3 my-4">
+                    <div class="space-y-3">
                         {partnerCommunities.map((comm) => (
-                            <div class="p-3.5 sm:p-4 rounded-2xl bg-gray-50/80 border border-gray-100 hover:border-primary/30 transition-all duration-200 flex items-start gap-3.5 sm:gap-4">
-                                <div class={`w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-br ${comm.avatarBg} text-white flex-shrink-0 flex items-center justify-center font-extrabold text-xs sm:text-sm shadow-sm`}>
+                            <div class="p-3.5 sm:p-4 rounded-2xl bg-white border border-zinc-200/70 hover:border-emerald-500/50 transition-all duration-200 flex items-start gap-3.5 sm:gap-4 group">
+                                <div class={`w-11 h-11 rounded-xl bg-gradient-to-br ${comm.avatarBg} text-white flex-shrink-0 flex items-center justify-center font-extrabold text-xs shadow-sm`}>
                                     <span>{comm.avatarText}</span>
                                 </div>
                                 <div class="flex-1 min-w-0">
                                     <div class="flex items-center justify-between gap-2 mb-1">
-                                        <h4 class="text-sm font-bold text-gray-900 truncate">
+                                        <h4 class="text-sm font-bold text-zinc-950 truncate group-hover:text-emerald-700 transition-colors">
                                             {comm.name}
                                         </h4>
-                                        <span class="text-[11px] font-semibold text-primary px-2.5 py-0.5 rounded-full bg-primary/10 flex-shrink-0">
+                                        <span class="text-[10px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/60 px-2 py-0.5 rounded-full flex-shrink-0">
                                             {comm.category}
                                         </span>
                                     </div>
-                                    <p class="text-xs text-gray-600 leading-relaxed">
+                                    <p class="text-xs text-zinc-600 leading-relaxed">
                                         {comm.desc}
                                     </p>
                                 </div>
@@ -126,65 +122,62 @@ const partnerCommunities = [
                     </div>
                 </div>
 
-                <div class="pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                <div class="pt-4 mt-4 border-t border-zinc-200 flex items-center justify-between text-xs text-zinc-500">
                     <span class="inline-flex items-center gap-1.5">
-                        <i class="fas fa-bicycle text-primary"></i>
-                        <span>Terbuka untuk semua jenis aliran gowes di Banten</span>
+                        <i class="fas fa-bicycle text-emerald-600"></i>
+                        <span>Terbuka untuk semua komunitas gowes di Serang</span>
                     </span>
                 </div>
             </div>
 
-            <!-- Kolom Kanan: Pengajuan Sponsorship Toko AL (lg:col-span-5) -->
-            <div class="lg:col-span-5 bg-gradient-to-br from-gray-900 via-[#0B3B1C] to-gray-950 text-white rounded-3xl p-6 sm:p-8 border border-primary/20 shadow-xl flex flex-col justify-between fade-in-up" style="transition-delay: 100ms;">
+            <!-- Right: Sponsorship Hub Card -->
+            <div class="lg:col-span-5 bg-zinc-950 text-white rounded-3xl p-6 sm:p-8 border border-zinc-800 shadow-xl flex flex-col justify-between">
                 <div>
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-xs font-semibold text-[#A3EBB1] mb-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-emerald-400 mb-4">
                         <i class="fas fa-handshake"></i>
-                        <span>Kolaborasi & Dukungan Event</span>
+                        <span>Dukungan Acara</span>
                     </div>
 
                     <h3 class="text-2xl font-extrabold text-white mb-3 leading-tight">
                         Jadikan Toko AL Sponsor Event Anda
                     </h3>
-                    <p class="text-xs sm:text-sm text-gray-300 leading-relaxed mb-6">
-                        Punya rencana kegiatan gowes bareng, fun bike, touring, atau bakti sosial komunitas? Toko AL siap berkolaborasi dan memberikan dukungan nyata untuk kelancaran acara Anda.
+                    <p class="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-6">
+                        Punya rencana gowes bareng, fun bike, atau bakti sosial komunitas? Toko AL siap mendukung kelancaran agenda Anda.
                     </p>
 
-                    <!-- Poin Dukungan -->
-                    <div class="space-y-2.5 mb-6 text-xs text-gray-200">
-                        <div class="flex items-center gap-2.5">
-                            <i class="fas fa-check-circle text-[#A3EBB1]"></i>
+                    <div class="space-y-2.5 mb-6 text-xs text-zinc-300">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-emerald-400"></i>
                             <span>Dukungan doorprize unit sepeda & aksesoris</span>
                         </div>
-                        <div class="flex items-center gap-2.5">
-                            <i class="fas fa-check-circle text-[#A3EBB1]"></i>
-                            <span>Posko servis & setelan sepeda di lokasi event</span>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-emerald-400"></i>
+                            <span>Posko servis dan cek sepeda di lokasi acara</span>
                         </div>
-                        <div class="flex items-center gap-2.5">
-                            <i class="fas fa-check-circle text-[#A3EBB1]"></i>
-                            <span>Kerjasama promosi & publikasi komunitas</span>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-check-circle text-emerald-400"></i>
+                            <span>Publikasi & koordinasi kegiatan komunitas</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Action Button & WhatsApp link -->
-                <div class="pt-4 border-t border-white/10">
+                <div class="pt-4 border-t border-zinc-800">
                     <button
                         id="open-sponsor-modal"
                         type="button"
-                        class="w-full py-3.5 px-6 bg-primary hover:bg-[#18A558] text-white font-bold text-sm rounded-xl shadow-lg shadow-primary/30 transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 cursor-pointer group"
+                        class="w-full py-3.5 px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
                     >
-                        <i class="fas fa-file-signature text-base group-hover:scale-110 transition-transform"></i>
-                        <span>Ajukan Sponsorship / Kolaborasi</span>
-                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        <i class="fas fa-file-signature text-sm"></i>
+                        <span>Ajukan Kerjasama / Sponsorship</span>
                     </button>
                     <a
-                        href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL,%20saya%20ingin%20mengajukan%20sponsorship%20event%20komunitas"
+                        href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL,%20saya%20ingin%20tanya%20sponsorship"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="flex items-center justify-center gap-2 text-xs font-semibold text-gray-300 hover:text-white mt-3 transition-colors"
+                        class="flex items-center justify-center gap-2 text-xs font-semibold text-zinc-400 hover:text-white mt-3 transition-colors"
                     >
-                        <i class="fab fa-whatsapp text-primary text-sm"></i>
-                        <span>Atau hubungi admin via WhatsApp</span>
+                        <i class="fab fa-whatsapp text-emerald-400"></i>
+                        <span>Atau kontak admin via WhatsApp</span>
                     </a>
                 </div>
             </div>
@@ -194,60 +187,53 @@ const partnerCommunities = [
     </div>
 </section>
 
-<!-- === MODAL DIALOG FORM PENGAJUAN SPONSORSHIP === -->
+<!-- Modal Dialog -->
 <div
     id="sponsor-modal"
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300"
+    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-200"
     role="dialog"
     aria-modal="true"
-    aria-labelledby="modal-title"
 >
     <div
         id="sponsor-modal-card"
-        class="bg-white rounded-3xl w-full max-w-lg p-6 sm:p-8 shadow-2xl border border-gray-100 transform scale-95 transition-all duration-300 relative max-h-[90vh] overflow-y-auto"
+        class="bg-white rounded-3xl w-full max-w-lg p-6 sm:p-8 shadow-2xl border border-zinc-200 transform scale-95 transition-all duration-200 relative max-h-[90vh] overflow-y-auto"
     >
-        <!-- Close Button -->
         <button
             id="close-sponsor-modal"
             type="button"
             aria-label="Tutup form"
-            class="absolute top-5 right-5 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 flex items-center justify-center transition-colors cursor-pointer"
+            class="absolute top-5 right-5 w-8 h-8 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-600 flex items-center justify-center transition-colors cursor-pointer"
         >
-            <i class="fas fa-times"></i>
+            <i class="fas fa-times text-sm"></i>
         </button>
 
-        <!-- Modal Header -->
         <div class="mb-6 pr-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#A3EBB1]/30 text-dark text-xs font-bold mb-2">
-                <i class="fas fa-handshake text-primary"></i>
-                <span>Kolaborasi Komunitas</span>
-            </div>
-            <h3 id="modal-title" class="text-xl sm:text-2xl font-extrabold text-gray-900">
-                Form Pengajuan Sponsorship
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-700 block mb-1">Kolaborasi Komunitas</span>
+            <h3 class="text-xl font-extrabold text-zinc-950">
+                Formulir Kerjasama & Sponsorship
             </h3>
-            <p class="text-xs text-gray-500 mt-1">
-                Isi data di bawah ini untuk mengirimkan rencana event komunitas Anda langsung ke tim Toko AL.
+            <p class="text-xs text-zinc-500 mt-1">
+                Kirimkan rencana kegiatan komunitas Anda langsung ke WhatsApp Toko AL.
             </p>
         </div>
 
-        <!-- Form Fields -->
         <form id="sponsor-form" class="space-y-4">
             <div>
-                <label for="comm-name" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    Nama Komunitas / Penyelenggara *
+                <label for="comm-name" class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-1">
+                    Nama Komunitas / Event *
                 </label>
                 <input
                     type="text"
                     id="comm-name"
                     required
-                    placeholder="Contoh: Gowes Bareng Cikande"
-                    class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900"
+                    placeholder="Contoh: Gowes Akhir Pekan Cikande"
+                    class="w-full px-4 py-2.5 rounded-xl border border-zinc-300 text-sm focus:outline-none focus:border-emerald-600 transition-all text-zinc-900"
                 />
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div>
-                    <label for="pic-name" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    <label for="pic-name" class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-1">
                         Nama PIC / Kontak *
                     </label>
                     <input
@@ -255,67 +241,50 @@ const partnerCommunities = [
                         id="pic-name"
                         required
                         placeholder="Nama lengkap Anda"
-                        class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900"
+                        class="w-full px-4 py-2.5 rounded-xl border border-zinc-300 text-sm focus:outline-none focus:border-emerald-600 transition-all text-zinc-900"
                     />
                 </div>
                 <div>
-                    <label for="pic-wa" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                        Nomor WhatsApp PIC *
+                    <label for="pic-wa" class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-1">
+                        Nomor WhatsApp *
                     </label>
                     <input
                         type="tel"
                         id="pic-wa"
                         required
                         placeholder="0812xxxxxxx"
-                        class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900"
+                        class="w-full px-4 py-2.5 rounded-xl border border-zinc-300 text-sm focus:outline-none focus:border-emerald-600 transition-all text-zinc-900"
                     />
                 </div>
             </div>
 
             <div>
-                <label for="event-date" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    Estimasi Waktu Pelaksanaan Event
-                </label>
-                <input
-                    type="text"
-                    id="event-date"
-                    placeholder="Contoh: 28 Oktober 2026 atau Akhir Bulan Ini"
-                    class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900"
-                />
-            </div>
-
-            <div>
-                <label for="collab-type" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
+                <label for="collab-type" class="block text-xs font-bold text-zinc-700 uppercase tracking-wider mb-1">
                     Bentuk Kerjasama yang Diharapkan *
                 </label>
                 <textarea
                     id="collab-type"
                     required
                     rows="3"
-                    placeholder="Contoh: Dukungan doorprize sepeda/aksesoris, posko servis gratis, jersey komunitas, atau sponsorship booth..."
-                    class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900 resize-none"
+                    placeholder="Contoh: Doorprize sepeda/aksesoris, posko servis gratis, jersey, atau booth..."
+                    class="w-full px-4 py-2.5 rounded-xl border border-zinc-300 text-sm focus:outline-none focus:border-emerald-600 transition-all text-zinc-900 resize-none"
                 ></textarea>
             </div>
 
-            <!-- Submit Button -->
             <div class="pt-2">
                 <button
                     type="submit"
-                    class="w-full py-3.5 px-6 bg-primary hover:bg-dark text-white font-bold text-sm rounded-xl shadow-lg shadow-primary/25 transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
+                    class="w-full py-3.5 px-6 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm rounded-xl shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                     <i class="fab fa-whatsapp text-lg"></i>
                     <span>Kirim Pengajuan via WhatsApp</span>
                 </button>
-                <p class="text-[11px] text-gray-400 text-center mt-2">
-                    Formulir ini akan otomatis membuka chat WhatsApp resmi Toko AL (+62 819-9653-5525).
-                </p>
             </div>
         </form>
     </div>
 </div>
 
 <script>
-    // Modal Open / Close Logic
     const openBtn = document.getElementById('open-sponsor-modal');
     const closeBtn = document.getElementById('close-sponsor-modal');
     const modal = document.getElementById('sponsor-modal');
@@ -340,41 +309,22 @@ const partnerCommunities = [
 
     openBtn?.addEventListener('click', openModal);
     closeBtn?.addEventListener('click', closeModal);
+    modal?.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-    // Close when clicking backdrop
-    modal?.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-
-    // Close on Escape key
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal && !modal.classList.contains('pointer-events-none')) {
-            closeModal();
-        }
-    });
-
-    // Form Submit to WhatsApp
     form?.addEventListener('submit', (e) => {
         e.preventDefault();
-        
         const commName = (document.getElementById('comm-name') as HTMLInputElement)?.value.trim();
         const picName = (document.getElementById('pic-name') as HTMLInputElement)?.value.trim();
         const picWa = (document.getElementById('pic-wa') as HTMLInputElement)?.value.trim();
-        const eventDate = (document.getElementById('event-date') as HTMLInputElement)?.value.trim() || '-';
         const collabType = (document.getElementById('collab-type') as HTMLTextAreaElement)?.value.trim();
 
-        const message = `Halo Toko AL! 👋%0A%0ASaya ingin mengajukan *Proposal Kerjasama / Sponsorship Event* dengan rincian berikut:%0A%0A` +
-            `🏢 *Nama Komunitas/Penyelenggara:* ${encodeURIComponent(commName)}%0A` +
-            `👤 *Nama PIC:* ${encodeURIComponent(picName)}%0A` +
-            `📱 *No. WhatsApp PIC:* ${encodeURIComponent(picWa)}%0A` +
-            `📅 *Estimasi Waktu:* ${encodeURIComponent(eventDate)}%0A` +
-            `🤝 *Rencana Kerjasama:*%0A${encodeURIComponent(collabType)}%0A%0A` +
-            `Mohon informasi lebih lanjut terkait prosedur kerjasama dengan Toko AL. Terima kasih!`;
+        const message = `Halo Toko AL! 👋%0A%0ASaya ingin mengajukan *Kerjasama Komunitas / Sponsorship Event*:%0A%0A` +
+            `🏢 *Komunitas:* ${encodeURIComponent(commName)}%0A` +
+            `👤 *PIC:* ${encodeURIComponent(picName)}%0A` +
+            `📱 *WhatsApp:* ${encodeURIComponent(picWa)}%0A` +
+            `🤝 *Rencana:*%0A${encodeURIComponent(collabType)}`;
 
-        const waUrl = `https://api.whatsapp.com/send?phone=6281996535525&text=${message}`;
-        window.open(waUrl, '_blank');
+        window.open(`https://api.whatsapp.com/send?phone=6281996535525&text=${message}`, '_blank');
         closeModal();
     });
 </script>
