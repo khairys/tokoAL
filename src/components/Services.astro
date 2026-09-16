@@ -2,186 +2,81 @@
 // Services Component
 ---
 
-<section id="services" class="py-20 bg-white relative overflow-hidden">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<section id="services" class="py-20 bg-slate-50/50 border-t border-gray-100">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<!-- Section Header -->
 		<div class="text-center mb-14 fade-in-up">
-			<span
-				class="inline-block px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-dark bg-[#A3EBB1]/25 border border-[#A3EBB1]/50 rounded-full mb-3 shadow-sm"
-			>
-				Layanan & Produk Kami
+			<span class="text-xs font-bold uppercase tracking-wider text-[#116530] bg-emerald-100/60 border border-emerald-200/50 px-3.5 py-1 rounded-full inline-block mb-3">
+				Layanan Kami
 			</span>
-			<h2
-				class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight"
-			>
-				Semua Kebutuhan Gowes di Satu Tempat
+			<h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+				Solusi Lengkap Kebutuhan Sepeda Anda
 			</h2>
-			<div
-				class="w-24 h-1.5 bg-gradient-to-r from-[#116530] via-primary to-secondary mx-auto mt-4 rounded-full"
-			>
-			</div>
-			<p
-				class="mt-4 text-gray-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed"
-			>
-				Mulai dari sepeda keluarga dan keceriaan si kecil, suku cadang
-				original, hingga perawatan bengkel oleh mekanik berpengalaman.
+			<p class="mt-3.5 text-gray-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+				Mulai dari unit baru untuk seluruh keluarga, suku cadang resmi, hingga perawatan menyeluruh oleh mekanik berpengalaman.
 			</p>
 		</div>
 
-		<!-- 3 Core Pillars -->
-		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+		<!-- 3 Core Pillars (Clean Minimalist Cards) -->
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-7 items-stretch">
 			<!-- Pillar 1: Sepeda & Mainan Anak -->
-			<div
-				class="bg-gray-50 rounded-3xl p-8 hover:shadow-2xl hover:shadow-primary/15 transition-all duration-300 border border-gray-100 hover:border-secondary/40 group fade-in-up hover:scale-[1.02] hover:bg-white hover:-translate-y-2 flex flex-col justify-between"
-			>
+			<div class="bg-white rounded-2xl p-8 border border-gray-200/70 hover:border-emerald-300/80 hover:shadow-md transition-all duration-200 flex flex-col justify-between fade-in-up">
 				<div>
-					<div class="flex items-center justify-between mb-6">
-						<div
-							class="w-14 h-14 bg-[#A3EBB1]/30 text-dark rounded-2xl flex items-center justify-center text-2xl group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-md group-hover:shadow-primary/30"
-						>
-							<i class="fas fa-bicycle group-hover:animate-pulse"
-							></i>
-						</div>
-						<span
-							class="px-3 py-1 bg-white text-xs font-bold text-dark rounded-full border border-gray-200 shadow-sm"
-						>
-							Koleksi Lengkap
-						</span>
+					<div class="w-12 h-12 bg-emerald-50 text-[#116530] rounded-xl flex items-center justify-center text-xl mb-6">
+						<i class="fas fa-bicycle"></i>
 					</div>
-					<h3
-						class="text-xl font-bold mb-3 text-gray-900 group-hover:text-dark transition-colors"
-					>
+					<span class="text-xs font-semibold text-emerald-700 uppercase tracking-wider">Unit Lengkap</span>
+					<h3 class="text-xl font-bold mt-1.5 mb-3 text-gray-900">
 						Sepeda & Mainan Anak
 					</h3>
-					<p class="text-gray-600 mb-6 text-sm leading-relaxed">
-						Pilihan unit sepeda berkualitas untuk dewasa, remaja,
-						hingga si kecil, plus aneka mainan seru yang aman dan
-						edukatif.
+					<p class="text-gray-600 text-sm leading-relaxed">
+						Koleksi lengkap sepeda MTB, lipat, mini, balap, hingga sepeda anak dan mainan edukatif dengan jaminan kualitas terbaik.
 					</p>
 				</div>
-				<ul
-					class="text-sm text-gray-600 space-y-2.5 pt-4 border-t border-gray-100"
-				>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-primary"></i>
-						<span>Sepeda Gunung (MTB), Lipat, & Mini</span>
-					</li>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-primary"></i>
-						<span>Sepeda Anak, Push Bike, & Roda Tiga</span>
-					</li>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-primary"></i>
-						<span>Mobil/Motor Mainan Aki & Edukatif</span>
-					</li>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-primary"></i>
-						<span>Bisa Coba Unit & Setting di Lokasi</span>
-					</li>
-				</ul>
+				<div class="pt-6 mt-6 border-t border-gray-100 flex items-center justify-between text-xs font-semibold text-[#116530]">
+					<span>Unit Siap Pakai & Disetel</span>
+					<i class="fas fa-arrow-right text-[11px]"></i>
+				</div>
 			</div>
 
 			<!-- Pillar 2: Sparepart & Aksesoris -->
-			<div
-				class="bg-gray-50 rounded-3xl p-8 hover:shadow-2xl hover:shadow-secondary/15 transition-all duration-300 border border-gray-100 hover:border-secondary/40 group fade-in-up hover:scale-[1.02] hover:bg-white hover:-translate-y-2 flex flex-col justify-between"
-				style="transition-delay: 100ms;"
-			>
+			<div class="bg-white rounded-2xl p-8 border border-gray-200/70 hover:border-emerald-300/80 hover:shadow-md transition-all duration-200 flex flex-col justify-between fade-in-up" style="transition-delay: 100ms;">
 				<div>
-					<div class="flex items-center justify-between mb-6">
-						<div
-							class="w-14 h-14 bg-secondary/20 text-secondary rounded-2xl flex items-center justify-center text-2xl group-hover:bg-gradient-to-br group-hover:from-secondary group-hover:to-primary group-hover:text-white transition-all duration-300 group-hover:scale-110 group-hover:rotate-12 group-hover:shadow-md group-hover:shadow-secondary/30"
-						>
-							<i class="fas fa-cogs group-hover:animate-spin"></i>
-						</div>
-						<span
-							class="px-3 py-1 bg-white text-xs font-bold text-secondary rounded-full border border-gray-200 shadow-sm"
-						>
-							100% Original
-						</span>
+					<div class="w-12 h-12 bg-emerald-50 text-[#116530] rounded-xl flex items-center justify-center text-xl mb-6">
+						<i class="fas fa-cogs"></i>
 					</div>
-					<h3
-						class="text-xl font-bold mb-3 text-gray-900 group-hover:text-dark transition-colors"
-					>
-						Sparepart & Aksesoris
+					<span class="text-xs font-semibold text-emerald-700 uppercase tracking-wider">100% Original</span>
+					<h3 class="text-xl font-bold mt-1.5 mb-3 text-gray-900">
+						Sparepart & Komponen
 					</h3>
-					<p class="text-gray-600 mb-6 text-sm leading-relaxed">
-						Suku cadang asli dan perlengkapan gowes lengkap untuk
-						menjaga kenyamanan, keamanan, serta mendongkrak performa
-						sepeda Anda.
+					<p class="text-gray-600 text-sm leading-relaxed">
+						Suku cadang asli seperti drivetrain, rantai, ban, dan aksesoris keselamatan standar resmi untuk kenyamanan gowes harian.
 					</p>
 				</div>
-				<ul
-					class="text-sm text-gray-600 space-y-2.5 pt-4 border-t border-gray-100"
-				>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-secondary"></i>
-						<span>Groupset, Rantai, Sprocket, & Rem</span>
-					</li>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-secondary"></i>
-						<span>Ban Luar & Dalam Segala Ukuran</span>
-					</li>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-secondary"></i>
-						<span>Helm SNI, Lampu LED, & Kunci Pengaman</span>
-					</li>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-secondary"></i>
-						<span>Jersey, Sarung Tangan, & Aksesoris</span>
-					</li>
-				</ul>
+				<div class="pt-6 mt-6 border-t border-gray-100 flex items-center justify-between text-xs font-semibold text-[#116530]">
+					<span>Jaminan Produk Asli</span>
+					<i class="fas fa-arrow-right text-[11px]"></i>
+				</div>
 			</div>
 
 			<!-- Pillar 3: Servis & Upgrade -->
-			<div
-				class="bg-gray-50 rounded-3xl p-8 hover:shadow-2xl hover:shadow-primary/15 transition-all duration-300 border border-gray-100 hover:border-secondary/40 group fade-in-up hover:scale-[1.02] hover:bg-white hover:-translate-y-2 flex flex-col justify-between"
-				style="transition-delay: 200ms;"
-			>
+			<div class="bg-white rounded-2xl p-8 border border-gray-200/70 hover:border-emerald-300/80 hover:shadow-md transition-all duration-200 flex flex-col justify-between fade-in-up" style="transition-delay: 200ms;">
 				<div>
-					<div class="flex items-center justify-between mb-6">
-						<div
-							class="w-14 h-14 bg-primary/20 text-primary rounded-2xl flex items-center justify-center text-2xl group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary group-hover:text-white transition-all duration-300 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-md group-hover:shadow-primary/30"
-						>
-							<i class="fas fa-wrench group-hover:animate-bounce"
-							></i>
-						</div>
-						<span
-							class="px-3 py-1 bg-white text-xs font-bold text-primary rounded-full border border-gray-200 shadow-sm"
-						>
-							Mekanik Handal
-						</span>
+					<div class="w-12 h-12 bg-emerald-50 text-[#116530] rounded-xl flex items-center justify-center text-xl mb-6">
+						<i class="fas fa-wrench"></i>
 					</div>
-					<h3
-						class="text-xl font-bold mb-3 text-gray-900 group-hover:text-dark transition-colors"
-					>
-						Servis & Upgrade
+					<span class="text-xs font-semibold text-emerald-700 uppercase tracking-wider">Mekanik Handal</span>
+					<h3 class="text-xl font-bold mt-1.5 mb-3 text-gray-900">
+						Bengkel Servis & Upgrade
 					</h3>
-					<p class="text-gray-600 mb-6 text-sm leading-relaxed">
-						Bengkel resmi dengan mekanik andal yang siap menangani
-						perawatan rutin, perbaikan presisi, hingga rakit custom
-						dari nol.
+					<p class="text-gray-600 text-sm leading-relaxed">
+						Perawatan rutin, setel presisi rem dan perpindahan gigi (shifter), penggantian part, hingga rakitan kustom sesuai preferensi Anda.
 					</p>
 				</div>
-				<ul
-					class="text-sm text-gray-600 space-y-2.5 pt-4 border-t border-gray-100"
-				>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-primary"></i>
-						<span>Tune-Up Berkala, Setting RD/FD, & Rem</span>
-					</li>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-primary"></i>
-						<span>Bongkar Pasang, Ganti Bearing, & Detailing</span>
-					</li>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-primary"></i>
-						<span>Rakit Sepeda Custom Sesuai Budget</span>
-					</li>
-					<li class="flex items-center gap-2.5">
-						<i class="fas fa-check-circle text-primary"></i>
-						<span>Konsultasi Keluhan Sepeda Gratis</span>
-					</li>
-				</ul>
+				<div class="pt-6 mt-6 border-t border-gray-100 flex items-center justify-between text-xs font-semibold text-[#116530]">
+					<span>Konsultasi & Pengerjaan Rapi</span>
+					<i class="fas fa-arrow-right text-[11px]"></i>
+				</div>
 			</div>
 		</div>
 	</div>
