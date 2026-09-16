@@ -242,30 +242,30 @@ const loopProducts = [...products, ...products, ...products];
 
                 <div class="relative z-10">
                     <div class="text-container mb-3" id="text-animation-container"></div>
-                    <p class="text-gray-400 mb-8 max-w-xl mx-auto">Tanyakan ketersediaan unit dan rekomendasi langsung lewat WhatsApp, atau pesan produk pilihan kami dengan mudah via marketplace resmi.</p>
+                    <p class="text-gray-400 mb-8 max-w-xl mx-auto">Pesan produk pilihan Anda melalui WhatsApp atau marketplace resmi Toko AL.</p>
                     
                     <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-4 md:gap-5">
-                        <!-- Shopee Button -->
-                        <a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#EE4D2D] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-orange-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
-                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                            <span class="bg-white text-[#EE4D2D] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-shopping-bag"></i></span>
-                            <span class="relative z-10">Buka Shopee</span>
-                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
-                        </a>
-
-                        <!-- Tokopedia Button -->
-                        <a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#42B549] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
-                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                            <span class="bg-white text-[#42B549] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-store"></i></span>
-                            <span class="relative z-10">Buka Tokopedia</span>
-                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
-                        </a>
-
-                        <!-- WhatsApp Catalog Button -->
+                        <!-- WhatsApp Button (First) -->
                         <a href={catalogUrl} target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#25D366] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-emerald-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
                             <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                             <span class="bg-white text-[#25D366] w-8 h-8 rounded flex items-center justify-center text-base shadow-sm relative z-10"><i class="fab fa-whatsapp"></i></span>
-                            <span class="relative z-10">Katalog WhatsApp</span>
+                            <span class="relative z-10">WhatsApp</span>
+                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
+                        </a>
+
+                        <!-- Shopee Button (Second) -->
+                        <a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#EE4D2D] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-orange-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
+                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                            <span class="bg-white text-[#EE4D2D] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-shopping-bag"></i></span>
+                            <span class="relative z-10">Shopee</span>
+                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
+                        </a>
+
+                        <!-- Tokopedia Button (Third) -->
+                        <a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden bg-[#42B549] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
+                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                            <span class="bg-white text-[#42B549] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-store"></i></span>
+                            <span class="relative z-10">Tokopedia</span>
                             <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
                         </a>
                     </div>
@@ -352,7 +352,7 @@ const loopProducts = [...products, ...products, ...products];
 
 <script>
     // Text Animation Logic (Client-Side)
-    const lines = ["Ingin Konsultasi atau Belanja?"];
+    const lines = ["Sudah Siap Berbelanja?"];
     const container = document.getElementById('text-animation-container');
 
     function createMarkup() {
