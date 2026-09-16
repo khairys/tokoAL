@@ -50,6 +50,8 @@ const communities = [
         icon: 'fa-compass',
     },
 ];
+
+const sponsorWaUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=" + encodeURIComponent("Halo Toko AL! 👋 Saya ingin mengajukan kerjasama / sponsorship event untuk komunitas kami. Mohon informasi terkait prosedur dan persyaratannya. Terima kasih!");
 ---
 
 <!-- === BRANDS & COMMUNITY SECTION === -->
@@ -126,203 +128,21 @@ const communities = [
             ))}
         </div>
 
-        <!-- Call to Action: Pengajuan Sponsorship -->
+        <!-- Call to Action: Pengajuan Sponsorship (Langsung ke WhatsApp) -->
         <div class="mt-14 text-center max-w-xl mx-auto fade-in-up">
             <p class="text-base sm:text-lg font-bold text-gray-800 mb-5">
                 Punya kegiatan atau komunitas yang ingin berkolaborasi dengan kami?
             </p>
-            <button
-                id="open-sponsor-modal"
-                type="button"
-                class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-primary hover:bg-dark text-white font-bold text-sm sm:text-base rounded-full shadow-lg shadow-primary/25 hover:shadow-2xl hover:shadow-dark/30 transform hover:-translate-y-0.5 active:scale-95 transition-all duration-150 cursor-pointer"
+            <a
+                href={sponsorWaUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-primary hover:bg-dark text-white font-bold text-sm sm:text-base rounded-full shadow-lg shadow-primary/25 hover:shadow-2xl hover:shadow-dark/30 transform hover:-translate-y-0.5 active:scale-95 transition-all duration-150 cursor-pointer group"
             >
-                <i class="fas fa-handshake text-lg"></i>
-                <span>Ajukan Sponsorship</span>
-            </button>
+                <i class="fab fa-whatsapp text-xl transition-transform duration-200 group-hover:scale-110"></i>
+                <span>Ajukan Sponsorship via WhatsApp</span>
+            </a>
         </div>
 
     </div>
 </section>
-
-<!-- === MODAL FORM PENGAJUAN SPONSORSHIP === -->
-<div
-    id="sponsor-modal"
-    class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="modal-title"
->
-    <div
-        id="sponsor-modal-card"
-        class="bg-white rounded-3xl w-full max-w-lg p-6 sm:p-8 shadow-2xl border border-gray-100 transform scale-95 transition-all duration-300 relative max-h-[90vh] overflow-y-auto"
-    >
-        <!-- Close Button -->
-        <button
-            id="close-sponsor-modal"
-            type="button"
-            aria-label="Tutup formulir"
-            class="absolute top-5 right-5 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-500 hover:text-gray-800 flex items-center justify-center transition-colors cursor-pointer"
-        >
-            <i class="fas fa-times"></i>
-        </button>
-
-        <!-- Modal Header -->
-        <div class="mb-6 pr-6">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#A3EBB1]/30 text-dark text-xs font-bold mb-2">
-                <i class="fas fa-handshake text-primary"></i>
-                <span>Kolaborasi Komunitas</span>
-            </div>
-            <h3 id="modal-title" class="text-xl sm:text-2xl font-extrabold text-gray-900">
-                Ajukan Sponsorship & Kerjasama
-            </h3>
-            <p class="text-xs text-gray-500 mt-1">
-                Kirimkan detail event gowes atau kegiatan komunitas Anda langsung ke WhatsApp resmi Toko AL.
-            </p>
-        </div>
-
-        <!-- Form Fields -->
-        <form id="sponsor-form" class="space-y-4">
-            <div>
-                <label for="comm-name" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    Nama Komunitas / Penyelenggara *
-                </label>
-                <input
-                    type="text"
-                    id="comm-name"
-                    required
-                    placeholder="Contoh: Gowes Bareng Cikande"
-                    class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900"
-                />
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                <div>
-                    <label for="pic-name" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                        Nama PIC / Kontak *
-                    </label>
-                    <input
-                        type="text"
-                        id="pic-name"
-                        required
-                        placeholder="Nama lengkap Anda"
-                        class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900"
-                    />
-                </div>
-                <div>
-                    <label for="pic-wa" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                        Nomor WhatsApp PIC *
-                    </label>
-                    <input
-                        type="tel"
-                        id="pic-wa"
-                        required
-                        placeholder="0812xxxxxxx"
-                        class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900"
-                    />
-                </div>
-            </div>
-
-            <div>
-                <label for="event-date" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    Estimasi Waktu Event
-                </label>
-                <input
-                    type="text"
-                    id="event-date"
-                    placeholder="Contoh: Akhir Bulan Ini / Oktober 2026"
-                    class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900"
-                />
-            </div>
-
-            <div>
-                <label for="collab-type" class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">
-                    Rencana Kerjasama yang Diharapkan *
-                </label>
-                <textarea
-                    id="collab-type"
-                    required
-                    rows="3"
-                    placeholder="Contoh: Doorprize sepeda/aksesoris, stand servis sepeda gratis, jersey, atau publikasi..."
-                    class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all text-gray-900 resize-none"
-                ></textarea>
-            </div>
-
-            <!-- Submit Button -->
-            <div class="pt-2">
-                <button
-                    type="submit"
-                    class="w-full py-3.5 px-6 bg-primary hover:bg-dark text-white font-bold text-sm rounded-xl shadow-lg shadow-primary/25 transition-all duration-200 active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
-                >
-                    <i class="fab fa-whatsapp text-lg"></i>
-                    <span>Kirim Pengajuan ke WhatsApp</span>
-                </button>
-                <p class="text-[11px] text-gray-400 text-center mt-2">
-                    Formulir akan otomatis membuka chat WhatsApp resmi Toko AL (+62 819-9653-5525).
-                </p>
-            </div>
-        </form>
-    </div>
-</div>
-
-<script>
-    // Modal Open / Close Logic
-    const openBtn = document.getElementById('open-sponsor-modal');
-    const closeBtn = document.getElementById('close-sponsor-modal');
-    const modal = document.getElementById('sponsor-modal');
-    const modalCard = document.getElementById('sponsor-modal-card');
-    const form = document.getElementById('sponsor-form') as HTMLFormElement | null;
-
-    function openModal() {
-        if (!modal || !modalCard) return;
-        modal.classList.remove('opacity-0', 'pointer-events-none');
-        modalCard.classList.remove('scale-95');
-        modalCard.classList.add('scale-100');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeModal() {
-        if (!modal || !modalCard) return;
-        modal.classList.add('opacity-0', 'pointer-events-none');
-        modalCard.classList.remove('scale-100');
-        modalCard.classList.add('scale-95');
-        document.body.style.overflow = '';
-    }
-
-    openBtn?.addEventListener('click', openModal);
-    closeBtn?.addEventListener('click', closeModal);
-
-    modal?.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
-
-    window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal && !modal.classList.contains('pointer-events-none')) {
-            closeModal();
-        }
-    });
-
-    // Submit form to WhatsApp
-    form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        const commName = (document.getElementById('comm-name') as HTMLInputElement)?.value.trim();
-        const picName = (document.getElementById('pic-name') as HTMLInputElement)?.value.trim();
-        const picWa = (document.getElementById('pic-wa') as HTMLInputElement)?.value.trim();
-        const eventDate = (document.getElementById('event-date') as HTMLInputElement)?.value.trim() || '-';
-        const collabType = (document.getElementById('collab-type') as HTMLTextAreaElement)?.value.trim();
-
-        const message = `Halo Toko AL! 👋%0A%0ASaya ingin mengajukan *Proposal Kerjasama / Sponsorship Event*:%0A%0A` +
-            `🏢 *Nama Komunitas/Penyelenggara:* ${encodeURIComponent(commName)}%0A` +
-            `👤 *Nama PIC:* ${encodeURIComponent(picName)}%0A` +
-            `📱 *No. WhatsApp PIC:* ${encodeURIComponent(picWa)}%0A` +
-            `📅 *Estimasi Waktu:* ${encodeURIComponent(eventDate)}%0A` +
-            `🤝 *Bentuk Kerjasama:*%0A${encodeURIComponent(collabType)}%0A%0A` +
-            `Mohon informasi lebih lanjut terkait prosedur kerjasama dengan Toko AL. Terima kasih!`;
-
-        const waUrl = `https://api.whatsapp.com/send?phone=6281996535525&text=${message}`;
-        window.open(waUrl, '_blank');
-        closeModal();
-    });
-</script>
