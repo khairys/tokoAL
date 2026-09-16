@@ -1,51 +1,95 @@
 ---
-// Navbar Component
+// Navbar Component (Mobile-Optimized UX)
 import logoNavbar from '../assets/branding/Logo navbar.png';
 ---
 
-<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="flex justify-between items-center h-16">
 			<!-- Logo -->
-			<a href="#home" class="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group transition-all duration-200 hover:scale-105 active:scale-95 origin-left">
-				<img src={logoNavbar.src} alt="Logo Toko AL" class="h-9 w-auto object-contain drop-shadow-sm transition-opacity duration-200 group-hover:opacity-90" />
-				<span class="font-bold text-xl tracking-wide text-dark group-hover:text-primary transition-colors duration-200">Toko AL</span>
+			<a href="#home" class="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group transition-transform duration-200 active:scale-95 origin-left">
+				<img src={logoNavbar.src} alt="Logo Toko AL" class="h-8 sm:h-9 w-auto object-contain drop-shadow-sm transition-transform duration-200 group-hover:scale-105" />
+				<span class="font-extrabold text-xl tracking-tight text-dark group-hover:text-primary transition-colors duration-200">Toko AL</span>
 			</a>
 			
 			<!-- Desktop Menu -->
 			<div class="hidden md:flex space-x-7">
 				<a href="#home" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Beranda</a>
 				<a href="#services" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Layanan</a>
-				<a href="#products" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Produk</a>
-				<a href="#gallery" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Galeri</a>
-				<a href="#partners" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Mitra</a>
+				<a href="#products" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Katalog</a>
+				<a href="#gallery" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Suasana Toko</a>
+				<a href="#partners" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Merek & Komunitas</a>
 				<a href="#contact" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Kontak</a>
 			</div>
 
-			<!-- Mobile Menu Button -->
-			<div class="md:hidden flex items-center">
-				<button id="mobile-menu-btn" aria-label="Buka menu navigasi" class="text-gray-600 hover:text-primary focus:outline-none transition-all duration-200 hover:scale-110">
-					<i class="fas fa-bars text-2xl"></i>
+			<!-- Mobile Actions (Direct WhatsApp + Hamburger) -->
+			<div class="md:hidden flex items-center gap-2">
+				<a
+					href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="Chat WhatsApp Toko AL"
+					class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center transition-all duration-200 active:scale-90"
+					title="Hubungi WhatsApp"
+				>
+					<i class="fab fa-whatsapp text-lg"></i>
+				</a>
+				<button 
+					id="mobile-menu-btn" 
+					aria-label="Buka menu navigasi" 
+					class="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center focus:outline-none transition-all duration-200 active:scale-90 cursor-pointer"
+				>
+					<i class="fas fa-bars text-lg"></i>
 				</button>
 			</div>
 		</div>
 	</div>
 	
 	<!-- Mobile Menu Panel -->
-	<div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg">
-		<div class="px-3 pt-2 pb-4 space-y-1">
-			<a href="#home" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Beranda</a>
-			<a href="#services" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Layanan</a>
-			<a href="#products" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Produk</a>
-			<a href="#gallery" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Galeri</a>
-			<a href="#partners" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Mitra</a>
-			<a href="#contact" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 transition-colors">Kontak</a>
+	<div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl transition-all duration-200">
+		<div class="px-4 pt-3 pb-6 space-y-1">
+			<a href="#home" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
+				<span>Beranda</span>
+				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
+			</a>
+			<a href="#services" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
+				<span>Layanan Bengkel</span>
+				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
+			</a>
+			<a href="#products" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
+				<span>Katalog Sepeda</span>
+				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
+			</a>
+			<a href="#gallery" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
+				<span>Suasana Toko</span>
+				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
+			</a>
+			<a href="#partners" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
+				<span>Merek & Komunitas</span>
+				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
+			</a>
+			<a href="#contact" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
+				<span>Lokasi & Kontak</span>
+				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
+			</a>
+
+			<!-- Quick Mobile Action in Drawer -->
+			<div class="pt-3 mt-2 border-t border-gray-100">
+				<a
+					href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="w-full py-3 px-4 bg-primary hover:bg-dark text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-primary/20 active:scale-95 transition-all"
+				>
+					<i class="fab fa-whatsapp text-base"></i>
+					<span>Chat WhatsApp Sekarang</span>
+				</a>
+			</div>
 		</div>
 	</div>
 </nav>
 
 <script>
-	// Mobile Menu Toggle
 	const btn = document.getElementById('mobile-menu-btn');
 	const menu = document.getElementById('mobile-menu');
 
@@ -54,42 +98,46 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 		const icon = btn.querySelector('i');
 		if (icon) {
 			if (isHidden) {
-				icon.className = 'fas fa-bars text-2xl';
+				icon.className = 'fas fa-bars text-lg';
 			} else {
-				icon.className = 'fas fa-times text-2xl';
+				icon.className = 'fas fa-times text-lg';
 			}
 		}
 	});
 
-	// Smooth Scroll for all navigation links
+	// Smooth Scroll & Auto-Close Mobile Menu
 	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 		anchor.addEventListener('click', function (e) {
-			e.preventDefault();
-			const target = document.querySelector(this.getAttribute('href'));
+			const href = this.getAttribute('href');
+			if (!href || href === '#') return;
+			
+			const target = document.querySelector(href);
 			if (target) {
+				e.preventDefault();
 				target.scrollIntoView({
 					behavior: 'smooth',
 					block: 'start'
 				});
-			}
-			// Close mobile menu after clicking
-			menu?.classList.add('hidden');
-			const icon = btn?.querySelector('i');
-			if (icon) {
-				icon.className = 'fas fa-bars text-2xl';
+				
+				// Close mobile menu
+				menu?.classList.add('hidden');
+				const icon = btn?.querySelector('i');
+				if (icon) {
+					icon.className = 'fas fa-bars text-lg';
+				}
 			}
 		});
 	});
 
-	// Navbar Scroll Effect
+	// Navbar Scroll Shadow
 	const navbar = document.getElementById('navbar');
 	window.addEventListener('scroll', () => {
 		if (window.scrollY > 10) {
 			navbar?.classList.add('shadow-md');
-			navbar?.classList.replace('bg-white/90', 'bg-white');
+			navbar?.classList.replace('bg-white/95', 'bg-white');
 		} else {
 			navbar?.classList.remove('shadow-md');
-			navbar?.classList.replace('bg-white', 'bg-white/90');
+			navbar?.classList.replace('bg-white', 'bg-white/95');
 		}
-	});
+	}, { passive: true });
 </script>
