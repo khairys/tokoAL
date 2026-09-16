@@ -1,18 +1,19 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import Services from '../components/Services.astro';
-import Products from '../components/Products.astro';
-import Testimonials from '../components/Testimonials.astro';
-import Partners from '../components/Partners.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import Products from "../components/Products.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Partners from "../components/Partners.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<Layout 
-	title="Toko AL | Toko Sepeda, Sparepart & Bengkel Servis di Cikande Serang" 
-	description="Pusat penjualan sepeda (Roadbike, Fixie, MTB), sparepart orisinil terlengkap, dan bengkel servis sepeda profesional di Cikande Permai, Serang, Banten. Konsultasi & pemesanan via WhatsApp.">
+<Layout
+	title="Toko AL"
+	description="Pusat penjualan sepeda (Roadbike, Fixie, MTB), sparepart orisinil terlengkap, dan bengkel servis sepeda profesional di Cikande Permai, Serang, Banten. Konsultasi & pemesanan via WhatsApp."
+>
 	<Navbar />
 	<Hero />
 	<Services />
@@ -27,19 +28,19 @@ import Footer from '../components/Footer.astro';
 	// Scroll Animation (Intersection Observer)
 	const observerOptions = {
 		threshold: 0.1,
-		rootMargin: "0px 0px -50px 0px"
+		rootMargin: "0px 0px -50px 0px",
 	};
 
 	const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
+		entries.forEach((entry) => {
 			if (entry.isIntersecting) {
-				entry.target.classList.add('visible');
+				entry.target.classList.add("visible");
 				observer.unobserve(entry.target); // Only animate once
 			}
 		});
 	}, observerOptions);
 
-	document.querySelectorAll('.fade-in-up').forEach(el => {
+	document.querySelectorAll(".fade-in-up").forEach((el) => {
 		observer.observe(el);
 	});
 </script>
