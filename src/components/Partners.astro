@@ -10,14 +10,14 @@ import logoSwallow from '../assets/partners/swallow logo.png';
 import logoRevo from '../assets/partners/revo logo.jpg';
 
 const brands = [
-    { name: 'Pacific Bike', logo: logoPacific, sizeClass: 'max-h-13 sm:max-h-16 scale-115' },
-    { name: 'United Bike', logo: logoUnited, sizeClass: 'max-h-11 sm:max-h-13' },
-    { name: 'Element Bike', logo: logoElement, sizeClass: 'max-h-11 sm:max-h-13' },
-    { name: 'Family Bike', logo: logoFamily, sizeClass: 'max-h-14 sm:max-h-16 scale-120' },
-    { name: 'PMB Toys', logo: logoPmb, sizeClass: 'max-h-14 sm:max-h-16 scale-120' },
-    { name: 'Kenda Tire', logo: logoKenda, sizeClass: 'max-h-11 sm:max-h-13' },
-    { name: 'Swallow Deli', logo: logoSwallow, sizeClass: 'max-h-11 sm:max-h-13' },
-    { name: 'Revo Parts', logo: logoRevo, sizeClass: 'max-h-13 sm:max-h-16 scale-115' },
+    { name: 'Pacific Bike', logo: logoPacific, sizeClass: 'max-h-10 sm:max-h-16' },
+    { name: 'United Bike', logo: logoUnited, sizeClass: 'max-h-8 sm:max-h-11' },
+    { name: 'Element Bike', logo: logoElement, sizeClass: 'max-h-8 sm:max-h-11' },
+    { name: 'Family Bike', logo: logoFamily, sizeClass: 'max-h-10 sm:max-h-16' },
+    { name: 'PMB Toys', logo: logoPmb, sizeClass: 'max-h-10 sm:max-h-16' },
+    { name: 'Kenda Tire', logo: logoKenda, sizeClass: 'max-h-8 sm:max-h-11' },
+    { name: 'Swallow Deli', logo: logoSwallow, sizeClass: 'max-h-7 sm:max-h-11' },
+    { name: 'Revo Parts', logo: logoRevo, sizeClass: 'max-h-10 sm:max-h-16' },
 ];
 
 const communities = [
@@ -72,10 +72,10 @@ const sponsorWaUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=" +
         </div>
 
         <!-- Brands Grid (Floating Clean Logos, Tanpa Kotak Kontainer, Warna Asli Full) -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-12 md:gap-14 items-center justify-items-center max-w-5xl mx-auto px-4 fade-in-up">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-12 md:gap-14 items-center justify-items-center max-w-5xl mx-auto px-4 fade-in-up">
             {brands.map((brand) => (
                 <div 
-                    class="flex items-center justify-center h-16 sm:h-20 w-full transition-transform duration-200 hover:scale-105 cursor-default"
+                    class="flex items-center justify-center h-14 sm:h-20 w-full transition-transform duration-200 hover:scale-105 cursor-default"
                     title={brand.name}
                 >
                     <img
