@@ -1,46 +1,41 @@
-# Astro Starter Kit: Basics
+# Toko AL - Official Website & Catalog
 
-```sh
-npm create astro@latest -- --template basics
-```
+Website resmi **Toko AL** — Pusat penjualan sepeda, sparepart orisinil terlengkap, dan bengkel servis sepeda terpercaya di Cikande Permai, Serang, Banten.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+🌐 **Domain Live**: [https://tokoal.id](https://tokoal.id)
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🛠️ Tech Stack
+
+- **Framework**: [Astro v5](https://astro.build/) (Static Site Generation)
+- **Styling**: Tailwind CSS & Vanilla CSS Design System
+- **Icons**: Font Awesome 6
+- **Typography**: Poppins (Google Fonts)
+- **Deployment**: GitHub Actions CI/CD via FTP Deploy to Production Web Server
+
+---
+
+## 📁 Struktur Proyek
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+├── public/                # Static assets (favicon, robots.txt, sitemap.xml, llms.txt)
+├── src/
+│   ├── assets/            # Aset visual lokal (branding, gallery, hero, partners, products)
+│   ├── components/        # Komponen UI Astro (Navbar, Hero, Services, Products, Testimonials, Partners, Contact, Footer)
+│   ├── layouts/           # Layout utama & SEO metadata (Layout.astro)
+│   └── pages/             # Routing Astro (index.astro)
+├── .github/workflows/     # Pipeline otomatisasi CI/CD deploy.yml
 └── package.json
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+---
 
-## 🧞 Commands
+## 🧞 Perintah Pengembangan
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+| Perintah | Deskripsi |
+| :--- | :--- |
+| `npm run dev` | Menjalankan server lokal di `http://localhost:4321` |
+| `npm run build` | Mem-build bundle produksi ke folder `./dist/` |
+| `npm run preview` | Meninjau hasil build produksi secara lokal |
