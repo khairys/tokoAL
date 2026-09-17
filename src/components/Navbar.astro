@@ -165,7 +165,6 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 	const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link');
 
 	let currentActiveId = 'home';
-	let isHovering = false;
 
 	function moveIndicatorTo(link: HTMLElement | null) {
 		if (!link || !navIndicator || !desktopNavMenu) return;
@@ -207,26 +206,10 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 			}
 		});
 
-		if (!isHovering && activeDesktopLink) {
+		if (activeDesktopLink) {
 			moveIndicatorTo(activeDesktopLink);
 		}
 	}
-
-	// Hover interactions for desktop nav
-	desktopLinks.forEach(link => {
-		link.addEventListener('mouseenter', () => {
-			isHovering = true;
-			moveIndicatorTo(link);
-		});
-	});
-
-	desktopNavMenu?.addEventListener('mouseleave', () => {
-		isHovering = false;
-		const activeLink = document.querySelector<HTMLElement>(`.desktop-nav-link[href="#${currentActiveId}"]`);
-		if (activeLink) {
-			moveIndicatorTo(activeLink);
-		}
-	});
 
 	// Scroll spy with throttling
 	let scrollTicking = false;
