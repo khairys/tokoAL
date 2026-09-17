@@ -142,7 +142,7 @@ const loopProducts = [...products, ...products, ...products];
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Koleksi Produk & Sepeda</h2>
             <div class="w-24 h-1.5 bg-gradient-to-r from-primary via-secondary to-neon mx-auto rounded-full"></div>
             <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-                Pilih kategori favorit Anda di bawah ini dan klik pada kartu untuk langsung melihat detail unit serta konsultasi ketersediaan di WhatsApp.
+                Pilih kategori favorit Anda di bawah ini dan klik pada kartu untuk langsung melihat detail dari unit.
             </p>
         </div>
 
@@ -205,11 +205,11 @@ const loopProducts = [...products, ...products, ...products];
                             </ul>
                         </div>
 
-                        <!-- Card Action Footer (Enticing interest prompt) -->
+                        <!-- Card Action Footer (Simple & Direct) -->
                         <div class="pt-3.5 border-t border-gray-700/60 flex items-center justify-between text-xs font-semibold text-gray-300 group-hover/card:text-neon transition-colors duration-200">
                             <span class="inline-flex items-center gap-2 font-bold">
                                 <i class="fas fa-arrow-up-right-from-square text-[11px] text-primary group-hover/card:text-neon transition-colors"></i>
-                                <span>Tertarik? Cek Ketersediaan Unit</span>
+                                <span>Selengkapnya</span>
                             </span>
                             <span class="w-7 h-7 rounded-full bg-gray-700/60 group-hover/card:bg-primary group-hover/card:text-white flex items-center justify-center transition-all duration-200 group-hover/card:translate-x-1">
                                 <i class="fas fa-arrow-right text-xs"></i>
@@ -220,16 +220,39 @@ const loopProducts = [...products, ...products, ...products];
             </div>
         </div>
 
-        <!-- Big Catalog Button (Selengkapnya) -->
-        <div class="mt-10 text-center fade-in-up">
+        <!-- More Hidden Products Gateway -->
+        <div class="mt-10 max-w-2xl mx-auto px-4 fade-in-up">
             <a
                 href={catalogUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] text-white font-bold text-base md:text-lg rounded-full shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-secondary/30 hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer border border-white/15 hover:border-white/30"
+                class="group relative overflow-hidden bg-gradient-to-r from-gray-800/90 via-gray-850 to-gray-800/90 backdrop-blur-md rounded-2xl p-4 sm:p-5 border border-dashed border-gray-700 hover:border-secondary/80 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/10 flex flex-col sm:flex-row items-center justify-between gap-4 cursor-pointer active:scale-[0.99]"
             >
-                <span>Selengkapnya</span>
-                <i class="fas fa-arrow-right text-base group-hover:translate-x-1.5 transition-transform duration-200"></i>
+                <div class="flex items-center gap-3.5 text-center sm:text-left">
+                    <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-primary/25 to-secondary/20 border border-secondary/30 text-neon flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                        <i class="fas fa-boxes-stacked text-base"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center justify-center sm:justify-start gap-2 flex-wrap">
+                            <span class="font-bold text-white text-base group-hover:text-neon transition-colors">
+                                Lihat Lebih Banyak Produk
+                            </span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-secondary/15 text-secondary border border-secondary/30">
+                                + Masih Banyak Pilihan
+                            </span>
+                        </div>
+                        <p class="text-xs text-gray-400 mt-1 leading-snug">
+                            Masih banyak varian sepeda, model lain, dan sparepart yang belum ditampilkan di halaman ini.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="w-full sm:w-auto flex-shrink-0">
+                    <span class="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gray-700/70 group-hover:bg-primary group-hover:text-white text-gray-200 text-xs font-bold border border-gray-600/60 group-hover:border-primary transition-all duration-200">
+                        <span>Buka Katalog</span>
+                        <i class="fas fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                </div>
             </a>
         </div>
 
