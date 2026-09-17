@@ -1,68 +1,121 @@
 ---
 // Contact & Location Component
-import logoNavbar from '../assets/branding/Logo navbar.png';
+import logoNavbar from "../assets/branding/Logo navbar.png";
 ---
 
 <!-- === LOCATION & CONTACT SECTION === -->
-<section id="contact" class="bg-white pt-16 pb-20 border-t border-gray-100 relative">
+<section
+	id="contact"
+	class="bg-white pt-16 pb-20 border-t border-gray-100 relative"
+>
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<!-- Section Header -->
 		<div class="text-center mb-12 fade-in-up">
-			<h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+			<h2
+				class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight"
+			>
 				Lokasi & Kontak Toko AL
 			</h2>
-			<div class="w-24 h-1.5 bg-gradient-to-r from-[#116530] via-primary to-secondary mx-auto mt-4 rounded-full"></div>
-			<p class="mt-4 text-gray-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-				Datang langsung untuk melihat koleksi unit sepeda, konsultasi sparepart, atau perawatan servis bersama tim mekanik kami.
+			<div
+				class="w-24 h-1.5 bg-gradient-to-r from-[#116530] via-primary to-secondary mx-auto mt-4 rounded-full"
+			>
+			</div>
+			<p
+				class="mt-4 text-gray-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed"
+			>
+				Datang langsung untuk melihat koleksi unit sepeda, konsultasi
+				sparepart, atau perawatan servis bersama tim mekanik kami.
 			</p>
 		</div>
 
 		<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 			<!-- Info Toko Card -->
-			<div class="lg:col-span-5 bg-gray-50/90 rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm fade-in-up">
+			<div
+				class="lg:col-span-5 bg-gray-50/90 rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm fade-in-up"
+			>
 				<!-- Brand Header -->
 				<div class="flex items-center gap-3 mb-5">
-					<img src={logoNavbar.src} alt="Logo Toko AL" class="h-10 w-auto object-contain drop-shadow-sm" />
-					<span class="font-extrabold text-2xl tracking-wide text-dark">Toko AL</span>
+					<img
+						src={logoNavbar.src}
+						alt="Logo Toko AL"
+						class="h-10 w-auto object-contain drop-shadow-sm"
+					/>
+					<span
+						class="font-extrabold text-2xl tracking-wide text-dark"
+						>Toko AL</span
+					>
 				</div>
 				<p class="text-gray-600 mb-6 text-sm leading-relaxed">
-					Partner terbaik untuk hobi bersepeda dan keceriaan keluarga Anda di Cikande Permai, Serang.
+					Partner terbaik untuk hobi bersepeda dan keceriaan keluarga
+					Anda di Cikande Permai, Serang.
 				</p>
-				
+
 				<div class="space-y-4">
 					<!-- Address -->
 					<div class="flex items-start gap-3.5">
-						<div class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm border border-[#A3EBB1]/60">
-							<i class="fas fa-map-marker-alt text-primary text-base"></i>
+						<div
+							class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm border border-[#A3EBB1]/60"
+						>
+							<i
+								class="fas fa-map-marker-alt text-primary text-base"
+							></i>
 						</div>
 						<div class="text-sm leading-relaxed">
-							<span class="font-bold text-gray-900 block text-xs uppercase tracking-wider mb-0.5">Alamat Kami</span>
-							<span class="text-gray-600">Jl. Cikande Permai Blok J2 No.6 , Cikande Permai,<br>Kec. Cikande, Kabupaten Serang, Banten 42186</span>
+							<span
+								class="font-bold text-gray-900 block text-xs uppercase tracking-wider mb-0.5"
+								>Alamat Kami</span
+							>
+							<span class="text-gray-600"
+								>Jl. Cikande Permai Blok J2 No.6 , Cikande
+								Permai,<br />Kec. Cikande, Kabupaten Serang,
+								Banten 42186</span
+							>
 						</div>
 					</div>
 
 					<!-- Jam Operasional -->
 					<div class="flex items-start gap-3.5">
-						<div class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm border border-[#A3EBB1]/60">
+						<div
+							class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm border border-[#A3EBB1]/60"
+						>
 							<i class="fas fa-clock text-primary text-base"></i>
 						</div>
 						<div class="text-sm leading-relaxed">
-							<span class="font-bold text-gray-900 text-xs uppercase tracking-wider mb-0.5 block">Jam Operasional</span>
+							<span
+								class="font-bold text-gray-900 text-xs uppercase tracking-wider mb-0.5 block"
+								>Jam Operasional</span
+							>
 							<p class="text-gray-600">
-								Senin – Sabtu: <strong class="text-gray-800 font-medium">09.00 – 20.00 WIB</strong><br>
-								Minggu: <strong class="text-gray-800 font-medium">09.00 – 17.00 WIB</strong>
+								Senin – Sabtu: <strong
+									class="text-gray-800 font-medium"
+									>09.00 – 20.00 WIB</strong
+								><br />
+								Minggu: <strong
+									class="text-gray-800 font-medium"
+									>09.00 – 17.00 WIB</strong
+								>
 							</p>
 						</div>
 					</div>
 
 					<!-- WhatsApp Contact -->
 					<div class="flex items-center gap-3.5">
-						<div class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 shadow-sm border border-[#A3EBB1]/60">
+						<div
+							class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 shadow-sm border border-[#A3EBB1]/60"
+						>
 							<i class="fab fa-whatsapp text-primary text-lg"></i>
 						</div>
 						<div class="text-sm leading-relaxed">
-							<span class="text-gray-500 text-xs block uppercase tracking-wider font-bold mb-0.5">WhatsApp & Telepon</span>
-							<a href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary transition-colors text-sm font-normal">
+							<span
+								class="text-gray-900 text-xs block uppercase tracking-wider font-bold mb-0.5"
+								>WhatsApp & Telepon</span
+							>
+							<a
+								href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL"
+								target="_blank"
+								rel="noopener noreferrer"
+								class="text-gray-600 hover:text-primary transition-colors text-sm font-normal"
+							>
 								+62 819-9653-5525
 							</a>
 						</div>
@@ -71,9 +124,14 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 			</div>
 
 			<!-- Map Embed Container with Mobile Scroll Trap Protection -->
-			<div class="lg:col-span-7 rounded-3xl overflow-hidden shadow-lg border border-gray-100 h-[380px] sm:h-[430px] fade-in-up hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 relative group" style="transition-delay: 100ms;">
+			<div
+				class="lg:col-span-7 rounded-3xl overflow-hidden shadow-lg border border-gray-100 h-[380px] sm:h-[430px] fade-in-up hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 relative group"
+				style="transition-delay: 100ms;"
+			>
 				<!-- Location Pin Badge -->
-				<div class="absolute top-4 left-4 z-10 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-xs font-bold text-gray-800 shadow-md border border-gray-200 pointer-events-none">
+				<div
+					class="absolute top-4 left-4 z-10 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-xs font-bold text-gray-800 shadow-md border border-gray-200 pointer-events-none"
+				>
 					<i class="fas fa-map-pin text-primary"></i>
 					<span>Toko Sepeda AL – Cikande Permai</span>
 				</div>
@@ -98,9 +156,13 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 					rel="noopener noreferrer"
 					class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-5 bg-white hover:bg-primary hover:text-white text-gray-900 text-xs sm:text-sm font-bold px-5 py-3.5 rounded-2xl sm:rounded-full shadow-2xl border border-gray-200/80 backdrop-blur-md transition-all duration-200 flex items-center justify-center gap-2.5 hover:scale-105 active:scale-95 cursor-pointer z-10 group/btn"
 				>
-					<i class="fas fa-directions text-primary group-hover/btn:text-white text-sm"></i>
+					<i
+						class="fas fa-directions text-primary group-hover/btn:text-white text-sm"
+					></i>
 					<span>Buka Petunjuk Arah di Google Maps</span>
-					<i class="fas fa-external-link-alt text-[10px] text-gray-400 group-hover/btn:text-white"></i>
+					<i
+						class="fas fa-external-link-alt text-[10px] text-gray-400 group-hover/btn:text-white"
+					></i>
 				</a>
 			</div>
 		</div>
