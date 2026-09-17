@@ -12,8 +12,8 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 				<span class="font-extrabold text-xl tracking-tight text-dark group-hover:text-primary transition-colors duration-200">Toko AL</span>
 			</a>
 			
-			<!-- Desktop Menu with Animated Sliding Underline Indicator -->
-			<div class="hidden md:flex items-center space-x-7 relative py-1" id="desktop-nav-menu">
+			<!-- Desktop Menu with Animated Sliding Underline Indicator (visible on lg: >= 1024px) -->
+			<div class="hidden lg:flex items-center space-x-7 relative py-1" id="desktop-nav-menu">
 				<!-- Sliding Underline Indicator -->
 				<span
 					id="nav-indicator"
@@ -28,18 +28,8 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 				<a href="#contact" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Kontak</a>
 			</div>
 
-			<!-- Mobile Actions (Direct WhatsApp + Hamburger) -->
-			<div class="md:hidden flex items-center gap-2">
-				<a
-					href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL"
-					target="_blank"
-					rel="noopener noreferrer"
-					aria-label="Chat WhatsApp Toko AL"
-					class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center transition-all duration-200 active:scale-90"
-					title="Hubungi WhatsApp"
-				>
-					<i class="fab fa-whatsapp text-lg"></i>
-				</a>
+			<!-- Mobile Actions (Hamburger only, WhatsApp button removed, visible on < 1024px) -->
+			<div class="lg:hidden flex items-center">
 				<button 
 					id="mobile-menu-btn" 
 					aria-label="Buka menu navigasi" 
@@ -51,8 +41,8 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 		</div>
 	</div>
 	
-	<!-- Mobile Menu Panel -->
-	<div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl transition-all duration-200">
+	<!-- Mobile Menu Panel (collapses below lg: 1024px) -->
+	<div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl transition-all duration-200">
 		<div class="px-4 pt-3 pb-6 space-y-1">
 			<a href="#home" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
 				<span>Beranda</span>
