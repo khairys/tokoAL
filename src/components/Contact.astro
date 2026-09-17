@@ -128,14 +128,6 @@ import logoNavbar from "../assets/branding/Logo navbar.png";
 				class="lg:col-span-7 rounded-3xl overflow-hidden shadow-lg border border-gray-100 h-[380px] sm:h-[430px] fade-in-up hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 relative group"
 				style="transition-delay: 100ms;"
 			>
-				<!-- Location Pin Badge -->
-				<div
-					class="absolute top-4 left-4 z-10 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 backdrop-blur-md text-xs font-bold text-gray-800 shadow-md border border-gray-200 pointer-events-none"
-				>
-					<i class="fas fa-map-pin text-primary"></i>
-					<span>Toko Sepeda AL – Cikande Permai</span>
-				</div>
-
 				<!-- Google Maps Iframe (pointer-events-none on mobile to allow smooth page scroll, auto on desktop or on click) -->
 				<iframe
 					id="map-iframe"
@@ -149,22 +141,60 @@ import logoNavbar from "../assets/branding/Logo navbar.png";
 					class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500 pointer-events-none sm:pointer-events-auto"
 				></iframe>
 
-				<!-- Prominent Route Button -->
-				<a
-					href="https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+Cikande+Permai"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="absolute bottom-4 left-4 right-4 sm:left-auto sm:right-5 bg-white hover:bg-primary hover:text-white text-gray-900 text-xs sm:text-sm font-bold px-5 py-3.5 rounded-2xl sm:rounded-full shadow-2xl border border-gray-200/80 backdrop-blur-md transition-all duration-200 flex items-center justify-center gap-2.5 hover:scale-105 active:scale-95 cursor-pointer z-10 group/btn"
-				>
-					<i
-						class="fas fa-directions text-primary group-hover/btn:text-white text-sm"
-					></i>
-					<span>Buka Petunjuk Arah di Google Maps</span>
-					<i
-						class="fas fa-external-link-alt text-[10px] text-gray-400 group-hover/btn:text-white"
-					></i>
-				</a>
+				<!-- Compact & Collapsible Route Widget (Expand / Minimize) -->
+				<div id="map-route-widget" class="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 transition-all duration-300">
+					<a
+						id="map-route-btn"
+						href="https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+Cikande+Permai"
+						target="_blank"
+						rel="noopener noreferrer"
+						class="bg-white/95 hover:bg-primary hover:text-white text-gray-900 text-xs font-bold px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-lg border border-gray-200/90 backdrop-blur-md transition-all duration-200 flex items-center gap-2 hover:scale-105 active:scale-95 group/btn"
+						title="Buka Petunjuk Arah di Google Maps"
+					>
+						<i class="fas fa-directions text-primary group-hover/btn:text-white text-sm"></i>
+						<span id="map-route-text" class="whitespace-nowrap transition-all duration-200">Petunjuk Arah</span>
+						<i id="map-route-ext" class="fas fa-external-link-alt text-[9px] text-gray-400 group-hover/btn:text-white"></i>
+					</a>
+
+					<!-- Minimize / Expand Toggle Button -->
+					<button
+						id="map-toggle-btn"
+						type="button"
+						aria-label="Perkecil tombol petunjuk arah"
+						class="w-8 h-8 rounded-full bg-white/95 hover:bg-gray-100 text-gray-600 hover:text-gray-900 shadow-md border border-gray-200/90 backdrop-blur-md flex items-center justify-center transition-all duration-200 active:scale-90 cursor-pointer"
+						title="Perkecil tampilan"
+					>
+						<i class="fas fa-compress-alt text-[10px]"></i>
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
 </section>
+
+<script>
+	const toggleBtn = document.getElementById('map-toggle-btn');
+	const routeText = document.getElementById('map-route-text');
+	const routeExt = document.getElementById('map-route-ext');
+	const toggleIcon = toggleBtn?.querySelector('i');
+	let isMinimized = false;
+
+	toggleBtn?.addEventListener('click', (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		isMinimized = !isMinimized;
+		if (isMinimized) {
+			routeText?.classList.add('hidden');
+			routeExt?.classList.add('hidden');
+			if (toggleIcon) toggleIcon.className = 'fas fa-expand-alt text-[10px]';
+			toggleBtn.setAttribute('title', 'Perbesar tampilan');
+			toggleBtn.setAttribute('aria-label', 'Perbesar tombol petunjuk arah');
+		} else {
+			routeText?.classList.remove('hidden');
+			routeExt?.classList.remove('hidden');
+			if (toggleIcon) toggleIcon.className = 'fas fa-compress-alt text-[10px]';
+			toggleBtn.setAttribute('title', 'Perkecil tampilan');
+			toggleBtn.setAttribute('aria-label', 'Perkecil tombol petunjuk arah');
+		}
+	});
+</script>
