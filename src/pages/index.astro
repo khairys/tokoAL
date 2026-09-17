@@ -25,10 +25,15 @@ import Footer from "../components/Footer.astro";
 </Layout>
 
 <script>
-	// Scroll Animation (Intersection Observer)
+	// Reveal above-the-fold Hero elements immediately to prevent initial layout shift/twitching
+	document.querySelectorAll('#home .fade-in-up').forEach((el) => {
+		el.classList.add('visible');
+	});
+
+	// Scroll Animation (Intersection Observer) for below-the-fold sections
 	const observerOptions = {
-		threshold: 0.1,
-		rootMargin: "0px 0px -50px 0px",
+		threshold: 0.08,
+		rootMargin: "0px 0px -40px 0px",
 	};
 
 	const observer = new IntersectionObserver((entries) => {
@@ -40,7 +45,7 @@ import Footer from "../components/Footer.astro";
 		});
 	}, observerOptions);
 
-	document.querySelectorAll(".fade-in-up").forEach((el) => {
+	document.querySelectorAll(".fade-in-up:not(.visible)").forEach((el) => {
 		observer.observe(el);
 	});
 </script>

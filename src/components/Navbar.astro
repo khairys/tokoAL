@@ -17,7 +17,7 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 				<!-- Sliding Underline Indicator -->
 				<span
 					id="nav-indicator"
-					class="absolute bottom-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out pointer-events-none opacity-0"
+					class="absolute bottom-0 h-0.5 bg-primary rounded-full pointer-events-none opacity-0"
 				></span>
 
 				<a href="#home" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Beranda</a>
@@ -112,6 +112,9 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 	});
 
 	// Smooth Scroll with Navbar Offset & Auto-Close Mobile Menu
+	let isNavClicking = false;
+	let navClickTimer: any = null;
+
 	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 		anchor.addEventListener('click', function (e) {
 			const href = this.getAttribute('href');
@@ -120,6 +123,18 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 			const target = document.querySelector(href);
 			if (target) {
 				e.preventDefault();
+				const targetId = href.replace('#', '');
+
+				// Lock scrollspy so intermediate sections don't cause twitching/jitter
+				isNavClicking = true;
+				clearTimeout(navClickTimer);
+
+				// Pre-reveal target section elements to stabilize layout before scroll lands
+				target.querySelectorAll('.fade-in-up').forEach(el => el.classList.add('visible'));
+
+				// Animate indicator directly to target in one smooth glide
+				setActiveSection(targetId);
+
 				const navHeight = 64;
 				const targetTop = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
 				window.scrollTo({
@@ -134,9 +149,18 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 					icon.className = 'fas fa-bars text-lg';
 				}
 
-				// Immediately trigger active indicator to target section
-				const targetId = href.replace('#', '');
-				setActiveSection(targetId);
+				// Release lock when smooth scrolling finishes
+				const releaseLock = () => {
+					isNavClicking = false;
+					window.removeEventListener('scrollend', releaseLock);
+				};
+
+				if ('onscrollend' in window) {
+					window.addEventListener('scrollend', releaseLock, { once: true });
+				}
+				navClickTimer = setTimeout(() => {
+					isNavClicking = false;
+				}, 850);
 			}
 		});
 	});
@@ -165,6 +189,7 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 	const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link');
 
 	let currentActiveId = 'home';
+	let isInitialized = false;
 
 	function moveIndicatorTo(link: HTMLElement | null) {
 		if (!link || !navIndicator || !desktopNavMenu) return;
@@ -211,12 +236,17 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 		}
 	}
 
-	// Scroll spy with throttling
+	// Scroll spy with throttling and scroll-lock protection
 	let scrollTicking = false;
 	function onScroll() {
-		if (scrollTicking) return;
+		if (scrollTicking || isNavClicking) return;
 		scrollTicking = true;
 		requestAnimationFrame(() => {
+			if (isNavClicking) {
+				scrollTicking = false;
+				return;
+			}
+
 			const scrollY = window.scrollY;
 			const windowHeight = window.innerHeight;
 			const docHeight = document.documentElement.scrollHeight;
@@ -266,12 +296,26 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 		}
 	});
 
-	// Initial positioning once DOM and layout ready
+	// Initial positioning: zero transition first, then enable 300ms transition
 	function initIndicator() {
 		onScroll();
 		const activeLink = document.querySelector<HTMLElement>(`.desktop-nav-link[href="#${currentActiveId}"]`);
 		if (activeLink) {
-			moveIndicatorTo(activeLink);
+			if (!isInitialized) {
+				// Instant placement without animation on first load
+				navIndicator?.classList.remove('transition-all', 'duration-300', 'ease-out');
+				moveIndicatorTo(activeLink);
+				isInitialized = true;
+
+				// Enable smooth transition for all future moves after initial paint
+				requestAnimationFrame(() => {
+					requestAnimationFrame(() => {
+						navIndicator?.classList.add('transition-all', 'duration-300', 'ease-out');
+					});
+				});
+			} else {
+				moveIndicatorTo(activeLink);
+			}
 		}
 	}
 
