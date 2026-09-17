@@ -12,14 +12,20 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 				<span class="font-extrabold text-xl tracking-tight text-dark group-hover:text-primary transition-colors duration-200">Toko AL</span>
 			</a>
 			
-			<!-- Desktop Menu -->
-			<div class="hidden md:flex space-x-7">
-				<a href="#home" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Beranda</a>
-				<a href="#services" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Layanan</a>
-				<a href="#products" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Katalog</a>
-				<a href="#gallery" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Suasana Toko</a>
-				<a href="#partners" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Merek & Komunitas</a>
-				<a href="#contact" class="text-gray-600 hover:text-primary transition-all duration-200 font-medium hover:scale-105 hover:-translate-y-0.5 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-200 hover:after:w-full">Kontak</a>
+			<!-- Desktop Menu with Animated Sliding Underline Indicator -->
+			<div class="hidden md:flex items-center space-x-7 relative py-1" id="desktop-nav-menu">
+				<!-- Sliding Underline Indicator -->
+				<span
+					id="nav-indicator"
+					class="absolute bottom-0 h-0.5 bg-primary rounded-full transition-all duration-300 ease-out pointer-events-none opacity-0"
+				></span>
+
+				<a href="#home" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Beranda</a>
+				<a href="#services" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Layanan</a>
+				<a href="#products" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Katalog</a>
+				<a href="#gallery" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Suasana Toko</a>
+				<a href="#partners" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Merek & Komunitas</a>
+				<a href="#contact" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Kontak</a>
 			</div>
 
 			<!-- Mobile Actions (Direct WhatsApp + Hamburger) -->
@@ -105,7 +111,7 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 		}
 	});
 
-	// Smooth Scroll & Auto-Close Mobile Menu
+	// Smooth Scroll with Navbar Offset & Auto-Close Mobile Menu
 	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 		anchor.addEventListener('click', function (e) {
 			const href = this.getAttribute('href');
@@ -114,9 +120,11 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 			const target = document.querySelector(href);
 			if (target) {
 				e.preventDefault();
-				target.scrollIntoView({
-					behavior: 'smooth',
-					block: 'start'
+				const navHeight = 64;
+				const targetTop = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+				window.scrollTo({
+					top: targetTop,
+					behavior: 'smooth'
 				});
 				
 				// Close mobile menu
@@ -125,6 +133,10 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 				if (icon) {
 					icon.className = 'fas fa-bars text-lg';
 				}
+
+				// Immediately trigger active indicator to target section
+				const targetId = href.replace('#', '');
+				setActiveSection(targetId);
 			}
 		});
 	});
@@ -140,4 +152,152 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 			navbar?.classList.replace('bg-white', 'bg-white/95');
 		}
 	}, { passive: true });
+
+	// === ACTIVE SECTION SCROLLSPY & ANIMATED INDICATOR ===
+	const sectionIds = ['home', 'services', 'products', 'gallery', 'partners', 'contact'];
+	const sections = sectionIds
+		.map(id => document.getElementById(id))
+		.filter((el): el is HTMLElement => el !== null);
+
+	const desktopNavMenu = document.getElementById('desktop-nav-menu');
+	const navIndicator = document.getElementById('nav-indicator');
+	const desktopLinks = document.querySelectorAll<HTMLAnchorElement>('.desktop-nav-link');
+	const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link');
+
+	let currentActiveId = 'home';
+	let isHovering = false;
+
+	function moveIndicatorTo(link: HTMLElement | null) {
+		if (!link || !navIndicator || !desktopNavMenu) return;
+		const containerRect = desktopNavMenu.getBoundingClientRect();
+		const linkRect = link.getBoundingClientRect();
+
+		const left = linkRect.left - containerRect.left;
+		const width = linkRect.width;
+
+		navIndicator.style.left = `${left}px`;
+		navIndicator.style.width = `${width}px`;
+		navIndicator.style.opacity = '1';
+	}
+
+	function setActiveSection(id: string) {
+		currentActiveId = id;
+
+		let activeDesktopLink: HTMLElement | null = null;
+		desktopLinks.forEach(link => {
+			const href = link.getAttribute('href');
+			if (href === `#${id}`) {
+				link.classList.add('text-primary', 'font-semibold');
+				link.classList.remove('text-gray-600');
+				activeDesktopLink = link;
+			} else {
+				link.classList.remove('text-primary', 'font-semibold');
+				link.classList.add('text-gray-600');
+			}
+		});
+
+		mobileLinks.forEach(link => {
+			const href = link.getAttribute('href');
+			if (href === `#${id}`) {
+				link.classList.add('text-primary', 'bg-[#A3EBB1]/20', 'font-bold', 'border-l-4', 'border-primary');
+				link.classList.remove('text-gray-700');
+			} else {
+				link.classList.remove('text-primary', 'bg-[#A3EBB1]/20', 'font-bold', 'border-l-4', 'border-primary');
+				link.classList.add('text-gray-700');
+			}
+		});
+
+		if (!isHovering && activeDesktopLink) {
+			moveIndicatorTo(activeDesktopLink);
+		}
+	}
+
+	// Hover interactions for desktop nav
+	desktopLinks.forEach(link => {
+		link.addEventListener('mouseenter', () => {
+			isHovering = true;
+			moveIndicatorTo(link);
+		});
+	});
+
+	desktopNavMenu?.addEventListener('mouseleave', () => {
+		isHovering = false;
+		const activeLink = document.querySelector<HTMLElement>(`.desktop-nav-link[href="#${currentActiveId}"]`);
+		if (activeLink) {
+			moveIndicatorTo(activeLink);
+		}
+	});
+
+	// Scroll spy with throttling
+	let scrollTicking = false;
+	function onScroll() {
+		if (scrollTicking) return;
+		scrollTicking = true;
+		requestAnimationFrame(() => {
+			const scrollY = window.scrollY;
+			const windowHeight = window.innerHeight;
+			const docHeight = document.documentElement.scrollHeight;
+
+			// If at bottom of the page, activate the last section (Contact)
+			if (scrollY + windowHeight >= docHeight - 80) {
+				const lastSection = sections[sections.length - 1];
+				if (lastSection) {
+					setActiveSection(lastSection.id);
+				}
+				scrollTicking = false;
+				return;
+			}
+
+			// Top of the page
+			if (scrollY < 100) {
+				setActiveSection('home');
+				scrollTicking = false;
+				return;
+			}
+
+			// Check which section is currently active
+			const offsetBuffer = 140; // navbar height (64px) + comfortable offset
+			let activeId = sections[0]?.id || 'home';
+
+			for (let i = 0; i < sections.length; i++) {
+				const sec = sections[i];
+				if (sec.offsetTop - offsetBuffer <= scrollY) {
+					activeId = sec.id;
+				} else {
+					break;
+				}
+			}
+
+			setActiveSection(activeId);
+			scrollTicking = false;
+		});
+	}
+
+	window.addEventListener('scroll', onScroll, { passive: true });
+
+	// Resize handler
+	window.addEventListener('resize', () => {
+		const activeLink = document.querySelector<HTMLElement>(`.desktop-nav-link[href="#${currentActiveId}"]`);
+		if (activeLink) {
+			moveIndicatorTo(activeLink);
+		}
+	});
+
+	// Initial positioning once DOM and layout ready
+	function initIndicator() {
+		onScroll();
+		const activeLink = document.querySelector<HTMLElement>(`.desktop-nav-link[href="#${currentActiveId}"]`);
+		if (activeLink) {
+			moveIndicatorTo(activeLink);
+		}
+	}
+
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', initIndicator);
+	} else {
+		initIndicator();
+	}
+	// Fallback after fonts/styles load
+	window.addEventListener('load', initIndicator);
+	setTimeout(initIndicator, 200);
 </script>
