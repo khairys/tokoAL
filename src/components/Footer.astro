@@ -1,29 +1,38 @@
 ---
 // Footer Component (Clean, Unified & Anti-Slop)
-import logoNavbar from '../assets/branding/Logo navbar.png';
+import logoNavbar from "../assets/branding/Logo navbar.png";
 ---
 
-<footer class="bg-gray-50/80 text-gray-600 border-t border-gray-200/70 relative">
+<footer
+    class="bg-gray-50/80 text-gray-600 border-t border-gray-200/70 relative"
+>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-        
         <!-- Main Footer Row -->
-        <div class="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-gray-200/60">
-            
+        <div
+            class="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-gray-200/60"
+        >
             <!-- Brand & Tagline Singkat -->
-            <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-                <a href="#home" class="inline-flex items-center gap-2.5 group transition-transform duration-200 active:scale-95">
-                    <img 
-                        src={logoNavbar.src} 
-                        alt="Logo Toko AL" 
-                        class="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105" 
+            <div
+                class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left"
+            >
+                <a
+                    href="#home"
+                    class="inline-flex items-center gap-2.5 group transition-transform duration-200 active:scale-95"
+                >
+                    <img
+                        src={logoNavbar.src}
+                        alt="Logo Toko AL"
+                        class="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
                     />
-                    <span class="font-extrabold text-xl tracking-tight text-gray-900 group-hover:text-primary transition-colors">
+                    <span
+                        class="font-extrabold text-xl tracking-tight text-gray-900 group-hover:text-primary transition-colors"
+                    >
                         Toko AL
                     </span>
                 </a>
                 <span class="hidden sm:inline text-gray-300">|</span>
                 <p class="text-xs sm:text-sm text-gray-500 font-medium">
-                    Toko Sepeda & Bengkel Servis di Cikande Permai, Serang
+                    Toko Sepeda & Servis di Cikande Permai, Serang
                 </p>
             </div>
 
@@ -80,27 +89,42 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
                     <i class="fab fa-whatsapp text-sm"></i>
                 </a>
             </div>
-
         </div>
 
         <!-- Navigation & Bottom Info -->
-        <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500">
-            
+        <div
+            class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500"
+        >
             <!-- Quick Links Ringkas -->
-            <nav class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 font-medium">
-                <a href="#home" class="hover:text-primary transition-colors">Beranda</a>
-                <a href="#services" class="hover:text-primary transition-colors">Layanan</a>
-                <a href="#products" class="hover:text-primary transition-colors">Katalog</a>
-                <a href="#gallery" class="hover:text-primary transition-colors">Suasana Toko</a>
-                <a href="#partners" class="hover:text-primary transition-colors">Merek & Komunitas</a>
-                <a href="#contact" class="hover:text-primary transition-colors">Kontak</a>
+            <nav
+                class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 font-medium"
+            >
+                <a href="#home" class="hover:text-primary transition-colors"
+                    >Beranda</a
+                >
+                <a href="#services" class="hover:text-primary transition-colors"
+                    >Layanan</a
+                >
+                <a href="#products" class="hover:text-primary transition-colors"
+                    >Katalog</a
+                >
+                <a href="#gallery" class="hover:text-primary transition-colors"
+                    >Suasana Toko</a
+                >
+                <a href="#partners" class="hover:text-primary transition-colors"
+                    >Merek & Komunitas</a
+                >
+                <a href="#contact" class="hover:text-primary transition-colors"
+                    >Kontak</a
+                >
             </nav>
 
             <!-- Copyright -->
             <p>
-                &copy; {new Date().getFullYear()} <strong class="font-semibold text-gray-700">Toko AL</strong>. Hak Cipta Dilindungi.
+                &copy; {new Date().getFullYear()}
+                <strong class="font-semibold text-gray-700">Toko AL</strong>.
+                Hak Cipta Dilindungi.
             </p>
         </div>
-
     </div>
 </footer>
