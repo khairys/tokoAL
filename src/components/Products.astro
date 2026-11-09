@@ -74,22 +74,22 @@ const products = [
 	},
 	{
 		title: "Sepeda Anak",
-		category: "Keluarga & Balita",
+		category: "Anak 2–8 Tahun",
 		fit: "Untuk usia 2 – 8 tahun, bisa dicoba dan disetel di toko.",
 		image: productAnak,
 		link: "https://wa.me/p/36929128000067317/6281996535525",
 		specs: [
 			"Usia: 2 Tahun - 8 Tahun",
-			"Varian: Roda Tiga, Roda Bantu, & Push Bike",
+			"Varian: Roda Bantu",
 			"Frame Kokoh, Aman, & Ergonomis",
 			"Pilihan Warna & Karakter Kartun Ceria",
 			"Bisa Dicoba & Disetel Langsung di Toko",
 		],
 	},
 	{
-		title: "Mainan Anak",
-		category: "",
-		fit: "Mobil/motor mainan aki dan edukatif untuk menemani waktu bermain.",
+		title: "Push Bike & Roda Tiga",
+		category: "Anak 1–5 Tahun",
+		fit: "Sepeda dorong dan roda tiga untuk si kecil, usia 1–5 tahun.",
 		image: productMainan,
 		link: "https://wa.me/p/5605253369562505/6281996535525",
 		specs: [
@@ -138,7 +138,7 @@ const groupOf: Record<string, string> = {
 	"Sepeda BMX": "sepeda",
 	"Sepeda Lipat": "sepeda",
 	"Sepeda Anak": "anak",
-	"Mainan Anak": "anak",
+	"Push Bike & Roda Tiga": "anak",
 	"Sparepart Sepeda": "part",
 	"Aksesoris Sepeda": "part",
 };
@@ -202,21 +202,18 @@ const orderedProducts = [
 							</details>
 						)}
 						<div class="product__cta">
+							{/* One button for every card: the product's WhatsApp catalog page when it has one,
+							    otherwise a chat with the product name already typed in. Both open WhatsApp. */}
 							<a
-								href={WA.product(p.title)}
+								href={p.link !== catalogUrl ? p.link : WA.product(p.title)}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="btn btn--ghost"
-								aria-label={`Tanya ${p.title} di WhatsApp`}
+								class="btn btn--primary"
+								aria-label={`Lihat ${p.title} di WhatsApp`}
 							>
 								<Icon name="brands:whatsapp" />
-								<span>Tanya di WhatsApp</span>
+								<span>Lihat di WhatsApp</span>
 							</a>
-							{p.link !== catalogUrl && (
-								<a href={p.link} target="_blank" rel="noopener noreferrer" class="product__catalog">
-									Lihat di katalog WhatsApp
-								</a>
-							)}
 						</div>
 					</div>
 				</article>
@@ -225,7 +222,7 @@ const orderedProducts = [
 
 		<div class="catalog-more">
 			<a href={catalogUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-				Lihat Lebih Banyak
+				Lihat Katalog Lengkap
 			</a>
 		</div>
 
@@ -234,14 +231,14 @@ const orderedProducts = [
 				<h3>Sudah Siap Berbelanja?</h3>
 				<p>Temukan produk Toko AL melalui WhatsApp, Shopee, atau Tokopedia.</p>
 				<div class="shop__buttons">
-					<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--wa">
+					<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn shop__btn shop__btn--wa">
 						<Icon name="brands:whatsapp" /><span>WhatsApp</span>
 					</a>
-					<a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="btn">
-						<Icon name="solid:bag-shopping" class="icon--shopee" /><span>Shopee</span>
+					<a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="btn shop__btn shop__btn--shopee">
+						<Icon name="simple:shopee" /><span>Shopee</span>
 					</a>
-					<a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="btn">
-						<Icon name="solid:store" class="icon--tokopedia" /><span>Tokopedia</span>
+					<a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="btn shop__btn shop__btn--tokopedia">
+						<Icon name="solid:store" /><span>Tokopedia</span>
 					</a>
 				</div>
 				<p class="shop__badges">
@@ -258,11 +255,20 @@ const orderedProducts = [
 	const chips = document.querySelectorAll<HTMLButtonElement>(".chip[data-filter]");
 	const cards = catalog ? [...catalog.querySelectorAll<HTMLElement>(".product")] : [];
 	const filters = document.querySelector<HTMLElement>(".filters");
+	const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 	function filterCatalog(group: string) {
 		chips.forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.filter === group)));
+		let n = 0;
 		cards.forEach((card) => {
 			card.hidden = group !== "all" && card.dataset.group !== group;
+			// The cards that stay settle into place one after another
+			card.classList.remove("is-pop");
+			if (!card.hidden && !reduced) {
+				void card.offsetWidth;
+				card.style.setProperty("--n", String(n++));
+				card.classList.add("is-pop");
+			}
 		});
 		// On mobile the catalog is a swipe row: start the filtered list from the first card
 		catalog?.scrollTo({ left: 0, behavior: "instant" });

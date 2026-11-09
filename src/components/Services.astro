@@ -1,7 +1,7 @@
 ---
 import Icon from "./Icon.astro";
 import { Image } from "astro:assets";
-import kasirImg from "../assets/gallery/kasirAL.png";
+import serviceImg from "../assets/gallery/Custom.png";
 import Eyebrow from "./Eyebrow.astro";
 
 import { WA } from "../lib/site";
@@ -32,12 +32,12 @@ const services = [
 					</a>
 				</div>
 				<div class="service__photo" data-reveal="wipe">
-					<div class="service__photo-cut">
+					<div class="service__photo-cut" data-parallax="0.05">
 						<Image
-							src={kasirImg}
-							widths={[400, 490]}
+							src={serviceImg}
+							widths={[480, 800, 1000]}
 							sizes="(min-width: 900px) 460px, 92vw"
-							alt="Area kasir dan konsultasi di Toko AL"
+							alt="Mekanik Toko AL merakit sepeda"
 						/>
 					</div>
 				</div>

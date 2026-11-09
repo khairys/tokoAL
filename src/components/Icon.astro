@@ -2,10 +2,12 @@
 // Inline SVG icon from the Font Awesome 6 sets on Iconify.
 // Resolved at build time, so only the icons actually used reach the page
 // (instead of the full Font Awesome stylesheet and three web fonts).
+// simple: Simple Icons brand logos, e.g. <Icon name="simple:shopee" />
 // Usage: <Icon name="solid:star" />, <Icon name="brands:whatsapp" />, <Icon name="regular:clock" />
 import solid from "@iconify-json/fa6-solid/icons.json";
 import brands from "@iconify-json/fa6-brands/icons.json";
 import regular from "@iconify-json/fa6-regular/icons.json";
+import simple from "@iconify-json/simple-icons/icons.json";
 
 interface IconSet {
 	width?: number;
@@ -20,7 +22,7 @@ interface Props {
 	label?: string;
 }
 
-const sets: Record<string, IconSet> = { solid, brands, regular };
+const sets: Record<string, IconSet> = { solid, brands, regular, simple };
 const { name, class: className, label } = Astro.props;
 const [setName, iconName] = name.split(":");
 const set = sets[setName];

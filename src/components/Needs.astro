@@ -9,9 +9,9 @@ import Eyebrow from "./Eyebrow.astro";
 const needs = [
 	{
 		icon: "bicycle",
-		title: "Sepeda & Mainan Anak",
-		filter: "anak",
-		text: "Pilihan unit untuk dewasa, remaja, hingga si kecil. Bisa dicoba langsung di toko.",
+		title: "Sepeda Dewasa & Anak",
+		filter: "all",
+		text: "Pilihan sepeda untuk dewasa, remaja, hingga si kecil, juga mainan anak.",
 		href: "#products",
 		link: "Lihat katalog",
 		image: imgSepeda,
@@ -20,7 +20,7 @@ const needs = [
 		icon: "gears",
 		title: "Sparepart & Aksesoris",
 		filter: "part",
-		text: "Untuk perawatan, penggantian, dan kebutuhan gowes harian. Bisa dipasang langsung di toko.",
+		text: "Untuk perawatan, penggantian, dan kebutuhan gowes harian.",
 		href: "#products",
 		link: "Lihat katalog",
 		image: imgSparepart,
@@ -52,7 +52,7 @@ const needs = [
 			{needs.map((n, i) => (
 				<a class="need" href={n.href} data-catalog-filter={n.filter} style={`--i: ${i}`}>
 					<div class="need__media">
-						<Image src={n.image} widths={[400, 640]} sizes="(min-width: 900px) 380px, 92vw" alt="" style={n.focus ? `object-position: ${n.focus}` : undefined} />
+						<Image src={n.image} widths={[400, 760, 1000]} sizes="(min-width: 900px) 380px, 92vw" alt="" style={n.focus ? `object-position: ${n.focus}` : undefined} />
 					</div>
 					<div class="need__body">
 						<span class="need__icon" aria-hidden="true"><Icon name={`solid:${n.icon}`} /></span>

@@ -1,11 +1,13 @@
 ---
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import imgEtalase from "../assets/gallery/etalaseDepan.png";
 import imgKasir from "../assets/gallery/kasirAL.png";
 import imgViewBelakang from "../assets/gallery/viewbelakang.png";
 import imgDepanRumah from "../assets/gallery/depan rumah.png";
 import imgPelanggan from "../assets/gallery/Pelanggan.png";
 import imgMobilAnak from "../assets/gallery/MobilANAK.png";
+import imgSepedaAnak from "../assets/gallery/mainanAnak.png";
+import imgCustom from "../assets/gallery/Custom.png";
 import Eyebrow from "./Eyebrow.astro";
 import Icon from "./Icon.astro";
 import { SOCIALS } from "../lib/site";
@@ -26,8 +28,8 @@ const photos = [
 		src: imgViewBelakang,
 		alt: "Display Sepeda Toko AL",
 		tag: "Display Sepeda",
-		title: "Koleksi Unit Sepeda Lengkap",
-		desc: "Pilihan sepeda MTB, lipat, roadbike, dan sepeda anak siap Anda coba",
+		title: "Koleksi Sepeda Lengkap",
+		desc: "Pilihan sepeda MTB, lipat, roadbike, dan sepeda anak",
 	},
 	{
 		src: imgEtalase,
@@ -51,20 +53,39 @@ const photos = [
 		desc: "Selalu senang membantu goweser mendapatkan sepeda impian",
 	},
 	{
-		src: imgMobilAnak,
-		alt: "Koleksi Sepeda dan Mainan Anak",
+		src: imgSepedaAnak,
+		alt: "Koleksi sepeda anak, roda tiga, dan push bike di Toko AL",
 		tag: "Koleksi Anak",
-		title: "Sepeda & Mainan Anak",
+		title: "Sepeda Anak",
 		desc: "Pilihan sepeda roda tiga, push bike, dan mainan seru",
 	},
+	{
+		src: imgCustom,
+		alt: "Mekanik Toko AL merakit sepeda",
+		tag: "Servis & Rakit",
+		title: "Rakit & Setel Sepeda",
+		desc: "Tune-up, setting, hingga rakit sepeda custom sesuai budget",
+	},
+	{
+		src: imgMobilAnak,
+		alt: "Mobil dan motor mainan anak di Toko AL",
+		tag: "Mainan Anak",
+		title: "Mobil & Motor Mainan",
+		desc: "Mobil dan motor mainan aki untuk si kecil",
+	},
 ];
+
+// Larger copy of each photo for the full-screen viewer
+const full = await Promise.all(
+	photos.map((p) => getImage({ src: p.src, width: Math.min(1600, p.src.width), format: "webp" })),
+);
 ---
 
 <section id="gallery" class="section section--paper" aria-labelledby="gallery-title">
 	<div class="container">
 		<div class="section-head" data-reveal="up">
 			<Eyebrow label="Suasana Toko" />
-			<h2 id="gallery-title">Suasana Nyata Toko</h2>
+			<h2 id="gallery-title">Intip Suasana Toko AL</h2>
 		</div>
 
 		<div class="bento" data-reveal="stagger">
@@ -74,34 +95,44 @@ const photos = [
 						<Image
 							src={p.src}
 							widths={[480, 800, 1200]}
-							sizes={i === 0 || i === 5 ? "(min-width: 1024px) 600px, 92vw" : i === 1 || i === 4 ? "(min-width: 1024px) 600px, (min-width: 640px) 46vw, 92vw" : "(min-width: 1024px) 285px, (min-width: 640px) 46vw, 92vw"}
+							sizes={i === 0 || i === photos.length - 1 ? "(min-width: 1024px) 600px, 92vw" : i === 2 || i === 3 ? "(min-width: 1024px) 285px, (min-width: 640px) 46vw, 92vw" : "(min-width: 1024px) 600px, (min-width: 640px) 46vw, 92vw"}
 							alt={p.alt}
 						/>
+						<span class="tile__zoom" aria-hidden="true"><Icon name="solid:expand" /></span>
 					</div>
 					<figcaption>
 						<p class="tile__tag">{p.tag}</p>
 						<h3>{p.title}</h3>
 						<p class="tile__desc">{p.desc}</p>
 					</figcaption>
+					<button
+						class="tile__open"
+						type="button"
+						data-index={i}
+						data-full={full[i].src}
+						aria-label={`Perbesar foto: ${p.title}`}
+						hidden
+					></button>
 				</figure>
 			))}
 		</div>
 
 		<div class="follow" data-reveal="up">
+			<div class="stripes follow__stripes" aria-hidden="true"><span></span><span></span><span></span></div>
 			<div class="follow__text">
 				<h3>Ikuti Kabar Terbaru Toko AL</h3>
 				<p>Produk baru, kegiatan toko, dan info lainnya kami bagikan di sosial media.</p>
 			</div>
 			<div class="follow__links">
 				{primary.map((s) => (
-					<a class="btn btn--primary follow__btn" href={s.href} target="_blank" rel="noopener noreferrer">
+					<a class={`btn follow__btn follow__btn--${s.name.toLowerCase()}`} href={s.href} target="_blank" rel="noopener noreferrer">
 						<Icon name={s.icon} />
 						<span>{s.name} <span class="follow__handle">{s.handle}</span></span>
 					</a>
 				))}
 				<div class="follow__more">
 					{others.map((s) => (
-						<a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} Toko AL`}>
+						<a class={`is-${s.name.toLowerCase()}`} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} Toko AL`}>
 							<Icon name={s.icon} />
 						</a>
 					))}
@@ -109,4 +140,84 @@ const photos = [
 			</div>
 		</div>
 	</div>
+
+	<!-- Full-screen photo viewer. Only offered once the script is running. -->
+	<dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-title">
+		<div class="lightbox__bar">
+			<span id="lightbox-count" aria-live="polite"></span>
+			<button class="lightbox__btn" type="button" data-close aria-label="Tutup foto">
+				<Icon name="solid:xmark" />
+			</button>
+		</div>
+		<div class="lightbox__stage">
+			<img class="lightbox__img" id="lightbox-img" alt="" />
+			<button class="lightbox__btn lightbox__nav lightbox__nav--prev" type="button" data-step="-1" aria-label="Foto sebelumnya">
+				<Icon name="solid:chevron-left" />
+			</button>
+			<button class="lightbox__btn lightbox__nav lightbox__nav--next" type="button" data-step="1" aria-label="Foto berikutnya">
+				<Icon name="solid:chevron-right" />
+			</button>
+		</div>
+		<div class="lightbox__caption">
+			<h3 id="lightbox-title"></h3>
+			<p id="lightbox-desc"></p>
+		</div>
+	</dialog>
 </section>
+
+<script>
+	const dialog = document.getElementById("lightbox") as HTMLDialogElement | null;
+	const img = document.getElementById("lightbox-img") as HTMLImageElement | null;
+	const title = document.getElementById("lightbox-title");
+	const desc = document.getElementById("lightbox-desc");
+	const count = document.getElementById("lightbox-count");
+	const openers = [...document.querySelectorAll<HTMLButtonElement>(".tile__open")];
+	let current = 0;
+	let returnTo: HTMLElement | null = null;
+
+	function show(i: number) {
+		if (!img) return;
+		current = (i + openers.length) % openers.length;
+		const tile = openers[current].closest(".tile");
+		const thumb = tile?.querySelector("img");
+		img.src = openers[current].dataset.full ?? "";
+		img.alt = thumb?.alt ?? "";
+		if (title) title.textContent = tile?.querySelector("h3")?.textContent ?? "";
+		if (desc) desc.textContent = tile?.querySelector(".tile__desc")?.textContent ?? "";
+		if (count) count.textContent = `${current + 1} / ${openers.length}`;
+		img.classList.remove("is-swap");
+		void img.offsetWidth;
+		img.classList.add("is-swap");
+	}
+
+	if (dialog && typeof dialog.showModal === "function") {
+		openers.forEach((b) => {
+			b.hidden = false;
+			b.addEventListener("click", () => {
+				returnTo = b;
+				show(Number(b.dataset.index));
+				dialog.showModal();
+			});
+		});
+		dialog.querySelectorAll<HTMLButtonElement>("[data-step]").forEach((b) =>
+			b.addEventListener("click", () => show(current + Number(b.dataset.step))),
+		);
+		dialog.querySelector("[data-close]")?.addEventListener("click", () => dialog.close());
+		// Tap on the dark area around the photo closes it
+		dialog.addEventListener("click", (e) => {
+			if (e.target === dialog || (e.target as Element).classList.contains("lightbox__stage")) dialog.close();
+		});
+		dialog.addEventListener("keydown", (e) => {
+			if (e.key === "ArrowRight") show(current + 1);
+			if (e.key === "ArrowLeft") show(current - 1);
+		});
+		dialog.addEventListener("close", () => returnTo?.focus());
+		// Swipe left / right on phones
+		let startX = 0;
+		dialog.addEventListener("touchstart", (e) => (startX = e.touches[0].clientX), { passive: true });
+		dialog.addEventListener("touchend", (e) => {
+			const dx = e.changedTouches[0].clientX - startX;
+			if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+		});
+	}
+</script>
