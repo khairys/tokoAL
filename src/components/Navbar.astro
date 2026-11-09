@@ -1,8 +1,11 @@
 ---
+import Icon from "./Icon.astro";
 import { Image } from "astro:assets";
 import logoNavbar from "../assets/branding/Logo navbar.png";
 
-const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL";
+import { WA, SOCIALS } from "../lib/site";
+
+const waUrl = WA.general;
 
 // Order follows the page. Desktop and mobile labels are the existing ones.
 const links = [
@@ -18,7 +21,7 @@ const links = [
 <header class="nav" id="navbar">
 	<div class="container nav__bar">
 		<a href="#home" class="nav__brand">
-			<Image src={logoNavbar} width={160} alt="Logo Toko AL" />
+			<Image src={logoNavbar} width={160} alt="Logo Toko AL" loading="eager" />
 			<span>Toko AL</span>
 		</a>
 
@@ -30,11 +33,12 @@ const links = [
 
 		<div class="nav__actions">
 			<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary nav__wa" aria-label="Chat WhatsApp">
-				<i class="fab fa-whatsapp" aria-hidden="true"></i>
+				<Icon name="brands:whatsapp" />
 				<span class="nav__wa-label">Chat WhatsApp</span>
 			</a>
-			<button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Buka menu navigasi">
-				<i class="fas fa-bars" aria-hidden="true"></i>
+			<button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Buka menu navigasi" hidden>
+				<Icon name="solid:bars" class="nav__icon-open" />
+				<Icon name="solid:xmark" class="nav__icon-close" />
 			</button>
 		</div>
 	</div>
@@ -43,19 +47,32 @@ const links = [
 		{links.map((l) => (
 			<a href={`#${l.id}`} class="nav__mlink" data-spy={l.id}>
 				<span>{l.mobile}</span>
-				<i class="fas fa-chevron-right" aria-hidden="true"></i>
+				<Icon name="solid:chevron-right" />
 			</a>
 		))}
 		<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
-			<i class="fab fa-whatsapp" aria-hidden="true"></i>
+			<Icon name="brands:whatsapp" />
 			<span>Chat WhatsApp Sekarang</span>
 		</a>
+		<div class="nav__socials">
+			{SOCIALS.map((s) => (
+				<a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} Toko AL`}>
+					<Icon name={s.icon} />
+				</a>
+			))}
+		</div>
 	</div>
 </header>
 
+<noscript>
+	<nav class="nav__fallback container" aria-label="Navigasi utama">
+		{links.map((l) => <a href={`#${l.id}`}>{l.mobile}</a>)}
+	</nav>
+</noscript>
+
 <script>
 	const nav = document.getElementById("navbar");
-	const toggle = document.getElementById("nav-toggle");
+	const toggle = document.getElementById("nav-toggle") as HTMLButtonElement | null;
 	const panel = document.getElementById("nav-panel");
 
 	function setMenu(open: boolean) {
@@ -63,14 +80,29 @@ const links = [
 		panel.hidden = !open;
 		toggle.setAttribute("aria-expanded", String(open));
 		toggle.setAttribute("aria-label", open ? "Tutup menu navigasi" : "Buka menu navigasi");
-		const icon = toggle.querySelector("i");
-		if (icon) icon.className = open ? "fas fa-xmark" : "fas fa-bars";
 	}
 
+	if (toggle) toggle.hidden = false;
 	toggle?.addEventListener("click", () => setMenu(panel?.hidden ?? true));
-	panel?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+	panel?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => {
+		setMenu(false);
+		if (a.hash) {
+			const target = document.getElementById(a.hash.slice(1));
+			target?.setAttribute("tabindex", "-1");
+			target?.focus({ preventScroll: true });
+		} else toggle?.focus({ preventScroll: true });
+	}));
 	document.addEventListener("keydown", (e) => {
-		if (e.key === "Escape") setMenu(false);
+		if (e.key === "Escape" && panel && !panel.hidden) {
+			setMenu(false);
+			toggle?.focus({ preventScroll: true });
+		}
+	});
+	document.addEventListener("click", (e) => {
+		if (e.target instanceof Node && !nav?.contains(e.target)) setMenu(false);
+	});
+	nav?.addEventListener("focusout", (e) => {
+		if (e.relatedTarget instanceof Node && !nav.contains(e.relatedTarget)) setMenu(false);
 	});
 	window.matchMedia("(min-width: 1024px)").addEventListener("change", (e) => {
 		if (e.matches) setMenu(false);

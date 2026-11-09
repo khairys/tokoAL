@@ -1,4 +1,7 @@
 ---
+import Icon from "./Icon.astro";
+import Eyebrow from "./Eyebrow.astro";
+
 const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+Cikande+Permai";
 
 // Public Google Maps reviews, kept in the customers' original wording.
@@ -18,15 +21,16 @@ const reviews = [
 ];
 ---
 
-<section id="ulasan" class="section section--mint-soft" aria-labelledby="reviews-title">
-	<div class="container">
+<section id="ulasan" class="section section--cut section--mint-soft" aria-labelledby="reviews-title">
+	<div class="container reviews__grid">
 		<div class="reviews__head" data-reveal="up">
+			<Eyebrow label="Ulasan" />
 			<h2 id="reviews-title">Apa Kata Goweser?</h2>
 			<div class="rating">
-				<span class="rating__score" data-count="4.9" data-decimals="1">4,9</span>
+				<span class="rating__score">4,9</span>
 				<div class="rating__meta">
 					<span class="rating__stars" aria-hidden="true">
-						<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+						<Icon name="solid:star" /><Icon name="solid:star" /><Icon name="solid:star" /><Icon name="solid:star" /><Icon name="solid:star" />
 					</span>
 					<span class="rating__count">dari 203 ulasan di Google Maps</span>
 					<a class="text-link" href={mapsUrl} target="_blank" rel="noopener noreferrer">Lihat Semua Ulasan</a>
@@ -38,7 +42,13 @@ const reviews = [
 			{reviews.map((r, i) => (
 				<figure class="quote" style={`--i: ${i}`}>
 					<blockquote>{r.text}</blockquote>
-					<figcaption>{r.name}</figcaption>
+					<figcaption>
+						<span class="quote__avatar" aria-hidden="true">{r.name.charAt(0)}</span>
+						<span class="quote__who">
+							<span class="quote__name">{r.name}</span>
+							<span class="quote__src">Ulasan Google Maps</span>
+						</span>
+					</figcaption>
 				</figure>
 			))}
 		</div>

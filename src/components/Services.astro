@@ -1,33 +1,33 @@
 ---
+import Icon from "./Icon.astro";
 import { Image } from "astro:assets";
 import kasirImg from "../assets/gallery/kasirAL.png";
+import Eyebrow from "./Eyebrow.astro";
 
-const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL";
+import { WA } from "../lib/site";
+
+const waUrl = WA.service;
 
 const services = [
-	{ icon: "fa-gauge-high", text: "Tune-Up Berkala, Setting RD/FD, & Rem" },
-	{ icon: "fa-screwdriver-wrench", text: "Bongkar Pasang, Ganti Bearing, & Detailing" },
-	{ icon: "fa-bicycle", text: "Rakit Sepeda Custom Sesuai Budget" },
-	{ icon: "fa-comments", text: "Bisa konsultasi keluhan sepeda langsung di toko" },
+	{ icon: "gauge-high", text: "Tune-Up Berkala, Setting RD/FD, & Rem" },
+	{ icon: "screwdriver-wrench", text: "Bongkar Pasang, Ganti Bearing, & Detailing" },
+	{ icon: "bicycle", text: "Rakit Sepeda Custom Sesuai Budget" },
+	{ icon: "comments", text: "Bisa konsultasi keluhan sepeda langsung di toko" },
 ];
 
-const reasons = [
-	"Servis bisa ditinggal",
-	"Mekanik ramah dan enak diajak diskusi",
-	"Pemasangan dan setting cepat, bisa ditunggu",
-];
 ---
 
-<section id="services" class="section service" aria-labelledby="services-title">
+<section id="services" class="section section--cut service" aria-labelledby="services-title">
 	<div class="stripes service__stripes" aria-hidden="true"><span></span><span></span><span></span></div>
 	<div class="container">
 		<div class="service__grid">
 			<div class="service__intro">
 				<div data-reveal="up">
+					<Eyebrow label="Layanan" light />
 					<h2 id="services-title">Servis & Upgrade</h2>
 					<p>Tempat servis sepeda untuk perawatan rutin, perbaikan, hingga rakit custom.</p>
 					<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--light">
-						<i class="fab fa-whatsapp" aria-hidden="true"></i>
+						<Icon name="brands:whatsapp" />
 						<span>Konsultasi Servis via WhatsApp</span>
 					</a>
 				</div>
@@ -46,18 +46,12 @@ const reasons = [
 			<ul class="service__list" data-reveal="stagger">
 				{services.map((s, i) => (
 					<li style={`--i: ${i}`}>
-						<i class={`fas ${s.icon}`} aria-hidden="true"></i>
 						<span>{s.text}</span>
+						<span class="service__ico" aria-hidden="true"><Icon name={`solid:${s.icon}`} /></span>
 					</li>
 				))}
 			</ul>
 		</div>
 
-		<div class="service__why">
-			<h3>Kenapa Toko AL</h3>
-			<ul data-reveal="stagger">
-				{reasons.map((r, i) => <li style={`--i: ${i}`}>{r}</li>)}
-			</ul>
-		</div>
 	</div>
 </section>

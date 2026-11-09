@@ -1,0 +1,22 @@
+---
+// Phone and tablet only: chat, directions and call stay one thumb away.
+// Available from the first screen, including when JavaScript is unavailable.
+import Icon from "./Icon.astro";
+import { WA, DIRECTIONS_URL, TEL_URL } from "../lib/site";
+---
+
+<nav class="actionbar" id="actionbar" aria-label="Hubungi Toko AL">
+	<a href={WA.general} target="_blank" rel="noopener noreferrer" class="actionbar__btn actionbar__btn--wa">
+		<Icon name="brands:whatsapp" />
+		<span>WhatsApp</span>
+	</a>
+	<a href={DIRECTIONS_URL} target="_blank" rel="noopener noreferrer" class="actionbar__btn">
+		<Icon name="solid:diamond-turn-right" />
+		<span>Petunjuk Arah</span>
+	</a>
+	<a href={TEL_URL} class="actionbar__btn">
+		<Icon name="solid:phone" />
+		<span>Telepon</span>
+	</a>
+</nav>
+

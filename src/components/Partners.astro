@@ -1,4 +1,6 @@
 ---
+import Icon from "./Icon.astro";
+import { Image } from "astro:assets";
 import logoPacific from "../assets/partners/Pacific Bike Logo vector (_cdr).jpg";
 import logoElement from "../assets/partners/elementlogo.jpeg";
 import logoUnited from "../assets/partners/united logo.png";
@@ -7,6 +9,8 @@ import logoPmb from "../assets/partners/pmb logo.png";
 import logoKenda from "../assets/partners/kenda logo.jpg";
 import logoSwallow from "../assets/partners/swallow logo.png";
 import logoRevo from "../assets/partners/revo logo.jpg";
+import Eyebrow from "./Eyebrow.astro";
+import { wa } from "../lib/site";
 
 const brands = [
 	{ name: "Pacific Bike", logo: logoPacific },
@@ -26,16 +30,15 @@ const communities = [
 	{ name: "Ciruas Bike Sport", initials: "CBS" },
 ];
 
-const sponsorWaUrl =
-	"https://api.whatsapp.com/send?phone=6281996535525&text=" +
-	encodeURIComponent(
-		"Halo Toko AL! 👋 Saya ingin mengajukan kerjasama / sponsorship event untuk komunitas kami. Mohon informasi terkait prosedur dan persyaratannya. Terima kasih!",
-	);
+const sponsorWaUrl = wa(
+	"Halo Toko AL! 👋 Saya ingin mengajukan kerjasama / sponsorship event untuk komunitas kami. Mohon informasi terkait prosedur dan persyaratannya. Terima kasih!",
+);
 ---
 
 <section id="partners" class="section" aria-labelledby="brands-title">
 	<div class="container">
 		<div class="section-head" data-reveal="up">
+			<Eyebrow label="Merek & Komunitas" />
 			<h2 id="brands-title">Brand yang Tersedia di Toko AL</h2>
 			<p>Pilihan produk dari berbagai brand yang tersedia di Toko AL.</p>
 		</div>
@@ -48,10 +51,11 @@ const sponsorWaUrl =
 				<ul class="logos__group" aria-hidden={copy === 1 ? "true" : undefined}>
 					{brands.map((b) => (
 						<li class="brand">
-							<img
-								src={b.logo.src}
-								width={b.logo.width}
-								height={b.logo.height}
+							<Image
+								src={b.logo}
+								width={200}
+								widths={[160, 320]}
+								sizes="160px"
 								alt={copy === 0 ? `Logo ${b.name}` : ""}
 								loading="lazy"
 							/>
@@ -64,7 +68,6 @@ const sponsorWaUrl =
 
 	<div class="container">
 		<div class="community" data-reveal="up">
-			<div class="stripes community__stripes" aria-hidden="true"><span></span><span></span><span></span></div>
 			<div class="section-head">
 				<h2>Tumbuh Bersama Komunitas</h2>
 				<p>Kami mendukung dan berkolaborasi dengan komunitas serta kegiatan bersepeda di sekitar kami.</p>
@@ -82,7 +85,7 @@ const sponsorWaUrl =
 			<div class="sponsor">
 				<p>Punya kegiatan atau komunitas yang ingin berkolaborasi dengan kami?</p>
 				<a href={sponsorWaUrl} target="_blank" rel="noopener noreferrer" class="btn btn--light">
-					<i class="fab fa-whatsapp" aria-hidden="true"></i>
+					<Icon name="brands:whatsapp" />
 					<span>Ajukan Sponsorship</span>
 				</a>
 			</div>

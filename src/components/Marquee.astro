@@ -1,6 +1,10 @@
 ---
 // Running brand strip, styled after the green strip in the social media templates.
-// Decorative only: the tagline already appears as the page headline.
+// The text is decorative (the tagline is already the page headline), so screen readers skip it.
+// It runs only when motion is allowed, and the button stops it (WCAG 2.2.2: moving content
+// that lasts more than five seconds needs a way to pause it, hover alone is not enough).
+import Icon from "./Icon.astro";
+
 interface Props {
 	text?: string;
 }
@@ -8,17 +12,37 @@ const { text = "# Bersepeda Itu Mudah" } = Astro.props;
 const items = Array.from({ length: 6 }, () => text);
 ---
 
-<div class="marquee" aria-hidden="true">
-	<div class="marquee__track">
-		{[0, 1].map(() => (
-			<div class="marquee__group">
-				{items.map((t) => (
-					<span class="marquee__item">
-						<span class="marquee__mark"><i></i><i></i><i></i></span>
-						{t}
-					</span>
-				))}
-			</div>
-		))}
+<div class="marquee" data-marquee>
+	<div class="marquee__viewport" aria-hidden="true">
+		<div class="marquee__track">
+			{[0, 1].map(() => (
+				<div class="marquee__group">
+					{items.map((t) => (
+						<span class="marquee__item">
+							<span class="marquee__mark"><i></i><i></i><i></i></span>
+							{t}
+						</span>
+					))}
+				</div>
+			))}
+		</div>
 	</div>
+	<button class="marquee__toggle" type="button" aria-pressed="false" aria-label="Hentikan tulisan berjalan" hidden>
+		<Icon name="solid:pause" class="marquee__icon-pause" />
+		<Icon name="solid:play" class="marquee__icon-play" />
+	</button>
 </div>
+
+<script>
+	document.querySelectorAll<HTMLElement>("[data-marquee]").forEach((strip) => {
+		const button = strip.querySelector<HTMLButtonElement>(".marquee__toggle");
+		// Only offer the button when the strip actually moves
+		if (!button || !document.documentElement.classList.contains("js")) return;
+		button.hidden = false;
+		button.addEventListener("click", () => {
+			const paused = strip.classList.toggle("is-paused");
+			button.setAttribute("aria-pressed", String(paused));
+			button.setAttribute("aria-label", paused ? "Jalankan tulisan berjalan" : "Hentikan tulisan berjalan");
+		});
+	});
+</script>

@@ -1,41 +1,41 @@
-// Scroll reveals and number count-up.
-// The inline script in Layout.astro adds `js` to <html> only when the visitor
-// has not asked for reduced motion. Without it, nothing here runs and every
-// element stays visible.
+// Content stays readable unless the reveal observer is ready. Store facts such
+// as ratings are rendered immediately and never animated through other values.
 const root = document.documentElement;
+const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-function countUp(el: HTMLElement) {
-	const target = parseFloat(el.dataset.count ?? "0");
-	const decimals = Number(el.dataset.decimals ?? 0);
-	const format = (v: number) => v.toFixed(decimals).replace(".", ",");
-	const duration = 1200;
-	const start = performance.now();
-
-	function step(now: number) {
-		const p = Math.min(1, (now - start) / duration);
-		const eased = 1 - Math.pow(1 - p, 3);
-		el.textContent = format(target * eased);
-		if (p < 1) requestAnimationFrame(step);
-	}
-	requestAnimationFrame(step);
-}
-
-if (root.classList.contains("js") && "IntersectionObserver" in window) {
-	// Hiding starts only now, so a failed script never leaves content invisible
-	root.classList.add("motion");
-
+if (!preference.matches && 'IntersectionObserver' in window) {
 	const io = new IntersectionObserver(
 		(entries) => {
 			for (const entry of entries) {
 				if (!entry.isIntersecting) continue;
-				const el = entry.target as HTMLElement;
-				el.classList.add("is-in");
-				if (el.dataset.count) countUp(el);
-				io.unobserve(el);
+				entry.target.classList.add('is-in');
+				io.unobserve(entry.target);
 			}
 		},
-		{ threshold: 0.12, rootMargin: "0px 0px -6% 0px" },
+		{ threshold: 0, rootMargin: '0px 0px -24px 0px' },
 	);
+	root.classList.add('motion');
+	document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 
-	document.querySelectorAll("[data-reveal], [data-count]").forEach((el) => io.observe(el));
+	// Keyboard focus may reach a section before its scroll reveal fires.
+	document.addEventListener('focusin', (event) => {
+		if (!(event.target instanceof Element)) return;
+		let el: Element | null = event.target;
+		while (el) {
+			if (el.matches('[data-reveal]')) {
+				el.classList.add('is-in');
+				io.unobserve(el);
+			}
+			el = el.parentElement;
+		}
+	});
+
+	// Cancel existing hidden states when the preference changes. Do not replay
+	// the page if motion is subsequently enabled again.
+	preference.addEventListener('change', (event) => {
+		if (!event.matches) return;
+		io.disconnect();
+		root.classList.remove('motion', 'js');
+		document.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-in'));
+	});
 }

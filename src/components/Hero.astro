@@ -1,9 +1,11 @@
 ---
+import Icon from "./Icon.astro";
 import { Image } from "astro:assets";
 import heroImg from "../assets/gallery/Pelanggan.png";
 
-const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo";
-const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+Cikande+Permai";
+import { WA, MAPS_URL as mapsUrl } from "../lib/site";
+
+const waUrl = WA.general;
 ---
 
 <section id="home" class="hero">
@@ -18,20 +20,20 @@ const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+
 			</p>
 
 			<a class="hero__proof hero__seq" style="--i: 1" href={mapsUrl} target="_blank" rel="noopener noreferrer">
-				<i class="fas fa-star" aria-hidden="true"></i>
-				<span><strong data-count="4.9" data-decimals="1">4,9</strong> dari 203 ulasan Google</span>
+				<Icon name="solid:star" />
+				<span><strong>4,9</strong> dari 203 ulasan Google</span>
 			</a>
 
 			<div class="hero__actions hero__seq" style="--i: 2">
 				<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-					<i class="fab fa-whatsapp" aria-hidden="true"></i>
+					<Icon name="brands:whatsapp" />
 					<span>Chat WhatsApp</span>
 				</a>
 				<a href="#products" class="btn btn--ghost">Lihat Produk</a>
 			</div>
 
 			<p class="hero__hours hero__seq" style="--i: 3">
-				<span><i class="far fa-clock" aria-hidden="true"></i> Senin – Sabtu 09.00 – 20.00</span>
+				<span><Icon name="regular:clock" /> Senin – Sabtu 09.00 – 20.00</span>
 				<span>Minggu 09.00 – 17.00 WIB</span>
 			</p>
 		</div>
@@ -42,7 +44,7 @@ const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+
 				<Image
 					src={heroImg}
 					widths={[400, 652]}
-					sizes="(min-width: 1024px) 560px, 92vw"
+					sizes="(min-width: 1024px) 560px, (min-width: 560px) 640px, 92vw"
 					alt="Staf Toko AL membantu seorang anak memilih sepeda di toko"
 					loading="eager"
 					fetchpriority="high"

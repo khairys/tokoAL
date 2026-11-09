@@ -1,0 +1,14 @@
+---
+// Small label above a section heading: slanted bar and section name.
+// Decorative for screen readers: the heading that follows already names the section.
+interface Props {
+	label: string;
+	light?: boolean;
+}
+const { label, light = false } = Astro.props;
+---
+
+<div class:list={["eyebrow", { "eyebrow--light": light }]} aria-hidden="true">
+	<span class="eyebrow__bar"></span>
+	<span>{label}</span>
+</div>

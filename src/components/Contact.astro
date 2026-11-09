@@ -1,10 +1,12 @@
 ---
+import Icon from "./Icon.astro";
 import { Image } from "astro:assets";
 import logoNavbar from "../assets/branding/Logo navbar.png";
 import storefront from "../assets/gallery/depan rumah.png";
+import Eyebrow from "./Eyebrow.astro";
+import OpenStatus from "./OpenStatus.astro";
+import { WA, DIRECTIONS_URL, PHONE_DISPLAY } from "../lib/site";
 
-const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL";
-const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+Cikande+Permai";
 const embedUrl =
 	"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.121542874621!2d106.34663471463!3d-6.217914962436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42034cad66013f%3A0x172b9ecbe51c0c05!2sToko%20Sepeda%20AL!5e0!3m2!1sid!2sid!4v1735218000000!5m2!1sid!2sid";
 ---
@@ -12,6 +14,7 @@ const embedUrl =
 <section id="contact" class="section section--paper" aria-labelledby="contact-title">
 	<div class="container">
 		<div class="section-head" data-reveal="up">
+			<Eyebrow label="Kontak" />
 			<h2 id="contact-title">Lokasi & Kontak Toko AL</h2>
 			<p>Datang langsung untuk melihat koleksi unit sepeda, konsultasi sparepart, atau perawatan servis bersama kami.</p>
 		</div>
@@ -30,25 +33,26 @@ const embedUrl =
 
 					<ul class="info__list">
 						<li class="info__item">
-							<span class="info__icon" aria-hidden="true"><i class="fas fa-location-dot"></i></span>
+							<span class="info__icon" aria-hidden="true"><Icon name="solid:location-dot" /></span>
 							<div>
 								<p class="info__label">Alamat Kami</p>
 								<p>Jl. Cikande Permai Blok J2 No.6, Cikande Permai, Kec. Cikande, Kabupaten Serang, Banten 42186</p>
 							</div>
 						</li>
 						<li class="info__item">
-							<span class="info__icon" aria-hidden="true"><i class="fas fa-clock"></i></span>
+							<span class="info__icon" aria-hidden="true"><Icon name="solid:clock" /></span>
 							<div>
 								<p class="info__label">Jam Operasional</p>
+								<OpenStatus class="open-status--block" />
 								<p>Senin – Sabtu: <strong>09.00 – 20.00 WIB</strong></p>
 								<p>Minggu: <strong>09.00 – 17.00 WIB</strong></p>
 							</div>
 						</li>
 						<li class="info__item">
-							<span class="info__icon" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
+							<span class="info__icon" aria-hidden="true"><Icon name="brands:whatsapp" /></span>
 							<div>
 								<p class="info__label">WhatsApp & Telepon</p>
-								<a href={waUrl} target="_blank" rel="noopener noreferrer">+62 819-9653-5525</a>
+								<a href={WA.visit} target="_blank" rel="noopener noreferrer">{PHONE_DISPLAY}</a>
 							</div>
 						</li>
 					</ul>
@@ -56,9 +60,12 @@ const embedUrl =
 			</div>
 
 			<div class="map" data-reveal="up">
-				<iframe src={embedUrl} loading="lazy" allowfullscreen title="Peta Lokasi Toko Sepeda AL"></iframe>
-				<a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary">
-					<i class="fas fa-diamond-turn-right" aria-hidden="true"></i>
+				<!-- Loads by itself as the visitor scrolls near it (lazy), no tap needed -->
+				<div class="map__frame">
+					<iframe src={embedUrl} loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" title="Peta Lokasi Toko Sepeda AL"></iframe>
+				</div>
+				<a href={DIRECTIONS_URL} target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+					<Icon name="solid:diamond-turn-right" />
 					<span>Petunjuk Arah</span>
 				</a>
 			</div>

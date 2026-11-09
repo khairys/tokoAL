@@ -1,0 +1,45 @@
+---
+// Inline SVG icon from the Font Awesome 6 sets on Iconify.
+// Resolved at build time, so only the icons actually used reach the page
+// (instead of the full Font Awesome stylesheet and three web fonts).
+// Usage: <Icon name="solid:star" />, <Icon name="brands:whatsapp" />, <Icon name="regular:clock" />
+import solid from "@iconify-json/fa6-solid/icons.json";
+import brands from "@iconify-json/fa6-brands/icons.json";
+import regular from "@iconify-json/fa6-regular/icons.json";
+
+interface IconSet {
+	width?: number;
+	height?: number;
+	icons: Record<string, { body: string; width?: number; height?: number }>;
+	aliases?: Record<string, { parent: string }>;
+}
+
+interface Props {
+	name: string;
+	class?: string;
+	label?: string;
+}
+
+const sets: Record<string, IconSet> = { solid, brands, regular };
+const { name, class: className, label } = Astro.props;
+const [setName, iconName] = name.split(":");
+const set = sets[setName];
+const key = set?.icons[iconName] ? iconName : set?.aliases?.[iconName]?.parent;
+const icon = key ? set.icons[key] : undefined;
+if (!icon) throw new Error(`Icon not found: ${name}`);
+
+const width = icon.width ?? set.width ?? 512;
+const height = icon.height ?? set.height ?? 512;
+---
+
+<svg
+	class:list={["icon", className]}
+	viewBox={`0 0 ${width} ${height}`}
+	width={`${(width / height).toFixed(4)}em`}
+	height="1em"
+	aria-hidden={label ? undefined : "true"}
+	role={label ? "img" : undefined}
+	aria-label={label}
+	focusable="false"
+	set:html={icon.body}
+/>

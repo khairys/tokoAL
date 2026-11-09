@@ -6,7 +6,14 @@ import imgViewBelakang from "../assets/gallery/viewbelakang.png";
 import imgDepanRumah from "../assets/gallery/depan rumah.png";
 import imgPelanggan from "../assets/gallery/Pelanggan.png";
 import imgMobilAnak from "../assets/gallery/MobilANAK.png";
+import Eyebrow from "./Eyebrow.astro";
+import Icon from "./Icon.astro";
+import { SOCIALS } from "../lib/site";
 
+const primary = SOCIALS.filter((s) => s.primary);
+const others = SOCIALS.filter((s) => !s.primary);
+
+// Order sets the bento layout: the first photo is the large tile.
 const photos = [
 	{
 		src: imgDepanRumah,
@@ -16,18 +23,18 @@ const photos = [
 		desc: "Jl. Cikande Permai Blok J2 No.6, Cikande Permai, Serang",
 	},
 	{
-		src: imgEtalase,
-		alt: "Display Sparepart Toko AL",
-		tag: "Display Sparepart",
-		title: "Etalase Sparepart & Komponen",
-		desc: "Koleksi suku cadang, gear, rantai, ban, dan komponen sepeda",
-	},
-	{
 		src: imgViewBelakang,
 		alt: "Display Sepeda Toko AL",
 		tag: "Display Sepeda",
 		title: "Koleksi Unit Sepeda Lengkap",
 		desc: "Pilihan sepeda MTB, lipat, roadbike, dan sepeda anak siap Anda coba",
+	},
+	{
+		src: imgEtalase,
+		alt: "Display Sparepart Toko AL",
+		tag: "Display Sparepart",
+		title: "Etalase Sparepart & Komponen",
+		desc: "Koleksi suku cadang, gear, rantai, ban, dan komponen sepeda",
 	},
 	{
 		src: imgKasir,
@@ -55,77 +62,51 @@ const photos = [
 
 <section id="gallery" class="section section--paper" aria-labelledby="gallery-title">
 	<div class="container">
-		<div class="gallery__head">
+		<div class="section-head" data-reveal="up">
+			<Eyebrow label="Suasana Toko" />
 			<h2 id="gallery-title">Suasana Nyata Toko</h2>
-			<div class="gallery__controls">
-				<button class="gallery__btn" type="button" data-dir="-1" aria-label="Foto sebelumnya">
-					<i class="fas fa-chevron-left" aria-hidden="true"></i>
-				</button>
-				<span class="gallery__count" id="gallery-count" aria-live="polite">1 / {photos.length}</span>
-				<button class="gallery__btn" type="button" data-dir="1" aria-label="Foto selanjutnya">
-					<i class="fas fa-chevron-right" aria-hidden="true"></i>
-				</button>
-			</div>
 		</div>
 
-		<div class="gallery__track" id="gallery-track" tabindex="0" aria-label="Foto suasana toko" data-reveal="up">
-			{photos.map((p) => (
-				<figure class="slide">
-					<div class="slide__media">
+		<div class="bento" data-reveal="stagger">
+			{photos.map((p, i) => (
+				<figure class="tile" style={`--i: ${i}`}>
+					<div class="tile__img">
 						<Image
 							src={p.src}
 							widths={[480, 800, 1200]}
-							sizes="(min-width: 768px) 640px, 86vw"
+							sizes={i === 0 || i === 5 ? "(min-width: 1024px) 600px, 92vw" : i === 1 || i === 4 ? "(min-width: 1024px) 600px, (min-width: 640px) 46vw, 92vw" : "(min-width: 1024px) 285px, (min-width: 640px) 46vw, 92vw"}
 							alt={p.alt}
 						/>
 					</div>
 					<figcaption>
-						<p class="slide__tag">{p.tag}</p>
+						<p class="tile__tag">{p.tag}</p>
 						<h3>{p.title}</h3>
-						<p>{p.desc}</p>
+						<p class="tile__desc">{p.desc}</p>
 					</figcaption>
 				</figure>
 			))}
 		</div>
+
+		<div class="follow" data-reveal="up">
+			<div class="follow__text">
+				<h3>Ikuti Kabar Terbaru Toko AL</h3>
+				<p>Produk baru, kegiatan toko, dan info lainnya kami bagikan di sosial media.</p>
+			</div>
+			<div class="follow__links">
+				{primary.map((s) => (
+					<a class="btn btn--primary follow__btn" href={s.href} target="_blank" rel="noopener noreferrer">
+						<Icon name={s.icon} />
+						<span>{s.name} <span class="follow__handle">{s.handle}</span></span>
+					</a>
+				))}
+				<div class="follow__more">
+					{others.map((s) => (
+						<a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.name} Toko AL`}>
+							<Icon name={s.icon} />
+						</a>
+					))}
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
-
-<script>
-	const track = document.getElementById("gallery-track");
-	const count = document.getElementById("gallery-count");
-	const slides = track ? [...track.querySelectorAll<HTMLElement>(".slide")] : [];
-
-	function currentIndex() {
-		if (!track) return 0;
-		const left = track.scrollLeft;
-		let best = 0;
-		slides.forEach((s, i) => {
-			if (Math.abs(s.offsetLeft - track.offsetLeft - left) < Math.abs(slides[best].offsetLeft - track.offsetLeft - left)) best = i;
-		});
-		// At the end of the track the last slide counts as current
-		if (left + track.clientWidth >= track.scrollWidth - 4) best = slides.length - 1;
-		return best;
-	}
-
-	function goTo(i: number) {
-		if (!track || !slides.length) return;
-		const target = slides[(i + slides.length) % slides.length];
-		track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: "smooth" });
-	}
-
-	document.querySelectorAll<HTMLButtonElement>(".gallery__btn").forEach((b) =>
-		b.addEventListener("click", () => goTo(currentIndex() + Number(b.dataset.dir))),
-	);
-
-	let raf = 0;
-	track?.addEventListener(
-		"scroll",
-		() => {
-			cancelAnimationFrame(raf);
-			raf = requestAnimationFrame(() => {
-				if (count) count.textContent = `${currentIndex() + 1} / ${slides.length}`;
-			});
-		},
-		{ passive: true },
-	);
-</script>

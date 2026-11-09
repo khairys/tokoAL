@@ -1,16 +1,19 @@
 ---
+import Icon from "./Icon.astro";
 import { Image } from "astro:assets";
 import productFixie from "../assets/products/sepeda fixie.png";
-import productMtb from "../assets/products/MTB.jpg";
-import productBmx from "../assets/products/sepeda bmx.jpg";
-import productFolding from "../assets/products/sepedaLipat.jpg";
-import productAnak from "../assets/products/sepeda anak.jpg";
-import productSparepart from "../assets/products/sparepart.jpg";
+import productMtb from "../assets/products/MTB.png";
+import productBmx from "../assets/products/sepeda bmx.png";
+import productFolding from "../assets/products/sepedaLipat.png";
+import productAnak from "../assets/products/sepeda anak.png";
+import productSparepart from "../assets/products/sparepart.png";
 import productAksesoris from "../assets/products/aksesoris.png";
-import productMainan from "../assets/products/mainan-anak.jpg";
+import productMainan from "../assets/products/mainan-anak.png";
+import Eyebrow from "./Eyebrow.astro";
 
-const catalogUrl = "https://wa.me/c/6281996535525";
-const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL";
+import { WA, CATALOG_URL as catalogUrl } from "../lib/site";
+
+const waUrl = WA.order;
 
 const products = [
 	{
@@ -88,8 +91,15 @@ const products = [
 		category: "",
 		fit: "Mobil/motor mainan aki dan edukatif untuk menemani waktu bermain.",
 		image: productMainan,
-		link: catalogUrl,
-		specs: [],
+		link: "https://wa.me/p/5605253369562505/6281996535525",
+		specs: [
+			"Usia: 1 - 5 Tahun",
+			"Full Musik",
+			"Dorongan",
+			"Payung",
+			"Sabuk Pengaman",
+			"Rem, dll.",
+		],
 	},
 	{
 		title: "Sparepart Sepeda",
@@ -121,7 +131,7 @@ const products = [
 	},
 ];
 
-// Filter groups. Every photo except the toy shelf is a studio shot on white.
+// Filter groups. Every product photo is a studio shot on white.
 const groupOf: Record<string, string> = {
 	"Sepeda Fixie & Roadbike": "sepeda",
 	"Sepeda MTB": "sepeda",
@@ -138,11 +148,18 @@ const filters = [
 	{ id: "anak", label: "Anak & Mainan" },
 	{ id: "part", label: "Sparepart & Aksesoris" },
 ];
+
+// Put the family range first without changing any product facts or wording.
+const orderedProducts = [
+	...products.filter((p) => groupOf[p.title] === "anak"),
+	...products.filter((p) => groupOf[p.title] !== "anak"),
+];
 ---
 
-<section id="products" class="section" aria-labelledby="products-title">
+<section id="products" class="section section--cut section--white" aria-labelledby="products-title">
 	<div class="container">
 		<div class="section-head" data-reveal="up">
+			<Eyebrow label="Katalog" />
 			<h2 id="products-title">Koleksi Produk & Sepeda</h2>
 			<p>
 				Lihat pilihan sepeda, sparepart, dan aksesoris di Toko AL. Untuk harga dan ketersediaan, langsung tanya
@@ -150,22 +167,22 @@ const filters = [
 			</p>
 		</div>
 
-		<div class="filters" role="group" aria-label="Filter katalog">
+		<div class="filters" role="group" aria-label="Filter katalog" hidden>
 			{filters.map((f, i) => (
-				<button type="button" class="chip" data-filter={f.id} aria-pressed={i === 0 ? "true" : "false"}>
+				<button type="button" class="chip" data-filter={f.id} aria-controls="catalog" aria-pressed={i === 0 ? "true" : "false"}>
 					{f.label}
 				</button>
 			))}
 		</div>
 
 		<div class="catalog" id="catalog" data-reveal="stagger">
-			{products.map((p, i) => (
+			{orderedProducts.map((p, i) => (
 				<article class="product" data-group={groupOf[p.title]} style={`--i: ${i % 4}`}>
-					<div class={`product__media${p.title === "Mainan Anak" ? "" : " product__media--cutout"}`}>
+					<div class="product__media product__media--cutout">
 						<Image
 							src={p.image}
 							widths={[400, 640]}
-							sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 80vw"
+							sizes="(min-width: 1200px) 285px, (min-width: 1024px) 30vw, (min-width: 640px) 45vw, 80vw"
 							alt={p.title}
 						/>
 					</div>
@@ -177,7 +194,7 @@ const filters = [
 							<details class="product__more">
 								<summary>
 									<span>Lihat spesifikasi</span>
-									<i class="fas fa-chevron-down" aria-hidden="true"></i>
+									<Icon name="solid:chevron-down" />
 								</summary>
 								<ul class="product__specs">
 									{p.specs.map((s) => <li>{s}</li>)}
@@ -186,15 +203,20 @@ const filters = [
 						)}
 						<div class="product__cta">
 							<a
-								href={p.link}
+								href={WA.product(p.title)}
 								target="_blank"
 								rel="noopener noreferrer"
 								class="btn btn--ghost"
 								aria-label={`Tanya ${p.title} di WhatsApp`}
 							>
-								<i class="fab fa-whatsapp" aria-hidden="true"></i>
+								<Icon name="brands:whatsapp" />
 								<span>Tanya di WhatsApp</span>
 							</a>
+							{p.link !== catalogUrl && (
+								<a href={p.link} target="_blank" rel="noopener noreferrer" class="product__catalog">
+									Lihat di katalog WhatsApp
+								</a>
+							)}
 						</div>
 					</div>
 				</article>
@@ -208,24 +230,23 @@ const filters = [
 		</div>
 
 		<div class="shop">
-			<div class="stripes shop__stripes" aria-hidden="true"><span></span><span></span><span></span></div>
 			<div class="shop__content">
 				<h3>Sudah Siap Berbelanja?</h3>
 				<p>Temukan produk Toko AL melalui WhatsApp, Shopee, atau Tokopedia.</p>
 				<div class="shop__buttons">
 					<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--wa">
-						<i class="fab fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span>
+						<Icon name="brands:whatsapp" /><span>WhatsApp</span>
 					</a>
 					<a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="btn">
-						<i class="fas fa-bag-shopping" aria-hidden="true"></i><span>Shopee</span>
+						<Icon name="solid:bag-shopping" class="icon--shopee" /><span>Shopee</span>
 					</a>
 					<a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="btn">
-						<i class="fas fa-store" aria-hidden="true"></i><span>Tokopedia</span>
+						<Icon name="solid:store" class="icon--tokopedia" /><span>Tokopedia</span>
 					</a>
 				</div>
 				<p class="shop__badges">
-					<span><i class="fas fa-circle-check" aria-hidden="true"></i>Official Store Toko AL</span>
-					<span><i class="fas fa-circle-check" aria-hidden="true"></i>100% Original</span>
+					<span><Icon name="solid:circle-check" />Official Store Toko AL</span>
+					<span><Icon name="solid:circle-check" />100% Original</span>
 				</p>
 			</div>
 		</div>
@@ -236,16 +257,19 @@ const filters = [
 	const catalog = document.getElementById("catalog");
 	const chips = document.querySelectorAll<HTMLButtonElement>(".chip[data-filter]");
 	const cards = catalog ? [...catalog.querySelectorAll<HTMLElement>(".product")] : [];
+	const filters = document.querySelector<HTMLElement>(".filters");
 
-	chips.forEach((chip) =>
-		chip.addEventListener("click", () => {
-			const group = chip.dataset.filter;
-			chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
-			cards.forEach((card) => {
-				card.hidden = group !== "all" && card.dataset.group !== group;
-			});
-			// On mobile the catalog is a swipe row: start the filtered list from the first card
-			catalog?.scrollTo({ left: 0 });
-		}),
-	);
+	function filterCatalog(group: string) {
+		chips.forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.filter === group)));
+		cards.forEach((card) => {
+			card.hidden = group !== "all" && card.dataset.group !== group;
+		});
+		// On mobile the catalog is a swipe row: start the filtered list from the first card
+		catalog?.scrollTo({ left: 0, behavior: "instant" });
+	}
+	chips.forEach((chip) => chip.addEventListener("click", () => filterCatalog(chip.dataset.filter ?? "all")));
+	document.querySelectorAll<HTMLAnchorElement>("[data-catalog-filter]").forEach((link) => {
+		link.addEventListener("click", () => filterCatalog(link.dataset.catalogFilter ?? "all"));
+	});
+	if (catalog && filters) filters.hidden = false;
 </script>

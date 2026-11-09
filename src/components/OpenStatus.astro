@@ -1,0 +1,58 @@
+---
+// "Buka sekarang · tutup 20.00", worked out in the browser from the hours in lib/site.ts
+// using Jakarta time, so it is right wherever the visitor's phone clock is set.
+// Stays hidden without JavaScript; the written hours next to it still show.
+interface Props {
+	class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<span class:list={["open-status", className]} data-open-status hidden>
+	<span class="open-status__dot" aria-hidden="true"></span>
+	<span class="open-status__text"></span>
+</span>
+
+<script>
+	import { HOURS } from "../lib/site";
+
+	const fmt = (m: number) => `${String(Math.floor(m / 60)).padStart(2, "0")}.${String(m % 60).padStart(2, "0")}`;
+	const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+	function jakartaNow() {
+		const parts = new Intl.DateTimeFormat("en-US", {
+			timeZone: "Asia/Jakarta",
+			weekday: "short",
+			hour: "2-digit",
+			minute: "2-digit",
+			hourCycle: "h23",
+		}).formatToParts(new Date());
+		const get = (t: string) => parts.find((p) => p.type === t)?.value ?? "";
+		return { day: days.indexOf(get("weekday")), minutes: Number(get("hour")) * 60 + Number(get("minute")) };
+	}
+
+	function status() {
+		const { day, minutes } = jakartaNow();
+		const today = HOURS[day];
+		if (minutes >= today.open && minutes < today.close) {
+			const soon = today.close - minutes <= 30;
+			return { state: soon ? "soon" : "open", text: `${soon ? "Segera tutup" : "Buka sekarang"} · tutup ${fmt(today.close)}` };
+		}
+		if (minutes < today.open) return { state: "closed", text: `Tutup · buka hari ini ${fmt(today.open)}` };
+		const tomorrow = HOURS[(day + 1) % 7];
+		return { state: "closed", text: `Tutup · buka besok ${fmt(tomorrow.open)}` };
+	}
+
+	function render() {
+		const s = status();
+		document.querySelectorAll<HTMLElement>("[data-open-status]").forEach((el) => {
+			el.dataset.state = s.state;
+			const text = el.querySelector(".open-status__text");
+			if (text) text.textContent = s.text;
+			el.hidden = false;
+		});
+	}
+
+	render();
+	setInterval(render, 60_000);
+</script>

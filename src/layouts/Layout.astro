@@ -1,4 +1,12 @@
 ---
+// Fonts per brand guidelines, self-hosted (Latin subset only) so text never waits on a third-party server
+import "@fontsource/barlow/latin-400.css";
+import "@fontsource/barlow/latin-500.css";
+import "@fontsource/barlow/latin-600.css";
+import "@fontsource/barlow/latin-700.css";
+import "@fontsource/barlow/latin-800.css";
+import "@fontsource/barlow-semi-condensed/latin-600.css";
+import "@fontsource/barlow-semi-condensed/latin-700.css";
 import "../styles/site.css";
 interface Props {
 	title?: string;
@@ -8,7 +16,7 @@ interface Props {
 }
 
 const { 
-	title = "Toko AL | Toko Sepeda, Sparepart & Bengkel Servis di Cikande Serang", 
+	title = "Toko AL | Bersepeda Itu Mudah", 
 	description = "Pusat penjualan sepeda (Fixie, Roadbike, MTB), suku cadang orisinil terlengkap, dan bengkel servis sepeda profesional terpercaya di Cikande Permai, Serang, Banten.",
 	canonical = "https://tokoal.id/",
 	image = "/og-image.jpg"
@@ -151,13 +159,6 @@ const structuredData = {
 		<!-- Schema.org JSON-LD Structured Data -->
 		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-		<!-- Fonts: Barlow per brand guidelines -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
-
-		<!-- Icons -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 		<!-- Motion is opt-out: skipped entirely for visitors who prefer reduced motion -->
 		<script is:inline>

@@ -1,25 +1,38 @@
 ---
+import Icon from "./Icon.astro";
+import { Image } from "astro:assets";
+import imgSparepart from "../assets/gallery/etalaseDepan.png";
+import imgSepeda from "../assets/gallery/viewbelakang.png";
+import imgCustom from "../assets/gallery/Custom.png";
+import Eyebrow from "./Eyebrow.astro";
+
 const needs = [
 	{
-		icon: "fa-bicycle",
+		icon: "bicycle",
 		title: "Sepeda & Mainan Anak",
+		filter: "anak",
 		text: "Pilihan unit untuk dewasa, remaja, hingga si kecil. Bisa dicoba langsung di toko.",
 		href: "#products",
 		link: "Lihat katalog",
+		image: imgSepeda,
 	},
 	{
-		icon: "fa-gears",
+		icon: "gears",
 		title: "Sparepart & Aksesoris",
+		filter: "part",
 		text: "Untuk perawatan, penggantian, dan kebutuhan gowes harian. Bisa dipasang langsung di toko.",
 		href: "#products",
 		link: "Lihat katalog",
+		image: imgSparepart,
 	},
 	{
-		icon: "fa-screwdriver-wrench",
+		icon: "screwdriver-wrench",
 		title: "Servis & Upgrade",
 		text: "Dari perawatan rutin sampai rakit custom.",
 		href: "#services",
 		link: "Lihat layanan servis",
+		image: imgCustom,
+		focus: "50% 75%",
 	},
 ];
 ---
@@ -27,6 +40,7 @@ const needs = [
 <section class="section section--mint" aria-labelledby="needs-title">
 	<div class="container">
 		<div class="section-head" data-reveal="up">
+			<Eyebrow label="Kebutuhan Gowes" />
 			<h2 id="needs-title">Semua Kebutuhan Gowes di Satu Tempat</h2>
 			<p>
 				Mulai dari sepeda keluarga dan keceriaan si kecil, sparepart original, hingga perawatan oleh mekanik
@@ -36,11 +50,16 @@ const needs = [
 
 		<div class="needs" data-reveal="stagger">
 			{needs.map((n, i) => (
-				<a class="need" href={n.href} style={`--i: ${i}`}>
-					<span class="need__icon" aria-hidden="true"><i class={`fas ${n.icon}`}></i></span>
-					<h3>{n.title}</h3>
-					<p>{n.text}</p>
-					<span class="text-link">{n.link}</span>
+				<a class="need" href={n.href} data-catalog-filter={n.filter} style={`--i: ${i}`}>
+					<div class="need__media">
+						<Image src={n.image} widths={[400, 640]} sizes="(min-width: 900px) 380px, 92vw" alt="" style={n.focus ? `object-position: ${n.focus}` : undefined} />
+					</div>
+					<div class="need__body">
+						<span class="need__icon" aria-hidden="true"><Icon name={`solid:${n.icon}`} /></span>
+						<h3>{n.title}</h3>
+						<p>{n.text}</p>
+						<span class="text-link">{n.link}</span>
+					</div>
 				</a>
 			))}
 		</div>
