@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 // Products Component
 import productFixie from '../assets/products/sepeda fixie.png';
 import productMtb from '../assets/products/MTB.jpg';
@@ -180,8 +181,10 @@ const loopProducts = [...products, ...products, ...products];
                         <div>
                             <!-- Product Image (Clean without text overlays) -->
                             <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-950 border border-gray-700/50 flex items-center justify-center">
-                                <img
-                                    src={product.image.src}
+                                <Image
+                                    src={product.image}
+                                    widths={[400, 640]}
+                                    sizes="(min-width: 1024px) 316px, 90vw"
                                     alt={product.title}
                                     class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
                                     loading="lazy"

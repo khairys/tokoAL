@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 // Contact & Location Component
 import logoNavbar from "../assets/branding/Logo navbar.png";
 ---
@@ -35,8 +36,9 @@ import logoNavbar from "../assets/branding/Logo navbar.png";
 			>
 				<!-- Brand Header -->
 				<div class="flex items-center gap-3 mb-5">
-					<img
-						src={logoNavbar.src}
+					<Image
+						src={logoNavbar}
+						width={160}
 						alt="Logo Toko AL"
 						class="h-10 w-auto object-contain drop-shadow-sm"
 					/>

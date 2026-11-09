@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 // Testimonials & Store Gallery Component
 import imgEtalase from '../assets/gallery/etalaseDepan.png';
 import imgKasir from '../assets/gallery/kasirAL.png';
@@ -9,42 +10,42 @@ import imgMobilAnak from '../assets/gallery/MobilANAK.png';
 
 const storePhotos = [
 	{
-		src: imgDepanRumah.src,
+		src: imgDepanRumah,
 		alt: "Tampak Depan Toko AL",
 		tag: "Kunjungi Toko",
 		title: "Kunjungi Toko AL di Cikande Permai",
 		desc: "Jl. Cikande Permai Blok J2 No.6, Cikande Permai, Serang"
 	},
 	{
-		src: imgEtalase.src,
+		src: imgEtalase,
 		alt: "Display Sparepart Toko AL",
 		tag: "Display Sparepart",
 		title: "Etalase Sparepart & Komponen",
 		desc: "Koleksi suku cadang, gear, rantai, ban, dan komponen sepeda terlengkap"
 	},
 	{
-		src: imgViewBelakang.src,
+		src: imgViewBelakang,
 		alt: "Display Sepeda Toko AL",
 		tag: "Display Sepeda",
 		title: "Koleksi Unit Sepeda Lengkap",
 		desc: "Pilihan sepeda MTB, lipat, roadbike, dan sepeda anak siap Anda coba"
 	},
 	{
-		src: imgKasir.src,
+		src: imgKasir,
 		alt: "Area Kasir Toko AL",
 		tag: "Area Kasir & Aksesoris",
 		title: "Area Kasir & Konsultasi",
 		desc: "Tanyakan kebutuhan sepeda atau sparepart Anda langsung di toko."
 	},
 	{
-		src: imgPelanggan.src,
+		src: imgPelanggan,
 		alt: "Pelanggan Toko AL",
 		tag: "Goweser Cikande",
 		title: "Kepuasan Pelanggan Prioritas Kami",
 		desc: "Selalu senang membantu goweser mendapatkan sepeda impian"
 	},
 	{
-		src: imgMobilAnak.src,
+		src: imgMobilAnak,
 		alt: "Koleksi Sepeda dan Mainan Anak",
 		tag: "Koleksi Anak",
 		title: "Sepeda & Mainan Anak",
@@ -75,8 +76,10 @@ const storePhotos = [
 							class={`gallery-slide absolute inset-0 transition-opacity duration-700 ease-in-out ${index === 0 ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
 							data-index={index}
 						>
-							<img 
+							<Image 
 								src={photo.src} 
+								widths={[480, 800, 1200]} 
+								sizes="(min-width: 1024px) 676px, 100vw"
 								alt={photo.alt} 
 								class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700" 
 								loading={index === 0 ? "eager" : "lazy"}

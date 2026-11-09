@@ -10,7 +10,7 @@ const {
 	title = "Toko AL | Toko Sepeda, Sparepart & Bengkel Servis di Cikande Serang", 
 	description = "Pusat penjualan sepeda (Fixie, Roadbike, MTB), suku cadang orisinil terlengkap, dan bengkel servis sepeda profesional terpercaya di Cikande Permai, Serang, Banten.",
 	canonical = "https://tokoal.id/",
-	image = "/favicon.png"
+	image = "/og-image.jpg"
 } = Astro.props;
 
 const siteUrl = "https://tokoal.id";
@@ -50,17 +50,15 @@ const structuredData = {
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "08:00",
-          "closes": "21:00"
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          "opens": "09:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Sunday",
+          "opens": "09:00",
+          "closes": "17:00"
         }
       ],
       "sameAs": [
@@ -88,8 +86,6 @@ const structuredData = {
             "name": "Layanan Bengkel Sepeda",
             "itemListElement": [
               { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tune-Up Sepeda Lengkap" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bleeding Rem Hidrolik" } },
-              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Stel Roda Velg (Truing)" } },
               { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Perakitan Sepeda Kustom" } }
             ]
           }
@@ -138,6 +134,8 @@ const structuredData = {
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={fullImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image" />

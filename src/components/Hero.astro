@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 // Hero Component
 import familyHappyImg from "../assets/hero/familyhappy.jpg";
 ---
@@ -66,8 +67,8 @@ import familyHappyImg from "../assets/hero/familyhappy.jpg";
                 <div
                     class="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 border-8 border-white bg-slate-100 aspect-[4/3] sm:aspect-[16/11] flex items-center justify-center group"
                 >
-                    <img
-                        src={familyHappyImg.src}
+                    <Image
+                        src={familyHappyImg}
                         alt="Keluarga Bersepeda Bahagia - Toko AL"
                         class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                         loading="eager"

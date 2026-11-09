@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 // Navbar Component (Mobile-Optimized UX)
 import logoNavbar from '../assets/branding/Logo navbar.png';
 ---
@@ -8,7 +9,7 @@ import logoNavbar from '../assets/branding/Logo navbar.png';
 		<div class="flex justify-between items-center h-16">
 			<!-- Logo -->
 			<a href="#home" class="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group transition-transform duration-200 active:scale-95 origin-left">
-				<img src={logoNavbar.src} alt="Logo Toko AL" class="h-8 sm:h-9 w-auto object-contain drop-shadow-sm transition-transform duration-200 group-hover:scale-105" />
+				<Image src={logoNavbar} width={160} alt="Logo Toko AL" class="h-8 sm:h-9 w-auto object-contain drop-shadow-sm transition-transform duration-200 group-hover:scale-105" />
 				<span class="font-extrabold text-xl tracking-tight text-dark group-hover:text-primary transition-colors duration-200">Toko AL</span>
 			</a>
 			

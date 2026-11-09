@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 // Footer Component (Clean, Unified & Anti-Slop)
 import logoNavbar from "../assets/branding/Logo navbar.png";
 ---
@@ -19,8 +20,9 @@ import logoNavbar from "../assets/branding/Logo navbar.png";
                     href="#home"
                     class="inline-flex items-center gap-2.5 group transition-transform duration-200 active:scale-95"
                 >
-                    <img
-                        src={logoNavbar.src}
+                    <Image
+                        src={logoNavbar}
+                        width={160}
                         alt="Logo Toko AL"
                         class="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
                     />
