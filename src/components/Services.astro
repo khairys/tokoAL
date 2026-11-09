@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import kasirImg from "../assets/gallery/kasirAL.png";
+
 const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL";
 
 const services = [
@@ -20,17 +23,29 @@ const reasons = [
 	<div class="container">
 		<div class="service__grid">
 			<div class="service__intro">
-				<h2 id="services-title">Servis & Upgrade</h2>
-				<p>Tempat servis sepeda untuk perawatan rutin, perbaikan, hingga rakit custom.</p>
-				<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--light">
-					<i class="fab fa-whatsapp" aria-hidden="true"></i>
-					<span>Konsultasi Servis via WhatsApp</span>
-				</a>
+				<div data-reveal="up">
+					<h2 id="services-title">Servis & Upgrade</h2>
+					<p>Tempat servis sepeda untuk perawatan rutin, perbaikan, hingga rakit custom.</p>
+					<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--light">
+						<i class="fab fa-whatsapp" aria-hidden="true"></i>
+						<span>Konsultasi Servis via WhatsApp</span>
+					</a>
+				</div>
+				<div class="service__photo" data-reveal="wipe">
+					<div class="service__photo-cut">
+						<Image
+							src={kasirImg}
+							widths={[400, 490]}
+							sizes="(min-width: 900px) 460px, 92vw"
+							alt="Area kasir dan konsultasi di Toko AL"
+						/>
+					</div>
+				</div>
 			</div>
 
-			<ul class="service__list">
-				{services.map((s) => (
-					<li>
+			<ul class="service__list" data-reveal="stagger">
+				{services.map((s, i) => (
+					<li style={`--i: ${i}`}>
 						<i class={`fas ${s.icon}`} aria-hidden="true"></i>
 						<span>{s.text}</span>
 					</li>
@@ -40,8 +55,8 @@ const reasons = [
 
 		<div class="service__why">
 			<h3>Kenapa Toko AL</h3>
-			<ul>
-				{reasons.map((r) => <li>{r}</li>)}
+			<ul data-reveal="stagger">
+				{reasons.map((r, i) => <li style={`--i: ${i}`}>{r}</li>)}
 			</ul>
 		</div>
 	</div>

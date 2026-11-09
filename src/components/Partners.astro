@@ -35,28 +35,44 @@ const sponsorWaUrl =
 
 <section id="partners" class="section" aria-labelledby="brands-title">
 	<div class="container">
-		<div class="section-head">
+		<div class="section-head" data-reveal="up">
 			<h2 id="brands-title">Brand yang Tersedia di Toko AL</h2>
 			<p>Pilihan produk dari berbagai brand yang tersedia di Toko AL.</p>
 		</div>
+	</div>
 
-		<ul class="brands">
-			{brands.map((b) => (
-				<li class="brand">
-					<img src={b.logo.src} width={b.logo.width} height={b.logo.height} alt={`Logo ${b.name}`} loading="lazy" />
-				</li>
+	<!-- Running logo row. The second copy only exists to make the loop seamless. -->
+	<div class="logos" data-reveal="up">
+		<div class="logos__track">
+			{[0, 1].map((copy) => (
+				<ul class="logos__group" aria-hidden={copy === 1 ? "true" : undefined}>
+					{brands.map((b) => (
+						<li class="brand">
+							<img
+								src={b.logo.src}
+								width={b.logo.width}
+								height={b.logo.height}
+								alt={copy === 0 ? `Logo ${b.name}` : ""}
+								loading="lazy"
+							/>
+						</li>
+					))}
+				</ul>
 			))}
-		</ul>
+		</div>
+	</div>
 
-		<div class="community">
+	<div class="container">
+		<div class="community" data-reveal="up">
+			<div class="stripes community__stripes" aria-hidden="true"><span></span><span></span><span></span></div>
 			<div class="section-head">
 				<h2>Tumbuh Bersama Komunitas</h2>
 				<p>Kami mendukung dan berkolaborasi dengan komunitas serta kegiatan bersepeda di sekitar kami.</p>
 			</div>
 
-			<ul class="communities">
-				{communities.map((c) => (
-					<li class="club">
+			<ul class="communities" data-reveal="stagger">
+				{communities.map((c, i) => (
+					<li class="club" style={`--i: ${i}`}>
 						<span class="club__mark" aria-hidden="true">{c.initials}</span>
 						<span class="club__name">{c.name}</span>
 					</li>
@@ -65,7 +81,7 @@ const sponsorWaUrl =
 
 			<div class="sponsor">
 				<p>Punya kegiatan atau komunitas yang ingin berkolaborasi dengan kami?</p>
-				<a href={sponsorWaUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+				<a href={sponsorWaUrl} target="_blank" rel="noopener noreferrer" class="btn btn--light">
 					<i class="fab fa-whatsapp" aria-hidden="true"></i>
 					<span>Ajukan Sponsorship</span>
 				</a>

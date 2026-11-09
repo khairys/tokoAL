@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import logoNavbar from "../assets/branding/Logo navbar.png";
+import storefront from "../assets/gallery/depan rumah.png";
 
 const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL";
 const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+Cikande+Permai";
@@ -10,46 +11,51 @@ const embedUrl =
 
 <section id="contact" class="section section--paper" aria-labelledby="contact-title">
 	<div class="container">
-		<div class="section-head">
+		<div class="section-head" data-reveal="up">
 			<h2 id="contact-title">Lokasi & Kontak Toko AL</h2>
 			<p>Datang langsung untuk melihat koleksi unit sepeda, konsultasi sparepart, atau perawatan servis bersama kami.</p>
 		</div>
 
 		<div class="contact__grid">
-			<div class="info">
-				<div class="info__brand">
-					<Image src={logoNavbar} width={160} alt="Logo Toko AL" />
-					<span>Toko AL</span>
+			<div class="info" data-reveal="up">
+				<div class="info__banner" data-reveal="wipe">
+					<Image src={storefront} widths={[480, 917]} sizes="(min-width: 900px) 480px, 92vw" alt="Tampak depan Toko AL" />
 				</div>
-				<p class="info__intro">Partner terbaik untuk hobi bersepeda dan keceriaan keluarga Anda di Cikande Permai, Serang.</p>
+				<div class="info__body">
+					<div class="info__brand">
+						<Image src={logoNavbar} width={160} alt="Logo Toko AL" />
+						<span>Toko AL</span>
+					</div>
+					<p class="info__intro">Partner terbaik untuk hobi bersepeda dan keceriaan keluarga Anda di Cikande Permai, Serang.</p>
 
-				<ul class="info__list">
-					<li class="info__item">
-						<span class="info__icon" aria-hidden="true"><i class="fas fa-location-dot"></i></span>
-						<div>
-							<p class="info__label">Alamat Kami</p>
-							<p>Jl. Cikande Permai Blok J2 No.6, Cikande Permai, Kec. Cikande, Kabupaten Serang, Banten 42186</p>
-						</div>
-					</li>
-					<li class="info__item">
-						<span class="info__icon" aria-hidden="true"><i class="fas fa-clock"></i></span>
-						<div>
-							<p class="info__label">Jam Operasional</p>
-							<p>Senin – Sabtu: <strong>09.00 – 20.00 WIB</strong></p>
-							<p>Minggu: <strong>09.00 – 17.00 WIB</strong></p>
-						</div>
-					</li>
-					<li class="info__item">
-						<span class="info__icon" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
-						<div>
-							<p class="info__label">WhatsApp & Telepon</p>
-							<a href={waUrl} target="_blank" rel="noopener noreferrer">+62 819-9653-5525</a>
-						</div>
-					</li>
-				</ul>
+					<ul class="info__list">
+						<li class="info__item">
+							<span class="info__icon" aria-hidden="true"><i class="fas fa-location-dot"></i></span>
+							<div>
+								<p class="info__label">Alamat Kami</p>
+								<p>Jl. Cikande Permai Blok J2 No.6, Cikande Permai, Kec. Cikande, Kabupaten Serang, Banten 42186</p>
+							</div>
+						</li>
+						<li class="info__item">
+							<span class="info__icon" aria-hidden="true"><i class="fas fa-clock"></i></span>
+							<div>
+								<p class="info__label">Jam Operasional</p>
+								<p>Senin – Sabtu: <strong>09.00 – 20.00 WIB</strong></p>
+								<p>Minggu: <strong>09.00 – 17.00 WIB</strong></p>
+							</div>
+						</li>
+						<li class="info__item">
+							<span class="info__icon" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
+							<div>
+								<p class="info__label">WhatsApp & Telepon</p>
+								<a href={waUrl} target="_blank" rel="noopener noreferrer">+62 819-9653-5525</a>
+							</div>
+						</li>
+					</ul>
+				</div>
 			</div>
 
-			<div class="map">
+			<div class="map" data-reveal="up">
 				<iframe src={embedUrl} loading="lazy" allowfullscreen title="Peta Lokasi Toko Sepeda AL"></iframe>
 				<a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary">
 					<i class="fas fa-diamond-turn-right" aria-hidden="true"></i>

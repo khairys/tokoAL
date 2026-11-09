@@ -1,0 +1,24 @@
+---
+// Running brand strip, styled after the green strip in the social media templates.
+// Decorative only: the tagline already appears as the page headline.
+interface Props {
+	text?: string;
+}
+const { text = "# Bersepeda Itu Mudah" } = Astro.props;
+const items = Array.from({ length: 6 }, () => text);
+---
+
+<div class="marquee" aria-hidden="true">
+	<div class="marquee__track">
+		{[0, 1].map(() => (
+			<div class="marquee__group">
+				{items.map((t) => (
+					<span class="marquee__item">
+						<span class="marquee__mark"><i></i><i></i><i></i></span>
+						{t}
+					</span>
+				))}
+			</div>
+		))}
+	</div>
+</div>

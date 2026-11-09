@@ -120,11 +120,29 @@ const products = [
 		],
 	},
 ];
+
+// Filter groups. Every photo except the toy shelf is a studio shot on white.
+const groupOf: Record<string, string> = {
+	"Sepeda Fixie & Roadbike": "sepeda",
+	"Sepeda MTB": "sepeda",
+	"Sepeda BMX": "sepeda",
+	"Sepeda Lipat": "sepeda",
+	"Sepeda Anak": "anak",
+	"Mainan Anak": "anak",
+	"Sparepart Sepeda": "part",
+	"Aksesoris Sepeda": "part",
+};
+const filters = [
+	{ id: "all", label: "Semua" },
+	{ id: "sepeda", label: "Sepeda" },
+	{ id: "anak", label: "Anak & Mainan" },
+	{ id: "part", label: "Sparepart & Aksesoris" },
+];
 ---
 
 <section id="products" class="section" aria-labelledby="products-title">
 	<div class="container">
-		<div class="section-head">
+		<div class="section-head" data-reveal="up">
 			<h2 id="products-title">Koleksi Produk & Sepeda</h2>
 			<p>
 				Lihat pilihan sepeda, sparepart, dan aksesoris di Toko AL. Untuk harga dan ketersediaan, langsung tanya
@@ -132,10 +150,18 @@ const products = [
 			</p>
 		</div>
 
-		<div class="catalog">
-			{products.map((p) => (
-				<article class="product">
-					<div class="product__media">
+		<div class="filters" role="group" aria-label="Filter katalog">
+			{filters.map((f, i) => (
+				<button type="button" class="chip" data-filter={f.id} aria-pressed={i === 0 ? "true" : "false"}>
+					{f.label}
+				</button>
+			))}
+		</div>
+
+		<div class="catalog" id="catalog" data-reveal="stagger">
+			{products.map((p, i) => (
+				<article class="product" data-group={groupOf[p.title]} style={`--i: ${i % 4}`}>
+					<div class={`product__media${p.title === "Mainan Anak" ? "" : " product__media--cutout"}`}>
 						<Image
 							src={p.image}
 							widths={[400, 640]}
@@ -148,9 +174,15 @@ const products = [
 						<h3>{p.title}</h3>
 						<p class="product__fit">{p.fit}</p>
 						{p.specs.length > 0 && (
-							<ul class="product__specs">
-								{p.specs.map((s) => <li>{s}</li>)}
-							</ul>
+							<details class="product__more">
+								<summary>
+									<span>Lihat spesifikasi</span>
+									<i class="fas fa-chevron-down" aria-hidden="true"></i>
+								</summary>
+								<ul class="product__specs">
+									{p.specs.map((s) => <li>{s}</li>)}
+								</ul>
+							</details>
 						)}
 						<div class="product__cta">
 							<a
@@ -199,3 +231,21 @@ const products = [
 		</div>
 	</div>
 </section>
+
+<script>
+	const catalog = document.getElementById("catalog");
+	const chips = document.querySelectorAll<HTMLButtonElement>(".chip[data-filter]");
+	const cards = catalog ? [...catalog.querySelectorAll<HTMLElement>(".product")] : [];
+
+	chips.forEach((chip) =>
+		chip.addEventListener("click", () => {
+			const group = chip.dataset.filter;
+			chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+			cards.forEach((card) => {
+				card.hidden = group !== "all" && card.dataset.group !== group;
+			});
+			// On mobile the catalog is a swipe row: start the filtered list from the first card
+			catalog?.scrollTo({ left: 0 });
+		}),
+	);
+</script>

@@ -158,8 +158,18 @@ const structuredData = {
 
 		<!-- Icons -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+		<!-- Motion is opt-out: skipped entirely for visitors who prefer reduced motion -->
+		<script is:inline>
+			if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+				document.documentElement.classList.add("js");
+			}
+		</script>
 	</head>
 	<body>
 		<slot />
+		<script>
+			import "../scripts/motion.ts";
+		</script>
 	</body>
 </html>

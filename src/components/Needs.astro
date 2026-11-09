@@ -24,9 +24,9 @@ const needs = [
 ];
 ---
 
-<section class="section section--paper" aria-labelledby="needs-title">
+<section class="section section--mint" aria-labelledby="needs-title">
 	<div class="container">
-		<div class="section-head">
+		<div class="section-head" data-reveal="up">
 			<h2 id="needs-title">Semua Kebutuhan Gowes di Satu Tempat</h2>
 			<p>
 				Mulai dari sepeda keluarga dan keceriaan si kecil, sparepart original, hingga perawatan oleh mekanik
@@ -34,9 +34,9 @@ const needs = [
 			</p>
 		</div>
 
-		<div class="needs">
-			{needs.map((n) => (
-				<a class="need" href={n.href}>
+		<div class="needs" data-reveal="stagger">
+			{needs.map((n, i) => (
+				<a class="need" href={n.href} style={`--i: ${i}`}>
 					<span class="need__icon" aria-hidden="true"><i class={`fas ${n.icon}`}></i></span>
 					<h3>{n.title}</h3>
 					<p>{n.text}</p>

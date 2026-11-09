@@ -68,14 +68,14 @@ const photos = [
 			</div>
 		</div>
 
-		<div class="gallery__track" id="gallery-track" tabindex="0" aria-label="Foto suasana toko">
+		<div class="gallery__track" id="gallery-track" tabindex="0" aria-label="Foto suasana toko" data-reveal="up">
 			{photos.map((p) => (
 				<figure class="slide">
 					<div class="slide__media">
 						<Image
 							src={p.src}
-							widths={[480, 800]}
-							sizes="(min-width: 1200px) 456px, (min-width: 768px) 46vw, 86vw"
+							widths={[480, 800, 1200]}
+							sizes="(min-width: 768px) 640px, 86vw"
 							alt={p.alt}
 						/>
 					</div>

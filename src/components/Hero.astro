@@ -9,17 +9,20 @@ const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+
 <section id="home" class="hero">
 	<div class="container hero__grid">
 		<div>
-			<h1 class="hero__title">Bersepeda <span>Itu Mudah</span></h1>
-			<p class="hero__lead">
+			<h1 class="hero__title">
+				<span class="hero__line"><span>Bersepeda</span></span>
+				<span class="hero__line hero__line--ink"><span>Itu Mudah</span></span>
+			</h1>
+			<p class="hero__lead hero__seq" style="--i: 0">
 				Sepeda, sparepart, aksesoris, dan servis untuk Anda dan keluarga, di Cikande Permai, Serang.
 			</p>
 
-			<a class="hero__proof" href={mapsUrl} target="_blank" rel="noopener noreferrer">
+			<a class="hero__proof hero__seq" style="--i: 1" href={mapsUrl} target="_blank" rel="noopener noreferrer">
 				<i class="fas fa-star" aria-hidden="true"></i>
-				<span>4,9 dari 203 ulasan Google</span>
+				<span><strong data-count="4.9" data-decimals="1">4,9</strong> dari 203 ulasan Google</span>
 			</a>
 
-			<div class="hero__actions">
+			<div class="hero__actions hero__seq" style="--i: 2">
 				<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary">
 					<i class="fab fa-whatsapp" aria-hidden="true"></i>
 					<span>Chat WhatsApp</span>
@@ -27,13 +30,14 @@ const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+
 				<a href="#products" class="btn btn--ghost">Lihat Produk</a>
 			</div>
 
-			<p class="hero__hours">
+			<p class="hero__hours hero__seq" style="--i: 3">
 				<span><i class="far fa-clock" aria-hidden="true"></i> Senin – Sabtu 09.00 – 20.00</span>
 				<span>Minggu 09.00 – 17.00 WIB</span>
 			</p>
 		</div>
 
 		<div class="hero__visual">
+			<div class="hero__panel" aria-hidden="true"></div>
 			<div class="hero__photo">
 				<Image
 					src={heroImg}
@@ -44,7 +48,7 @@ const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+
 					fetchpriority="high"
 				/>
 			</div>
-			<div class="stripes hero__stripes" aria-hidden="true"><span></span><span></span><span></span></div>
+			<div class="stripes stripes--on-green hero__stripes" aria-hidden="true"><span></span><span></span><span></span></div>
 		</div>
 	</div>
 </section>
