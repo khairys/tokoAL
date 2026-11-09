@@ -1,0 +1,48 @@
+---
+const needs = [
+	{
+		icon: "fa-bicycle",
+		title: "Sepeda & Mainan Anak",
+		text: "Pilihan unit untuk dewasa, remaja, hingga si kecil. Bisa dicoba langsung di toko.",
+		href: "#products",
+		link: "Lihat katalog",
+	},
+	{
+		icon: "fa-gears",
+		title: "Sparepart & Aksesoris",
+		text: "Untuk perawatan, penggantian, dan kebutuhan gowes harian. Bisa dipasang langsung di toko.",
+		href: "#products",
+		link: "Lihat katalog",
+	},
+	{
+		icon: "fa-screwdriver-wrench",
+		title: "Servis & Upgrade",
+		text: "Dari perawatan rutin sampai rakit custom.",
+		href: "#services",
+		link: "Lihat layanan servis",
+	},
+];
+---
+
+<section class="section section--paper" aria-labelledby="needs-title">
+	<div class="container">
+		<div class="section-head">
+			<h2 id="needs-title">Semua Kebutuhan Gowes di Satu Tempat</h2>
+			<p>
+				Mulai dari sepeda keluarga dan keceriaan si kecil, sparepart original, hingga perawatan oleh mekanik
+				berpengalaman.
+			</p>
+		</div>
+
+		<div class="needs">
+			{needs.map((n) => (
+				<a class="need" href={n.href}>
+					<span class="need__icon" aria-hidden="true"><i class={`fas ${n.icon}`}></i></span>
+					<h3>{n.title}</h3>
+					<p>{n.text}</p>
+					<span class="text-link">{n.link}</span>
+				</a>
+			))}
+		</div>
+	</div>
+</section>

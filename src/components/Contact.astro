@@ -1,202 +1,61 @@
 ---
-import { Image } from 'astro:assets';
-// Contact & Location Component
+import { Image } from "astro:assets";
 import logoNavbar from "../assets/branding/Logo navbar.png";
+
+const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL";
+const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+Cikande+Permai";
+const embedUrl =
+	"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.121542874621!2d106.34663471463!3d-6.217914962436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42034cad66013f%3A0x172b9ecbe51c0c05!2sToko%20Sepeda%20AL!5e0!3m2!1sid!2sid!4v1735218000000!5m2!1sid!2sid";
 ---
 
-<!-- === LOCATION & CONTACT SECTION === -->
-<section
-	id="contact"
-	class="bg-white pt-16 pb-20 border-t border-gray-100 relative"
->
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<!-- Section Header -->
-		<div class="text-center mb-12 fade-in-up">
-			<h2
-				class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight"
-			>
-				Lokasi & Kontak Toko AL
-			</h2>
-			<div
-				class="w-24 h-1.5 bg-gradient-to-r from-[#116530] via-primary to-secondary mx-auto mt-4 rounded-full"
-			>
-			</div>
-			<p
-				class="mt-4 text-gray-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed"
-			>
-				Datang langsung untuk melihat koleksi unit sepeda, konsultasi
-				sparepart, atau perawatan servis bersama kami.
-			</p>
+<section id="contact" class="section section--paper" aria-labelledby="contact-title">
+	<div class="container">
+		<div class="section-head">
+			<h2 id="contact-title">Lokasi & Kontak Toko AL</h2>
+			<p>Datang langsung untuk melihat koleksi unit sepeda, konsultasi sparepart, atau perawatan servis bersama kami.</p>
 		</div>
 
-		<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-			<!-- Info Toko Card -->
-			<div
-				class="lg:col-span-5 bg-gray-50/90 rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm fade-in-up"
-			>
-				<!-- Brand Header -->
-				<div class="flex items-center gap-3 mb-5">
-					<Image
-						src={logoNavbar}
-						width={160}
-						alt="Logo Toko AL"
-						class="h-10 w-auto object-contain drop-shadow-sm"
-					/>
-					<span
-						class="font-extrabold text-2xl tracking-wide text-dark"
-						>Toko AL</span
-					>
+		<div class="contact__grid">
+			<div class="info">
+				<div class="info__brand">
+					<Image src={logoNavbar} width={160} alt="Logo Toko AL" />
+					<span>Toko AL</span>
 				</div>
-				<p class="text-gray-600 mb-6 text-sm leading-relaxed">
-					Partner terbaik untuk hobi bersepeda dan keceriaan keluarga
-					Anda di Cikande Permai, Serang.
-				</p>
+				<p class="info__intro">Partner terbaik untuk hobi bersepeda dan keceriaan keluarga Anda di Cikande Permai, Serang.</p>
 
-				<div class="space-y-4">
-					<!-- Address -->
-					<div class="flex items-start gap-3.5">
-						<div
-							class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm border border-[#A3EBB1]/60"
-						>
-							<i
-								class="fas fa-map-marker-alt text-primary text-base"
-							></i>
+				<ul class="info__list">
+					<li class="info__item">
+						<span class="info__icon" aria-hidden="true"><i class="fas fa-location-dot"></i></span>
+						<div>
+							<p class="info__label">Alamat Kami</p>
+							<p>Jl. Cikande Permai Blok J2 No.6, Cikande Permai, Kec. Cikande, Kabupaten Serang, Banten 42186</p>
 						</div>
-						<div class="text-sm leading-relaxed">
-							<span
-								class="font-bold text-gray-900 block text-xs uppercase tracking-wider mb-0.5"
-								>Alamat Kami</span
-							>
-							<span class="text-gray-600"
-								>Jl. Cikande Permai Blok J2 No.6 , Cikande
-								Permai,<br />Kec. Cikande, Kabupaten Serang,
-								Banten 42186</span
-							>
+					</li>
+					<li class="info__item">
+						<span class="info__icon" aria-hidden="true"><i class="fas fa-clock"></i></span>
+						<div>
+							<p class="info__label">Jam Operasional</p>
+							<p>Senin – Sabtu: <strong>09.00 – 20.00 WIB</strong></p>
+							<p>Minggu: <strong>09.00 – 17.00 WIB</strong></p>
 						</div>
-					</div>
-
-					<!-- Jam Operasional -->
-					<div class="flex items-start gap-3.5">
-						<div
-							class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 mt-0.5 shadow-sm border border-[#A3EBB1]/60"
-						>
-							<i class="fas fa-clock text-primary text-base"></i>
+					</li>
+					<li class="info__item">
+						<span class="info__icon" aria-hidden="true"><i class="fab fa-whatsapp"></i></span>
+						<div>
+							<p class="info__label">WhatsApp & Telepon</p>
+							<a href={waUrl} target="_blank" rel="noopener noreferrer">+62 819-9653-5525</a>
 						</div>
-						<div class="text-sm leading-relaxed">
-							<span
-								class="font-bold text-gray-900 text-xs uppercase tracking-wider mb-0.5 block"
-								>Jam Operasional</span
-							>
-							<p class="text-gray-600">
-								Senin – Sabtu: <strong
-									class="text-gray-800 font-medium"
-									>09.00 – 20.00 WIB</strong
-								><br />
-								Minggu: <strong
-									class="text-gray-800 font-medium"
-									>09.00 – 17.00 WIB</strong
-								>
-							</p>
-						</div>
-					</div>
-
-					<!-- WhatsApp Contact -->
-					<div class="flex items-center gap-3.5">
-						<div
-							class="w-10 h-10 rounded-xl bg-[#A3EBB1]/30 text-dark flex items-center justify-center flex-shrink-0 shadow-sm border border-[#A3EBB1]/60"
-						>
-							<i class="fab fa-whatsapp text-primary text-lg"></i>
-						</div>
-						<div class="text-sm leading-relaxed">
-							<span
-								class="text-gray-900 text-xs block uppercase tracking-wider font-bold mb-0.5"
-								>WhatsApp & Telepon</span
-							>
-							<a
-								href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL"
-								target="_blank"
-								rel="noopener noreferrer"
-								class="text-gray-600 hover:text-primary transition-colors text-sm font-normal"
-							>
-								+62 819-9653-5525
-							</a>
-						</div>
-					</div>
-				</div>
+					</li>
+				</ul>
 			</div>
 
-			<!-- Map Embed Container with Mobile Scroll Trap Protection -->
-			<div
-				class="lg:col-span-7 rounded-3xl overflow-hidden shadow-lg border border-gray-100 h-[380px] sm:h-[430px] fade-in-up hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 relative group"
-				style="transition-delay: 100ms;"
-			>
-				<!-- Google Maps Iframe (pointer-events-none on mobile to allow smooth page scroll, auto on desktop or on click) -->
-				<iframe
-					id="map-iframe"
-					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.121542874621!2d106.34663471463!3d-6.217914962436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e42034cad66013f%3A0x172b9ecbe51c0c05!2sToko%20Sepeda%20AL!5e0!3m2!1sid!2sid!4v1735218000000!5m2!1sid!2sid"
-					width="100%"
-					height="100%"
-					style="border:0;"
-					allowfullscreen=""
-					loading="lazy"
-					title="Peta Lokasi Toko Sepeda AL"
-					class="w-full h-full grayscale hover:grayscale-0 transition-all duration-500 pointer-events-none sm:pointer-events-auto"
-				></iframe>
-
-				<!-- Compact & Collapsible Route Widget (Expand / Minimize) -->
-				<div id="map-route-widget" class="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 transition-all duration-300">
-					<a
-						id="map-route-btn"
-						href="https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+Cikande+Permai"
-						target="_blank"
-						rel="noopener noreferrer"
-						class="bg-white/95 hover:bg-primary hover:text-white text-gray-900 text-xs font-bold px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-full shadow-lg border border-gray-200/90 backdrop-blur-md transition-all duration-200 flex items-center gap-2 hover:scale-105 active:scale-95 group/btn"
-						title="Buka Petunjuk Arah di Google Maps"
-					>
-						<i class="fas fa-directions text-primary group-hover/btn:text-white text-sm"></i>
-						<span id="map-route-text" class="whitespace-nowrap transition-all duration-200">Petunjuk Arah</span>
-						<i id="map-route-ext" class="fas fa-external-link-alt text-[9px] text-gray-400 group-hover/btn:text-white"></i>
-					</a>
-
-					<!-- Minimize / Expand Toggle Button -->
-					<button
-						id="map-toggle-btn"
-						type="button"
-						aria-label="Perkecil tombol petunjuk arah"
-						class="w-8 h-8 rounded-full bg-white/95 hover:bg-gray-100 text-gray-600 hover:text-gray-900 shadow-md border border-gray-200/90 backdrop-blur-md flex items-center justify-center transition-all duration-200 active:scale-90 cursor-pointer"
-						title="Perkecil tampilan"
-					>
-						<i class="fas fa-compress-alt text-[10px]"></i>
-					</button>
-				</div>
+			<div class="map">
+				<iframe src={embedUrl} loading="lazy" allowfullscreen title="Peta Lokasi Toko Sepeda AL"></iframe>
+				<a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+					<i class="fas fa-diamond-turn-right" aria-hidden="true"></i>
+					<span>Petunjuk Arah</span>
+				</a>
 			</div>
 		</div>
 	</div>
 </section>
-
-<script>
-	const toggleBtn = document.getElementById('map-toggle-btn');
-	const routeText = document.getElementById('map-route-text');
-	const routeExt = document.getElementById('map-route-ext');
-	const toggleIcon = toggleBtn?.querySelector('i');
-	let isMinimized = false;
-
-	toggleBtn?.addEventListener('click', (e) => {
-		e.preventDefault();
-		e.stopPropagation();
-		isMinimized = !isMinimized;
-		if (isMinimized) {
-			routeText?.classList.add('hidden');
-			routeExt?.classList.add('hidden');
-			if (toggleIcon) toggleIcon.className = 'fas fa-expand-alt text-[10px]';
-			toggleBtn.setAttribute('title', 'Perbesar tampilan');
-			toggleBtn.setAttribute('aria-label', 'Perbesar tombol petunjuk arah');
-		} else {
-			routeText?.classList.remove('hidden');
-			routeExt?.classList.remove('hidden');
-			if (toggleIcon) toggleIcon.className = 'fas fa-compress-alt text-[10px]';
-			toggleBtn.setAttribute('title', 'Perkecil tampilan');
-			toggleBtn.setAttribute('aria-label', 'Perkecil tombol petunjuk arah');
-		}
-	});
-</script>

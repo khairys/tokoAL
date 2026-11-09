@@ -1,524 +1,201 @@
 ---
-import { Image } from 'astro:assets';
-// Products Component
-import productFixie from '../assets/products/sepeda fixie.png';
-import productMtb from '../assets/products/MTB.jpg';
-import productBmx from '../assets/products/sepeda bmx.jpg';
-import productFolding from '../assets/products/sepedaLipat.jpg';
-import productAnak from '../assets/products/sepeda anak.jpg';
-import productSparepart from '../assets/products/sparepart.jpg';
-import productAksesoris from '../assets/products/aksesoris.png';
+import { Image } from "astro:assets";
+import productFixie from "../assets/products/sepeda fixie.png";
+import productMtb from "../assets/products/MTB.jpg";
+import productBmx from "../assets/products/sepeda bmx.jpg";
+import productFolding from "../assets/products/sepedaLipat.jpg";
+import productAnak from "../assets/products/sepeda anak.jpg";
+import productSparepart from "../assets/products/sparepart.jpg";
+import productAksesoris from "../assets/products/aksesoris.png";
+import productMainan from "../assets/products/mainan-anak.jpg";
 
 const catalogUrl = "https://wa.me/c/6281996535525";
+const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL";
 
 const products = [
-    {
-        id: 'fixie',
-        title: 'Sepeda Fixie & Roadbike',
-        category: 'Balap & Urban',
-        image: productFixie,
-        link: 'https://wa.me/p/8388943097813259/6281996535525',
-        badge: 'Banyak Pilihan',
-        badgeColor: 'bg-primary/90 text-white',
-        specs: [
-            'Balap: 2x7, 2x8, 2x9, 3x7, 3x8, 3x9 Speed',
-            'Fixie Full Warna & Desain Dinamis',
-            'Rem: Torpedo, Cakram, U-Brake',
-            'Stang: Dropbar, Flatbar, Hornbar',
-            'Bottom Bracket (BB) & Bearing Presisi',
-        ]
-    },
-    {
-        id: 'mtb',
-        title: 'Sepeda MTB',
-        category: 'Mountain Bike',
-        image: productMtb,
-        link: 'https://wa.me/p/7078517838837650/6281996535525',
-        badge: 'Ready Stock',
-        badgeColor: 'bg-emerald-600/90 text-white',
-        specs: [
-            'Usia: 12 Tahun - Dewasa',
-            'Ukuran Roda: 24", 26", 27.5"',
-            'Groupset: Shimano, RRC, dll.',
-            'Rem: Cakram Mekanik & Hidrolik',
-            'Frame: Alloy, Carbon, Steel Ringan',
-        ]
-    },
-    {
-        id: 'bmx',
-        title: 'Sepeda BMX',
-        category: 'Freestyle & Street',
-        image: productBmx,
-        link: 'https://wa.me/p/5444712482244023/6281996535525',
-        badge: 'Best Seller',
-        badgeColor: 'bg-red-600/90 text-white animate-pulse',
-        specs: [
-            'Usia: 6 Tahun - Dewasa',
-            'Frame: Alloy & Steel Kokoh Ekstra',
-            'Rem: V-Brake, Cakram, dll.',
-            'Roda: 3.0 (Jumbo), 2.4, dll.',
-            'Stang Rotor, Gir Torpedo, Jalu & Stiker',
-        ]
-    },
-    {
-        id: 'folding',
-        title: 'Sepeda Lipat',
-        category: 'Commuter & Praktis',
-        image: productFolding,
-        link: 'https://wa.me/p/7373130436045125/6281996535525',
-        badge: 'Ringkas & Praktis',
-        badgeColor: 'bg-secondary/90 text-white',
-        specs: [
-            'Usia: 6 Tahun - Dewasa',
-            'Frame: Steel & Alloy Ringan',
-            'Rem: V-Brake, Cakram, dll.',
-            'Speed: 1 Speed, 7 Speed, dll.',
-            'Lipatan Ringkas Praktis Masuk Mobil/KRL',
-        ]
-    },
-    {
-        id: 'anak',
-        title: 'Sepeda Anak',
-        category: 'Keluarga & Balita',
-        image: productAnak,
-        link: 'https://wa.me/p/36929128000067317/6281996535525',
-        badge: 'Koleksi Anak',
-        badgeColor: 'bg-amber-500/90 text-white',
-        specs: [
-            'Usia: 2 Tahun - 8 Tahun',
-            'Varian: Roda Tiga, Roda Bantu, & Push Bike',
-            'Frame Kokoh, Aman, & Ergonomis',
-            'Pilihan Warna & Karakter Kartun Ceria',
-            'Bisa Dicoba & Disetel Langsung di Toko',
-        ]
-    },
-    {
-        id: 'sparepart',
-        title: 'Sparepart Sepeda',
-        category: 'Sparepart & Komponen',
-        image: productSparepart,
-        link: catalogUrl,
-        badge: '100% Original',
-        badgeColor: 'bg-secondary/90 text-white',
-        specs: [
-            'RD, FD, Rantai, Sprocket, & Shifter',
-            'Ban Luar & Ban Dalam Segala Ukuran',
-            'Rem, Rotor Cakram, & Kampas Rem',
-            'Komponen Original Berbagai Merk Teruji',
-            'Tersedia Jasa Pasang & Setel Langsung',
-        ]
-    },
-    {
-        id: 'aksesoris',
-        title: 'Aksesoris Sepeda',
-        category: 'Perlengkapan & Safety',
-        image: productAksesoris,
-        link: catalogUrl,
-        badge: 'Safety & Style',
-        badgeColor: 'bg-[#18A558]/90 text-white',
-        specs: [
-            'Helm Standar SNI & Lampu LED Terang',
-            'Bel Nyaring & Kunci Gembok Pengaman',
-            'Jersey, Sarung Tangan Gel, & Botol Minum',
-            'Pompa Angin Portabel, Spatbor, & Tas Frame',
-            'Perlengkapan Gowes Nyaman & Aman',
-        ]
-    },
+	{
+		title: "Sepeda Fixie & Roadbike",
+		category: "Balap & Urban",
+		fit: "Untuk gowes cepat dan harian di kota.",
+		image: productFixie,
+		link: "https://wa.me/p/8388943097813259/6281996535525",
+		specs: [
+			"Balap: 2x7, 2x8, 2x9, 3x7, 3x8, 3x9 Speed",
+			"Fixie Full Warna & Desain Dinamis",
+			"Rem: Torpedo, Cakram, U-Brake",
+			"Stang: Dropbar, Flatbar, Hornbar",
+			"Bottom Bracket (BB) & Bearing Presisi",
+		],
+	},
+	{
+		title: "Sepeda MTB",
+		category: "Mountain Bike",
+		fit: "Untuk jalur tanah dan tanjakan, usia 12 tahun ke atas.",
+		image: productMtb,
+		link: "https://wa.me/p/7078517838837650/6281996535525",
+		specs: [
+			"Usia: 12 Tahun - Dewasa",
+			'Ukuran Roda: 24", 26", 27.5"',
+			"Groupset: Shimano, RRC, dll.",
+			"Rem: Cakram Mekanik & Hidrolik",
+			"Frame: Alloy, Carbon, Steel Ringan",
+		],
+	},
+	{
+		title: "Sepeda BMX",
+		category: "Freestyle & Street",
+		fit: "Untuk freestyle dan gaya street, usia 6 tahun ke atas.",
+		image: productBmx,
+		link: "https://wa.me/p/5444712482244023/6281996535525",
+		specs: [
+			"Usia: 6 Tahun - Dewasa",
+			"Frame: Alloy & Steel Kokoh Ekstra",
+			"Rem: V-Brake, Cakram, dll.",
+			"Roda: 3.0 (Jumbo), 2.4, dll.",
+			"Stang Rotor, Gir Torpedo, Jalu & Stiker",
+		],
+	},
+	{
+		title: "Sepeda Lipat",
+		category: "Commuter & Praktis",
+		fit: "Praktis dibawa naik mobil atau KRL, usia 6 tahun ke atas.",
+		image: productFolding,
+		link: "https://wa.me/p/7373130436045125/6281996535525",
+		specs: [
+			"Usia: 6 Tahun - Dewasa",
+			"Frame: Steel & Alloy Ringan",
+			"Rem: V-Brake, Cakram, dll.",
+			"Speed: 1 Speed, 7 Speed, dll.",
+			"Lipatan Ringkas Praktis Masuk Mobil/KRL",
+		],
+	},
+	{
+		title: "Sepeda Anak",
+		category: "Keluarga & Balita",
+		fit: "Untuk usia 2 – 8 tahun, bisa dicoba dan disetel di toko.",
+		image: productAnak,
+		link: "https://wa.me/p/36929128000067317/6281996535525",
+		specs: [
+			"Usia: 2 Tahun - 8 Tahun",
+			"Varian: Roda Tiga, Roda Bantu, & Push Bike",
+			"Frame Kokoh, Aman, & Ergonomis",
+			"Pilihan Warna & Karakter Kartun Ceria",
+			"Bisa Dicoba & Disetel Langsung di Toko",
+		],
+	},
+	{
+		title: "Mainan Anak",
+		category: "",
+		fit: "Mobil/motor mainan aki dan edukatif untuk menemani waktu bermain.",
+		image: productMainan,
+		link: catalogUrl,
+		specs: [],
+	},
+	{
+		title: "Sparepart Sepeda",
+		category: "Sparepart & Komponen",
+		fit: "Untuk penggantian dan perawatan, bisa dipasang di toko.",
+		image: productSparepart,
+		link: catalogUrl,
+		specs: [
+			"RD, FD, Rantai, Sprocket, & Shifter",
+			"Ban Luar & Ban Dalam Segala Ukuran",
+			"Rem, Rotor Cakram, & Kampas Rem",
+			"Komponen Original Berbagai Merk Teruji",
+			"Tersedia Jasa Pasang & Setel Langsung",
+		],
+	},
+	{
+		title: "Aksesoris Sepeda",
+		category: "Perlengkapan & Safety",
+		fit: "Untuk gowes yang lebih nyaman dan aman.",
+		image: productAksesoris,
+		link: catalogUrl,
+		specs: [
+			"Helm Standar SNI & Lampu LED Terang",
+			"Bel Nyaring & Kunci Gembok Pengaman",
+			"Jersey, Sarung Tangan Gel, & Botol Minum",
+			"Pompa Angin Portabel, Spatbor, & Tas Frame",
+			"Perlengkapan Gowes Nyaman & Aman",
+		],
+	},
 ];
-
-const loopProducts = [...products, ...products, ...products];
 ---
 
-<!-- === PRODUCT & MARKETPLACE SECTION === -->
-<section id="products" class="py-20 bg-gray-900 text-white relative overflow-hidden">
-    
-    <!-- Background Decoration -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-secondary/15 rounded-full filter blur-[120px]"></div>
-    <div class="absolute bottom-0 left-0 w-80 h-80 bg-primary/20 rounded-full filter blur-[100px]"></div>
+<section id="products" class="section" aria-labelledby="products-title">
+	<div class="container">
+		<div class="section-head">
+			<h2 id="products-title">Koleksi Produk & Sepeda</h2>
+			<p>
+				Lihat pilihan sepeda, sparepart, dan aksesoris di Toko AL. Untuk harga dan ketersediaan, langsung tanya
+				lewat WhatsApp.
+			</p>
+		</div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <!-- Header -->
-        <div class="text-center mb-12 fade-in-up">
-            <h2 class="text-3xl md:text-4xl font-bold mb-4">Koleksi Produk & Sepeda</h2>
-            <div class="w-24 h-1.5 bg-gradient-to-r from-primary via-secondary to-neon mx-auto rounded-full"></div>
-            <p class="mt-4 text-gray-400 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
-                Lihat berbagai pilihan sepeda, sparepart, dan aksesoris yang tersedia di Toko AL. Klik produk untuk melihat detail dan menghubungi kami.
-            </p>
-        </div>
+		<div class="catalog">
+			{products.map((p) => (
+				<article class="product">
+					<div class="product__media">
+						<Image
+							src={p.image}
+							widths={[400, 640]}
+							sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 80vw"
+							alt={p.title}
+						/>
+					</div>
+					<div class="product__body">
+						{p.category && <p class="product__cat">{p.category}</p>}
+						<h3>{p.title}</h3>
+						<p class="product__fit">{p.fit}</p>
+						{p.specs.length > 0 && (
+							<ul class="product__specs">
+								{p.specs.map((s) => <li>{s}</li>)}
+							</ul>
+						)}
+						<div class="product__cta">
+							<a
+								href={p.link}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="btn btn--ghost"
+								aria-label={`Tanya ${p.title} di WhatsApp`}
+							>
+								<i class="fab fa-whatsapp" aria-hidden="true"></i>
+								<span>Tanya di WhatsApp</span>
+							</a>
+						</div>
+					</div>
+				</article>
+			))}
+		</div>
 
-        <!-- Carousel Container with Navigation Buttons -->
-        <div class="relative group/carousel fade-in-up">
-            <!-- Navigation Buttons (Desktop only, mobile uses natural touch swipe) -->
-            <button
-                id="scroll-left"
-                aria-label="Geser ke kiri"
-                class="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gray-800/90 hover:bg-primary text-white rounded-full shadow-2xl border border-gray-700 items-center justify-center transition-all duration-200 opacity-0 group-hover/carousel:opacity-100 cursor-pointer active:scale-90"
-            >
-                <i class="fas fa-chevron-left text-lg"></i>
-            </button>
-            <button
-                id="scroll-right"
-                aria-label="Geser ke kanan"
-                class="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-gray-800/90 hover:bg-primary text-white rounded-full shadow-2xl border border-gray-700 items-center justify-center transition-all duration-200 opacity-0 group-hover/carousel:opacity-100 cursor-pointer active:scale-90"
-            >
-                <i class="fas fa-chevron-right text-lg"></i>
-            </button>
+		<div class="catalog-more">
+			<a href={catalogUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+				Lihat Lebih Banyak
+			</a>
+		</div>
 
-            <!-- Product Cards Container with Mobile Snap-X -->
-            <div
-                id="product-container"
-                class="flex gap-4 sm:gap-6 overflow-x-auto hide-scroll py-6 px-4 sm:px-6 cursor-grab active:cursor-grabbing snap-x snap-mandatory scroll-smooth"
-            >
-                {loopProducts.map((product, idx) => (
-                    <a
-                        href={product.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="group/card min-w-[280px] sm:min-w-[320px] md:min-w-[340px] max-w-[360px] bg-gray-800/60 backdrop-blur-md rounded-2xl p-5 border border-gray-700/80 hover:border-secondary/70 transition-all duration-300 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 flex flex-col justify-between active:scale-[0.98] cursor-pointer flex-shrink-0 snap-center sm:snap-start"
-                        data-index={idx}
-                    >
-                        <div>
-                            <!-- Product Image (Clean without text overlays) -->
-                            <div class="relative aspect-[4/3] rounded-xl overflow-hidden mb-4 bg-gray-950 border border-gray-700/50 flex items-center justify-center">
-                                <Image
-                                    src={product.image}
-                                    widths={[400, 640]}
-                                    sizes="(min-width: 1024px) 316px, 90vw"
-                                    alt={product.title}
-                                    class="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-500"
-                                    loading="lazy"
-                                />
-                            </div>
-
-                            <!-- Category & Title -->
-                            <span class="text-[11px] font-bold text-secondary uppercase tracking-wider block mb-1.5">{product.category}</span>
-                            <h3 class="text-lg sm:text-xl font-bold mb-3 text-white group-hover/card:text-neon transition-colors duration-200 line-clamp-2 leading-snug">
-                                {product.title}
-                            </h3>
-
-                            <!-- Specs List -->
-                            <ul class="space-y-1.5 text-xs text-gray-300 mb-4">
-                                {product.specs.map((spec) => (
-                                    <li class="flex items-start gap-2">
-                                        <i class="fas fa-check-circle text-primary mt-0.5 flex-shrink-0"></i>
-                                        <span class="leading-tight">{spec}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-
-                        <!-- Card Action Footer (Simple & Direct) -->
-                        <div class="pt-3.5 border-t border-gray-700/60 flex items-center justify-between text-xs font-semibold text-gray-300 group-hover/card:text-neon transition-colors duration-200">
-                            <span class="font-bold">Selengkapnya</span>
-                            <span class="w-7 h-7 rounded-full bg-gray-700/60 group-hover/card:bg-primary group-hover/card:text-white flex items-center justify-center transition-all duration-200 group-hover/card:translate-x-1">
-                                <i class="fas fa-arrow-right text-xs"></i>
-                            </span>
-                        </div>
-                    </a>
-                ))}
-            </div>
-        </div>
-
-        <!-- Action: Lebih Banyak -->
-        <div class="mt-10 text-center fade-in-up">
-            <a
-                href={catalogUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-3.5 bg-gray-800/80 hover:bg-gray-800 text-gray-200 hover:text-white border border-gray-700 hover:border-primary/60 font-semibold text-sm sm:text-base rounded-full shadow-md hover:shadow-xl hover:shadow-primary/10 active:scale-95 transition-all duration-200 group cursor-pointer"
-            >
-                <span>Lihat Lebih Banyak</span>
-                <i class="fas fa-arrow-right text-xs text-primary group-hover:translate-x-1 transition-transform"></i>
-            </a>
-        </div>
-
-        <!-- THE BIG MARKETPLACE CTA -->
-        <div class="mt-16 fade-in-up" style="transition-delay: 200ms;">
-            <div class="bg-gradient-to-br from-black via-gray-900 to-[#116530]/40 rounded-3xl p-8 md:p-12 border border-gray-800 relative overflow-hidden text-center shadow-2xl">
-                
-                <!-- Glow Effect Behind -->
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-secondary/15 to-primary/15 blur-3xl"></div>
-
-                <div class="relative z-10">
-                    <div class="text-container mb-3" id="text-animation-container"></div>
-                    <p class="text-gray-400 mb-8 max-w-xl mx-auto">Temukan produk Toko AL melalui WhatsApp, Shopee, atau Tokopedia.</p>
-                    
-                    <div class="flex flex-col sm:flex-row flex-wrap justify-center gap-3.5 sm:gap-4 md:gap-5 max-w-lg sm:max-w-none mx-auto">
-                        <!-- WhatsApp Button (First) -->
-                        <a href={catalogUrl} target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto group relative overflow-hidden bg-[#25D366] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-emerald-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
-                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                            <span class="bg-white text-[#25D366] w-8 h-8 rounded flex items-center justify-center text-base shadow-sm relative z-10"><i class="fab fa-whatsapp"></i></span>
-                            <span class="relative z-10">WhatsApp</span>
-                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
-                        </a>
-
-                        <!-- Shopee Button (Second) -->
-                        <a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto group relative overflow-hidden bg-[#EE4D2D] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-orange-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
-                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                            <span class="bg-white text-[#EE4D2D] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-shopping-bag"></i></span>
-                            <span class="relative z-10">Shopee</span>
-                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
-                        </a>
-
-                        <!-- Tokopedia Button (Third) -->
-                        <a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto group relative overflow-hidden bg-[#42B549] text-white px-7 py-4 rounded-xl font-bold text-base sm:text-lg flex items-center justify-center gap-3 shadow-lg shadow-green-900/40 hover:scale-105 active:scale-95 transition-all duration-300">
-                            <div class="absolute inset-0 w-full h-full bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                            <span class="bg-white text-[#42B549] w-8 h-8 rounded flex items-center justify-center text-sm shadow-sm relative z-10"><i class="fas fa-store"></i></span>
-                            <span class="relative z-10">Tokopedia</span>
-                            <i class="fas fa-arrow-right opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300 relative z-10"></i>
-                        </a>
-                    </div>
-
-                    <div class="mt-8 flex justify-center gap-6 text-sm text-gray-400">
-                        <span class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> Official Store</span>
-                        <span class="flex items-center"><i class="fas fa-check-circle text-primary mr-2"></i> 100% Original</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-<style>
-    /* Text Animation Styles - Gunakan :global() untuk class yang dibuat via JS */
-    .text-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        min-height: 60px;
-    }
-
-    :global(.word-line) {
-        display: flex;
-        flex-wrap: nowrap;
-        align-items: center;
-        white-space: nowrap;
-    }
-
-    :global(.letter) {
-        display: inline-block;
-        font-family: 'Poppins', sans-serif;
-        font-weight: 800;
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
-        color: #ffffff;
-        line-height: 1;
-        opacity: 0;
-        transform-origin: bottom center;
-        margin-right: -0.03em;
-    }
-
-    :global(.pop-in) {
-        animation: bounceIn2D 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-    }
-
-    @keyframes bounceIn2D {
-        0% {
-            opacity: 0;
-            transform: translateY(50px) scale(0.5);
-        }
-        60% {
-            transform: translateY(-15px) scale(1.1);
-        }
-        80% {
-            transform: translateY(5px) scale(0.95);
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
-    }
-
-    :global(.question-emphasis) {
-        animation: wiggleBig 1s ease-in-out infinite;
-        color: #A3EBB1;
-        display: inline-block;
-        position: relative;
-        z-index: 10;
-    }
-
-    @keyframes wiggleBig {
-        0%, 100% {
-            transform: rotate(0deg) scale(1.5);
-        }
-        25% {
-            transform: rotate(-15deg) scale(1.8);
-        }
-        75% {
-            transform: rotate(15deg) scale(1.8);
-        }
-    }
-</style>
-
-<script>
-    // Text Animation Logic (Client-Side)
-    const lines = ["Sudah Siap Berbelanja?"];
-    const container = document.getElementById('text-animation-container');
-
-    function createMarkup() {
-        if (!container) return;
-        container.innerHTML = ''; 
-        
-        lines.forEach((lineText) => {
-            const lineDiv = document.createElement('div');
-            lineDiv.className = 'word-line';
-            
-            const characters = lineText.split('');
-
-            characters.forEach((char) => {
-                const span = document.createElement('span');
-                span.textContent = char;
-                span.className = 'letter';
-                
-                // Menandai tanda tanya
-                if (char === '?') {
-                    span.dataset.type = 'question-mark';
-                }
-
-                // Menangani spasi
-                if (char === ' ') {
-                    span.style.width = '0.4em'; 
-                    span.style.marginRight = '0';
-                }
-
-                lineDiv.appendChild(span);
-            });
-
-            container.appendChild(lineDiv);
-        });
-    }
-
-    function runSequence() {
-        createMarkup();
-
-        const letters = document.querySelectorAll('#text-animation-container .letter');
-        let totalDelay = 0;
-
-        letters.forEach((letter, index) => {
-            const delay = index * 60; // Kecepatan muncul huruf
-            totalDelay = delay;
-
-            setTimeout(() => {
-                letter.classList.add('pop-in');
-
-                const el = letter as HTMLElement;
-                if (el.dataset.type === 'question-mark') {
-                    setTimeout(() => {
-                        el.classList.remove('pop-in');
-                        el.style.opacity = '1';
-                        el.classList.add('question-emphasis');
-                    }, 600); // Tunggu animasi masuk selesai baru goyang
-                }
-
-            }, delay);
-        });
-
-        // Loop Logic
-        const animationDuration = 600;
-        const readTime = 2000; 
-        const totalCycleTime = totalDelay + animationDuration + readTime;
-
-        setTimeout(runSequence, totalCycleTime);
-    }
-
-    // Jalankan saat script dimuat di client
-    runSequence();
-
-    // Product Carousel Infinite Auto-Scroll Logic
-    const scrollLeftBtn = document.getElementById('scroll-left');
-    const scrollRightBtn = document.getElementById('scroll-right');
-    const productContainer = document.getElementById('product-container');
-    
-    if (productContainer) {
-        const originalItemCount = 7; // jumlah item asli sebelum duplikasi loop
-        
-        function getCardStep() {
-            if (!productContainer || !productContainer.firstElementChild) return 360;
-            const firstCard = productContainer.firstElementChild as HTMLElement;
-            const style = window.getComputedStyle(productContainer);
-            const gap = parseFloat(style.columnGap || style.gap) || 24;
-            return firstCard.offsetWidth + gap;
-        }
-
-        function getSetWidth() {
-            return getCardStep() * originalItemCount;
-        }
-
-        // Posisi awal di tengah (Set 2) agar bisa scroll mulus bolak-balik tanpa batas
-        const initMiddlePosition = () => {
-            const setWidth = getSetWidth();
-            if (setWidth > 0 && productContainer.scrollLeft === 0) {
-                productContainer.scrollLeft = setWidth;
-            }
-        };
-
-        // Jalankan inisialisasi posisi awal
-        setTimeout(initMiddlePosition, 150);
-        window.addEventListener('resize', initMiddlePosition);
-
-        // Infinite loop wrap-around check
-        let isWrapping = false;
-        productContainer.addEventListener('scroll', () => {
-            if (isWrapping) return;
-            const setWidth = getSetWidth();
-            if (setWidth <= 0) return;
-
-            // Jika geser mendekati akhir Set 2, reset mulus ke Set 1 secara instan tanpa jeda
-            if (productContainer.scrollLeft >= setWidth * 2 - 10) {
-                isWrapping = true;
-                productContainer.scrollLeft -= setWidth;
-                setTimeout(() => { isWrapping = false; }, 50);
-            } 
-            // Jika geser mendekati awal (ke arah 0), lompatkan ke Set 2
-            else if (productContainer.scrollLeft <= 10) {
-                isWrapping = true;
-                productContainer.scrollLeft += setWidth;
-                setTimeout(() => { isWrapping = false; }, 50);
-            }
-        }, { passive: true });
-
-        // Auto slide timer
-        let autoSlideTimer: number | null = null;
-        const startAutoSlide = () => {
-            if (autoSlideTimer) clearInterval(autoSlideTimer);
-            autoSlideTimer = window.setInterval(() => {
-                if (!productContainer) return;
-                const step = getCardStep();
-                productContainer.scrollBy({ left: step, behavior: 'smooth' });
-            }, 3000);
-        };
-
-        const pauseAutoSlide = () => {
-            if (autoSlideTimer) {
-                clearInterval(autoSlideTimer);
-                autoSlideTimer = null;
-            }
-        };
-
-        // Jalankan auto-scroll otomatis
-        startAutoSlide();
-
-        // Pause saat kursor mouse di-hover atau layar disentuh
-        productContainer.addEventListener('mouseenter', pauseAutoSlide);
-        productContainer.addEventListener('mouseleave', startAutoSlide);
-        productContainer.addEventListener('touchstart', pauseAutoSlide, { passive: true });
-        productContainer.addEventListener('touchend', () => {
-            setTimeout(startAutoSlide, 2000);
-        });
-
-        // Tombol Geser Kiri & Kanan
-        scrollLeftBtn?.addEventListener('click', () => {
-            pauseAutoSlide();
-            const step = getCardStep();
-            productContainer.scrollBy({ left: -step, behavior: 'smooth' });
-            setTimeout(startAutoSlide, 4000);
-        });
-        
-        scrollRightBtn?.addEventListener('click', () => {
-            pauseAutoSlide();
-            const step = getCardStep();
-            productContainer.scrollBy({ left: step, behavior: 'smooth' });
-            setTimeout(startAutoSlide, 4000);
-        });
-    }
-</script>
+		<div class="shop">
+			<div class="stripes shop__stripes" aria-hidden="true"><span></span><span></span><span></span></div>
+			<div class="shop__content">
+				<h3>Sudah Siap Berbelanja?</h3>
+				<p>Temukan produk Toko AL melalui WhatsApp, Shopee, atau Tokopedia.</p>
+				<div class="shop__buttons">
+					<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--wa">
+						<i class="fab fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span>
+					</a>
+					<a href="https://shopee.co.id/tokoal_id" target="_blank" rel="noopener noreferrer" class="btn">
+						<i class="fas fa-bag-shopping" aria-hidden="true"></i><span>Shopee</span>
+					</a>
+					<a href="https://www.tokopedia.com/tokoal-id" target="_blank" rel="noopener noreferrer" class="btn">
+						<i class="fas fa-store" aria-hidden="true"></i><span>Tokopedia</span>
+					</a>
+				</div>
+				<p class="shop__badges">
+					<span><i class="fas fa-circle-check" aria-hidden="true"></i>Official Store Toko AL</span>
+					<span><i class="fas fa-circle-check" aria-hidden="true"></i>100% Original</span>
+				</p>
+			</div>
+		</div>
+	</div>
+</section>

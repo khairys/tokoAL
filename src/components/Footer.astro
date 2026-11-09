@@ -1,132 +1,54 @@
 ---
-import { Image } from 'astro:assets';
-// Footer Component (Clean, Unified & Anti-Slop)
+import { Image } from "astro:assets";
 import logoNavbar from "../assets/branding/Logo navbar.png";
+
+const socials = [
+	{ href: "https://www.instagram.com/tokoal_id", icon: "fa-instagram", label: "Instagram Toko AL" },
+	{ href: "https://www.tiktok.com/@tokoal.id", icon: "fa-tiktok", label: "TikTok Toko AL" },
+	{ href: "https://www.youtube.com/@tokoal_id", icon: "fa-youtube", label: "YouTube Toko AL" },
+	{ href: "https://www.facebook.com/admintokoalid", icon: "fa-facebook-f", label: "Facebook Toko AL" },
+	{ href: "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL", icon: "fa-whatsapp", label: "WhatsApp Toko AL" },
+];
+
+const links = [
+	{ href: "#home", label: "Beranda" },
+	{ href: "#products", label: "Katalog" },
+	{ href: "#services", label: "Layanan" },
+	{ href: "#gallery", label: "Suasana Toko" },
+	{ href: "#partners", label: "Merek & Komunitas" },
+	{ href: "#contact", label: "Kontak" },
+];
 ---
 
-<footer
-    class="bg-gray-50/80 text-gray-600 border-t border-gray-200/70 relative"
->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12">
-        <!-- Main Footer Row -->
-        <div
-            class="flex flex-col md:flex-row items-center justify-between gap-8 pb-8 border-b border-gray-200/60"
-        >
-            <!-- Brand & Tagline Singkat -->
-            <div
-                class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left"
-            >
-                <a
-                    href="#home"
-                    class="inline-flex items-center gap-2.5 group transition-transform duration-200 active:scale-95"
-                >
-                    <Image
-                        src={logoNavbar}
-                        width={160}
-                        alt="Logo Toko AL"
-                        class="h-8 w-auto object-contain transition-transform duration-200 group-hover:scale-105"
-                    />
-                    <span
-                        class="font-extrabold text-xl tracking-tight text-gray-900 group-hover:text-primary transition-colors"
-                    >
-                        Toko AL
-                    </span>
-                </a>
-                <span class="hidden sm:inline text-gray-300">|</span>
-                <p class="text-xs sm:text-sm text-gray-500 font-medium">
-                    Toko Sepeda & Servis di Cikande Permai, Serang
-                </p>
-            </div>
+<footer class="footer">
+	<div class="container">
+		<div class="footer__top">
+			<div class="footer__brand">
+				<a href="#home">
+					<Image src={logoNavbar} width={160} alt="Logo Toko AL" />
+					<strong>Toko AL</strong>
+				</a>
+				<p>Toko Sepeda & Servis di Cikande Permai, Serang</p>
+			</div>
+			<div class="socials">
+				{socials.map((s) => (
+					<a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
+						<i class={`fab ${s.icon}`} aria-hidden="true"></i>
+					</a>
+				))}
+			</div>
+		</div>
 
-            <!-- Social Links (Monochrome & Elegan, 40x40px Touch-Friendly) -->
-            <div class="flex items-center gap-2.5">
-                <a
-                    href="https://www.instagram.com/tokoal_id"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram Toko AL"
-                    title="Instagram @tokoal_id"
-                    class="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-primary hover:border-primary/40 hover:bg-primary/5 flex items-center justify-center transition-all duration-200 active:scale-95 shadow-sm"
-                >
-                    <i class="fab fa-instagram text-sm"></i>
-                </a>
-                <a
-                    href="https://www.tiktok.com/@tokoal.id"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="TikTok Toko AL"
-                    title="TikTok @tokoal.id"
-                    class="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-gray-900 hover:border-gray-400 hover:bg-gray-100 flex items-center justify-center transition-all duration-200 active:scale-95 shadow-sm"
-                >
-                    <i class="fab fa-tiktok text-sm"></i>
-                </a>
-                <a
-                    href="https://www.youtube.com/@tokoal_id"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="YouTube Toko AL"
-                    title="YouTube Toko AL"
-                    class="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-red-600 hover:border-red-300 hover:bg-red-50 flex items-center justify-center transition-all duration-200 active:scale-95 shadow-sm"
-                >
-                    <i class="fab fa-youtube text-sm"></i>
-                </a>
-                <a
-                    href="https://www.facebook.com/admintokoalid"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook Toko AL"
-                    title="Facebook Toko AL"
-                    class="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-300 hover:bg-blue-50 flex items-center justify-center transition-all duration-200 active:scale-95 shadow-sm"
-                >
-                    <i class="fab fa-facebook-f text-sm"></i>
-                </a>
-                <a
-                    href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="WhatsApp Toko AL"
-                    title="WhatsApp Toko AL"
-                    class="w-10 h-10 rounded-full bg-white border border-gray-200 text-gray-500 hover:text-emerald-600 hover:border-emerald-300 hover:bg-emerald-50 flex items-center justify-center transition-all duration-200 active:scale-95 shadow-sm"
-                >
-                    <i class="fab fa-whatsapp text-sm"></i>
-                </a>
-            </div>
-        </div>
+		<div class="footer__bottom">
+			<nav class="footer__nav" aria-label="Navigasi footer">
+				{links.map((l) => <a href={l.href}>{l.label}</a>)}
+			</nav>
+			<p>&copy; {new Date().getFullYear()} Toko AL. Hak Cipta Dilindungi.</p>
+		</div>
+	</div>
 
-        <!-- Navigation & Bottom Info -->
-        <div
-            class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500"
-        >
-            <!-- Quick Links Ringkas -->
-            <nav
-                class="flex flex-wrap items-center justify-center gap-x-6 gap-y-2.5 font-medium"
-            >
-                <a href="#home" class="hover:text-primary transition-colors"
-                    >Beranda</a
-                >
-                <a href="#services" class="hover:text-primary transition-colors"
-                    >Layanan</a
-                >
-                <a href="#products" class="hover:text-primary transition-colors"
-                    >Katalog</a
-                >
-                <a href="#gallery" class="hover:text-primary transition-colors"
-                    >Suasana Toko</a
-                >
-                <a href="#partners" class="hover:text-primary transition-colors"
-                    >Merek & Komunitas</a
-                >
-                <a href="#contact" class="hover:text-primary transition-colors"
-                    >Kontak</a
-                >
-            </nav>
-
-            <!-- Copyright -->
-            <p>
-                &copy; {new Date().getFullYear()}
-                <strong class="font-semibold text-gray-700">Toko AL</strong>.
-                Hak Cipta Dilindungi.
-            </p>
-        </div>
-    </div>
+	<div class="footer__strip">
+		<div class="stripes" aria-hidden="true"><span></span><span></span><span></span></div>
+		<span># Bersepeda Itu Mudah</span>
+	</div>
 </footer>

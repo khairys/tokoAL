@@ -1,0 +1,44 @@
+---
+const mapsUrl = "https://www.google.com/maps/search/?api=1&query=Toko+Sepeda+AL+Cikande+Permai";
+
+// Public Google Maps reviews, kept in the customers' original wording.
+const reviews = [
+	{
+		name: "Siti Nurjanah",
+		text: "Pelayanan nya bagus, sepedanya juga banyak, jadi bisa pilih2 sesuai keinginan",
+	},
+	{
+		name: "Rya Ajah",
+		text: "Banyak pilihan sepedanya disini bagus anak saya suka",
+	},
+	{
+		name: "Sri Wahyuni",
+		text: "Barang bagus sesuai dengan harganya... pmjualnya juga ramah..... trmksih",
+	},
+];
+---
+
+<section id="ulasan" class="section" aria-labelledby="reviews-title">
+	<div class="container">
+		<div class="reviews__head">
+			<h2 id="reviews-title">Apa Kata Goweser?</h2>
+			<div class="rating">
+				<span class="rating__score">4,9</span>
+				<span class="rating__stars" aria-hidden="true">
+					<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+				</span>
+				<span class="rating__count">dari 203 ulasan di Google Maps</span>
+				<a class="text-link" href={mapsUrl} target="_blank" rel="noopener noreferrer">Lihat Semua Ulasan</a>
+			</div>
+		</div>
+
+		<div class="quotes">
+			{reviews.map((r) => (
+				<figure class="quote">
+					<blockquote>{r.text}</blockquote>
+					<figcaption>{r.name}</figcaption>
+				</figure>
+			))}
+		</div>
+	</div>
+</section>

@@ -1,4 +1,5 @@
 ---
+import "../styles/site.css";
 interface Props {
 	title?: string;
 	description?: string;
@@ -150,79 +151,15 @@ const structuredData = {
 		<!-- Schema.org JSON-LD Structured Data -->
 		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-		<!-- Google Fonts -->
+		<!-- Fonts: Barlow per brand guidelines -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-		
-		<!-- Font Awesome -->
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-		
-		<!-- Tailwind CSS with Config -->
-		<script is:inline src="https://cdn.tailwindcss.com"></script>
-		<script is:inline>
-			tailwind.config = {
-				theme: {
-					extend: {
-						colors: {
-							'brand-green': '#116530',
-							'brand-bluegreen': '#21B6A8',
-							'brand-neongreen': '#A3EBB1',
-							'brand-kelly': '#18A558',
-							'brand-black': '#000000',
-							'brand-white': '#FFFFFF',
+		<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
 
-							primary: '#18A558',
-							secondary: '#21B6A8',
-							dark: '#116530',
-							neon: '#A3EBB1',
-							shopee: '#EE4D2D',
-							tokopedia: '#42B549',
-						},
-						fontFamily: {
-							sans: ['Poppins', 'sans-serif'],
-						}
-					}
-				}
-			}
-		</script>
+		<!-- Icons -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	</head>
-	<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-[#A3EBB1] selection:text-[#116530]">
+	<body>
 		<slot />
 	</body>
 </html>
-
-<style is:global>
-	html {
-		-webkit-tap-highlight-color: transparent;
-		scroll-behavior: smooth;
-	}
-
-	body {
-		overflow-x: hidden;
-	}
-
-	::selection {
-		background-color: #A3EBB1;
-		color: #116530;
-	}
-
-	.hide-scroll::-webkit-scrollbar {
-		display: none;
-	}
-	.hide-scroll {
-		-ms-overflow-style: none;
-		scrollbar-width: none;
-	}
-	
-	.fade-in-up {
-		opacity: 0;
-		transform: translateY(16px);
-		transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-		will-change: opacity, transform;
-	}
-	.fade-in-up.visible {
-		opacity: 1;
-		transform: translateY(0);
-	}
-</style>

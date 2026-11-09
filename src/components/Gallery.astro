@@ -1,0 +1,131 @@
+---
+import { Image } from "astro:assets";
+import imgEtalase from "../assets/gallery/etalaseDepan.png";
+import imgKasir from "../assets/gallery/kasirAL.png";
+import imgViewBelakang from "../assets/gallery/viewbelakang.png";
+import imgDepanRumah from "../assets/gallery/depan rumah.png";
+import imgPelanggan from "../assets/gallery/Pelanggan.png";
+import imgMobilAnak from "../assets/gallery/MobilANAK.png";
+
+const photos = [
+	{
+		src: imgDepanRumah,
+		alt: "Tampak Depan Toko AL",
+		tag: "Kunjungi Toko",
+		title: "Kunjungi Toko AL di Cikande Permai",
+		desc: "Jl. Cikande Permai Blok J2 No.6, Cikande Permai, Serang",
+	},
+	{
+		src: imgEtalase,
+		alt: "Display Sparepart Toko AL",
+		tag: "Display Sparepart",
+		title: "Etalase Sparepart & Komponen",
+		desc: "Koleksi suku cadang, gear, rantai, ban, dan komponen sepeda",
+	},
+	{
+		src: imgViewBelakang,
+		alt: "Display Sepeda Toko AL",
+		tag: "Display Sepeda",
+		title: "Koleksi Unit Sepeda Lengkap",
+		desc: "Pilihan sepeda MTB, lipat, roadbike, dan sepeda anak siap Anda coba",
+	},
+	{
+		src: imgKasir,
+		alt: "Area Kasir Toko AL",
+		tag: "Area Kasir & Aksesoris",
+		title: "Area Kasir & Konsultasi",
+		desc: "Tanyakan kebutuhan sepeda atau sparepart Anda langsung di toko.",
+	},
+	{
+		src: imgPelanggan,
+		alt: "Pelanggan Toko AL",
+		tag: "Goweser Cikande",
+		title: "Kepuasan Pelanggan Prioritas Kami",
+		desc: "Selalu senang membantu goweser mendapatkan sepeda impian",
+	},
+	{
+		src: imgMobilAnak,
+		alt: "Koleksi Sepeda dan Mainan Anak",
+		tag: "Koleksi Anak",
+		title: "Sepeda & Mainan Anak",
+		desc: "Pilihan sepeda roda tiga, push bike, dan mainan seru",
+	},
+];
+---
+
+<section id="gallery" class="section section--paper" aria-labelledby="gallery-title">
+	<div class="container">
+		<div class="gallery__head">
+			<h2 id="gallery-title">Suasana Nyata Toko</h2>
+			<div class="gallery__controls">
+				<button class="gallery__btn" type="button" data-dir="-1" aria-label="Foto sebelumnya">
+					<i class="fas fa-chevron-left" aria-hidden="true"></i>
+				</button>
+				<span class="gallery__count" id="gallery-count" aria-live="polite">1 / {photos.length}</span>
+				<button class="gallery__btn" type="button" data-dir="1" aria-label="Foto selanjutnya">
+					<i class="fas fa-chevron-right" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>
+
+		<div class="gallery__track" id="gallery-track" tabindex="0" aria-label="Foto suasana toko">
+			{photos.map((p) => (
+				<figure class="slide">
+					<div class="slide__media">
+						<Image
+							src={p.src}
+							widths={[480, 800]}
+							sizes="(min-width: 1200px) 456px, (min-width: 768px) 46vw, 86vw"
+							alt={p.alt}
+						/>
+					</div>
+					<figcaption>
+						<p class="slide__tag">{p.tag}</p>
+						<h3>{p.title}</h3>
+						<p>{p.desc}</p>
+					</figcaption>
+				</figure>
+			))}
+		</div>
+	</div>
+</section>
+
+<script>
+	const track = document.getElementById("gallery-track");
+	const count = document.getElementById("gallery-count");
+	const slides = track ? [...track.querySelectorAll<HTMLElement>(".slide")] : [];
+
+	function currentIndex() {
+		if (!track) return 0;
+		const left = track.scrollLeft;
+		let best = 0;
+		slides.forEach((s, i) => {
+			if (Math.abs(s.offsetLeft - track.offsetLeft - left) < Math.abs(slides[best].offsetLeft - track.offsetLeft - left)) best = i;
+		});
+		// At the end of the track the last slide counts as current
+		if (left + track.clientWidth >= track.scrollWidth - 4) best = slides.length - 1;
+		return best;
+	}
+
+	function goTo(i: number) {
+		if (!track || !slides.length) return;
+		const target = slides[(i + slides.length) % slides.length];
+		track.scrollTo({ left: target.offsetLeft - track.offsetLeft, behavior: "smooth" });
+	}
+
+	document.querySelectorAll<HTMLButtonElement>(".gallery__btn").forEach((b) =>
+		b.addEventListener("click", () => goTo(currentIndex() + Number(b.dataset.dir))),
+	);
+
+	let raf = 0;
+	track?.addEventListener(
+		"scroll",
+		() => {
+			cancelAnimationFrame(raf);
+			raf = requestAnimationFrame(() => {
+				if (count) count.textContent = `${currentIndex() + 1} / ${slides.length}`;
+			});
+		},
+		{ passive: true },
+	);
+</script>

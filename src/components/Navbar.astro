@@ -1,321 +1,115 @@
 ---
-import { Image } from 'astro:assets';
-// Navbar Component (Mobile-Optimized UX)
-import logoNavbar from '../assets/branding/Logo navbar.png';
+import { Image } from "astro:assets";
+import logoNavbar from "../assets/branding/Logo navbar.png";
+
+const waUrl = "https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL";
+
+// Order follows the page. Desktop and mobile labels are the existing ones.
+const links = [
+	{ id: "home", label: "Beranda", mobile: "Beranda" },
+	{ id: "products", label: "Katalog", mobile: "Katalog Sepeda" },
+	{ id: "services", label: "Layanan", mobile: "Layanan Bengkel" },
+	{ id: "gallery", label: "Suasana Toko", mobile: "Suasana Toko" },
+	{ id: "partners", label: "Merek & Komunitas", mobile: "Merek & Komunitas" },
+	{ id: "contact", label: "Kontak", mobile: "Lokasi & Kontak" },
+];
 ---
 
-<nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
-	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="flex justify-between items-center h-16">
-			<!-- Logo -->
-			<a href="#home" class="flex-shrink-0 flex items-center gap-2.5 cursor-pointer group transition-transform duration-200 active:scale-95 origin-left">
-				<Image src={logoNavbar} width={160} alt="Logo Toko AL" class="h-8 sm:h-9 w-auto object-contain drop-shadow-sm transition-transform duration-200 group-hover:scale-105" />
-				<span class="font-extrabold text-xl tracking-tight text-dark group-hover:text-primary transition-colors duration-200">Toko AL</span>
+<header class="nav" id="navbar">
+	<div class="container nav__bar">
+		<a href="#home" class="nav__brand">
+			<Image src={logoNavbar} width={160} alt="Logo Toko AL" />
+			<span>Toko AL</span>
+		</a>
+
+		<nav class="nav__links" aria-label="Navigasi utama">
+			{links.map((l) => (
+				<a href={`#${l.id}`} class="nav__link" data-spy={l.id}>{l.label}</a>
+			))}
+		</nav>
+
+		<div class="nav__actions">
+			<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary nav__wa" aria-label="Chat WhatsApp">
+				<i class="fab fa-whatsapp" aria-hidden="true"></i>
+				<span class="nav__wa-label">Chat WhatsApp</span>
 			</a>
-			
-			<!-- Desktop Menu with Animated Sliding Underline Indicator (visible on lg: >= 1024px) -->
-			<div class="hidden lg:flex items-center space-x-7 relative py-1" id="desktop-nav-menu">
-				<!-- Sliding Underline Indicator -->
-				<span
-					id="nav-indicator"
-					class="absolute bottom-0 h-0.5 bg-primary rounded-full pointer-events-none opacity-0"
-				></span>
-
-				<a href="#home" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Beranda</a>
-				<a href="#services" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Layanan</a>
-				<a href="#products" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Katalog</a>
-				<a href="#gallery" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Suasana Toko</a>
-				<a href="#partners" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Merek & Komunitas</a>
-				<a href="#contact" class="desktop-nav-link text-gray-600 hover:text-primary transition-all duration-200 font-medium py-1 hover:scale-105">Kontak</a>
-			</div>
-
-			<!-- Mobile Actions (Hamburger only, WhatsApp button removed, visible on < 1024px) -->
-			<div class="lg:hidden flex items-center">
-				<button 
-					id="mobile-menu-btn" 
-					aria-label="Buka menu navigasi" 
-					class="w-10 h-10 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 flex items-center justify-center focus:outline-none transition-all duration-200 active:scale-90 cursor-pointer"
-				>
-					<i class="fas fa-bars text-lg"></i>
-				</button>
-			</div>
+			<button class="nav__toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Buka menu navigasi">
+				<i class="fas fa-bars" aria-hidden="true"></i>
+			</button>
 		</div>
 	</div>
-	
-	<!-- Mobile Menu Panel (collapses below lg: 1024px) -->
-	<div id="mobile-menu" class="hidden lg:hidden bg-white/95 backdrop-blur-md border-t border-gray-100 shadow-xl transition-all duration-200">
-		<div class="px-4 pt-3 pb-6 space-y-1">
-			<a href="#home" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
-				<span>Beranda</span>
-				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
-			</a>
-			<a href="#services" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
-				<span>Layanan Bengkel</span>
-				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
-			</a>
-			<a href="#products" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
-				<span>Katalog Sepeda</span>
-				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
-			</a>
-			<a href="#gallery" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
-				<span>Suasana Toko</span>
-				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
-			</a>
-			<a href="#partners" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
-				<span>Merek & Komunitas</span>
-				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
-			</a>
-			<a href="#contact" class="mobile-nav-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-semibold text-gray-700 hover:text-primary hover:bg-[#A3EBB1]/15 active:bg-[#A3EBB1]/25 transition-colors">
-				<span>Lokasi & Kontak</span>
-				<i class="fas fa-chevron-right text-xs text-gray-400"></i>
-			</a>
 
-			<!-- Quick Mobile Action in Drawer -->
-			<div class="pt-3 mt-2 border-t border-gray-100">
-				<a
-					href="https://api.whatsapp.com/send?phone=6281996535525&text=Halo%20Toko%20AL"
-					target="_blank"
-					rel="noopener noreferrer"
-					class="w-full py-3 px-4 bg-primary hover:bg-dark text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-md shadow-primary/20 active:scale-95 transition-all"
-				>
-					<i class="fab fa-whatsapp text-base"></i>
-					<span>Chat WhatsApp Sekarang</span>
-				</a>
-			</div>
-		</div>
+	<div class="nav__panel" id="nav-panel" hidden>
+		{links.map((l) => (
+			<a href={`#${l.id}`} class="nav__mlink" data-spy={l.id}>
+				<span>{l.mobile}</span>
+				<i class="fas fa-chevron-right" aria-hidden="true"></i>
+			</a>
+		))}
+		<a href={waUrl} target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--block">
+			<i class="fab fa-whatsapp" aria-hidden="true"></i>
+			<span>Chat WhatsApp Sekarang</span>
+		</a>
 	</div>
-</nav>
+</header>
 
 <script>
-	const btn = document.getElementById('mobile-menu-btn');
-	const menu = document.getElementById('mobile-menu');
+	const nav = document.getElementById("navbar");
+	const toggle = document.getElementById("nav-toggle");
+	const panel = document.getElementById("nav-panel");
 
-	btn?.addEventListener('click', () => {
-		const isHidden = menu?.classList.toggle('hidden');
-		const icon = btn.querySelector('i');
-		if (icon) {
-			if (isHidden) {
-				icon.className = 'fas fa-bars text-lg';
-			} else {
-				icon.className = 'fas fa-times text-lg';
-			}
-		}
+	function setMenu(open: boolean) {
+		if (!toggle || !panel) return;
+		panel.hidden = !open;
+		toggle.setAttribute("aria-expanded", String(open));
+		toggle.setAttribute("aria-label", open ? "Tutup menu navigasi" : "Buka menu navigasi");
+		const icon = toggle.querySelector("i");
+		if (icon) icon.className = open ? "fas fa-xmark" : "fas fa-bars";
+	}
+
+	toggle?.addEventListener("click", () => setMenu(panel?.hidden ?? true));
+	panel?.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+	document.addEventListener("keydown", (e) => {
+		if (e.key === "Escape") setMenu(false);
+	});
+	window.matchMedia("(min-width: 1024px)").addEventListener("change", (e) => {
+		if (e.matches) setMenu(false);
 	});
 
-	// Smooth Scroll with Navbar Offset & Auto-Close Mobile Menu
-	let isNavClicking = false;
-	let navClickTimer: any = null;
+	// Border under the bar once the page scrolls, plus the active section highlight
+	const spyLinks = document.querySelectorAll<HTMLAnchorElement>("[data-spy]");
+	const sections = [...new Set([...spyLinks].map((a) => a.dataset.spy))]
+		.map((id) => document.getElementById(id ?? ""))
+		.filter((el): el is HTMLElement => !!el);
 
-	document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-		anchor.addEventListener('click', function (e) {
-			const href = this.getAttribute('href');
-			if (!href || href === '#') return;
-			
-			const target = document.querySelector(href);
-			if (target) {
-				e.preventDefault();
-				const targetId = href.replace('#', '');
+	let ticking = false;
+	function update() {
+		ticking = false;
+		const y = window.scrollY;
+		nav?.classList.toggle("is-scrolled", y > 8);
 
-				// Lock scrollspy so intermediate sections don't cause twitching/jitter
-				isNavClicking = true;
-				clearTimeout(navClickTimer);
-
-				// Pre-reveal target section elements to stabilize layout before scroll lands
-				target.querySelectorAll('.fade-in-up').forEach(el => el.classList.add('visible'));
-
-				// Animate indicator directly to target in one smooth glide
-				setActiveSection(targetId);
-
-				const navHeight = 64;
-				const targetTop = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
-				window.scrollTo({
-					top: targetTop,
-					behavior: 'smooth'
-				});
-				
-				// Close mobile menu
-				menu?.classList.add('hidden');
-				const icon = btn?.querySelector('i');
-				if (icon) {
-					icon.className = 'fas fa-bars text-lg';
-				}
-
-				// Release lock when smooth scrolling finishes
-				const releaseLock = () => {
-					isNavClicking = false;
-					window.removeEventListener('scrollend', releaseLock);
-				};
-
-				if ('onscrollend' in window) {
-					window.addEventListener('scrollend', releaseLock, { once: true });
-				}
-				navClickTimer = setTimeout(() => {
-					isNavClicking = false;
-				}, 850);
-			}
-		});
-	});
-
-	// Navbar Scroll Shadow
-	const navbar = document.getElementById('navbar');
-	window.addEventListener('scroll', () => {
-		if (window.scrollY > 10) {
-			navbar?.classList.add('shadow-md');
-			navbar?.classList.replace('bg-white/95', 'bg-white');
-		} else {
-			navbar?.classList.remove('shadow-md');
-			navbar?.classList.replace('bg-white', 'bg-white/95');
+		let active = "home";
+		for (const s of sections) if (s.offsetTop <= y + 120) active = s.id;
+		if (window.innerHeight + y >= document.documentElement.scrollHeight - 4) {
+			active = sections[sections.length - 1]?.id ?? active;
 		}
-	}, { passive: true });
-
-	// === ACTIVE SECTION SCROLLSPY & ANIMATED INDICATOR ===
-	const sectionIds = ['home', 'services', 'products', 'gallery', 'partners', 'contact'];
-	const sections = sectionIds
-		.map(id => document.getElementById(id))
-		.filter((el): el is HTMLElement => el !== null);
-
-	const desktopNavMenu = document.getElementById('desktop-nav-menu');
-	const navIndicator = document.getElementById('nav-indicator');
-	const desktopLinks = document.querySelectorAll<HTMLAnchorElement>('.desktop-nav-link');
-	const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.mobile-nav-link');
-
-	let currentActiveId = 'home';
-	let isInitialized = false;
-
-	function moveIndicatorTo(link: HTMLElement | null) {
-		if (!link || !navIndicator || !desktopNavMenu) return;
-		const containerRect = desktopNavMenu.getBoundingClientRect();
-		const linkRect = link.getBoundingClientRect();
-
-		const left = linkRect.left - containerRect.left;
-		const width = linkRect.width;
-
-		navIndicator.style.left = `${left}px`;
-		navIndicator.style.width = `${width}px`;
-		navIndicator.style.opacity = '1';
-	}
-
-	function setActiveSection(id: string) {
-		currentActiveId = id;
-
-		let activeDesktopLink: HTMLElement | null = null;
-		desktopLinks.forEach(link => {
-			const href = link.getAttribute('href');
-			if (href === `#${id}`) {
-				link.classList.add('text-primary', 'font-semibold');
-				link.classList.remove('text-gray-600');
-				activeDesktopLink = link;
-			} else {
-				link.classList.remove('text-primary', 'font-semibold');
-				link.classList.add('text-gray-600');
-			}
-		});
-
-		mobileLinks.forEach(link => {
-			const href = link.getAttribute('href');
-			if (href === `#${id}`) {
-				link.classList.add('text-primary', 'bg-[#A3EBB1]/20', 'font-bold', 'border-l-4', 'border-primary');
-				link.classList.remove('text-gray-700');
-			} else {
-				link.classList.remove('text-primary', 'bg-[#A3EBB1]/20', 'font-bold', 'border-l-4', 'border-primary');
-				link.classList.add('text-gray-700');
-			}
-		});
-
-		if (activeDesktopLink) {
-			moveIndicatorTo(activeDesktopLink);
-		}
-	}
-
-	// Scroll spy with throttling and scroll-lock protection
-	let scrollTicking = false;
-	function onScroll() {
-		if (scrollTicking || isNavClicking) return;
-		scrollTicking = true;
-		requestAnimationFrame(() => {
-			if (isNavClicking) {
-				scrollTicking = false;
-				return;
-			}
-
-			const scrollY = window.scrollY;
-			const windowHeight = window.innerHeight;
-			const docHeight = document.documentElement.scrollHeight;
-
-			// If at bottom of the page, activate the last section (Contact)
-			if (scrollY + windowHeight >= docHeight - 80) {
-				const lastSection = sections[sections.length - 1];
-				if (lastSection) {
-					setActiveSection(lastSection.id);
-				}
-				scrollTicking = false;
-				return;
-			}
-
-			// Top of the page
-			if (scrollY < 100) {
-				setActiveSection('home');
-				scrollTicking = false;
-				return;
-			}
-
-			// Check which section is currently active
-			const offsetBuffer = 140; // navbar height (64px) + comfortable offset
-			let activeId = sections[0]?.id || 'home';
-
-			for (let i = 0; i < sections.length; i++) {
-				const sec = sections[i];
-				if (sec.offsetTop - offsetBuffer <= scrollY) {
-					activeId = sec.id;
-				} else {
-					break;
-				}
-			}
-
-			setActiveSection(activeId);
-			scrollTicking = false;
+		spyLinks.forEach((a) => {
+			const on = a.dataset.spy === active;
+			a.classList.toggle("is-active", on);
+			if (on) a.setAttribute("aria-current", "true");
+			else a.removeAttribute("aria-current");
 		});
 	}
-
-	window.addEventListener('scroll', onScroll, { passive: true });
-
-	// Resize handler
-	window.addEventListener('resize', () => {
-		const activeLink = document.querySelector<HTMLElement>(`.desktop-nav-link[href="#${currentActiveId}"]`);
-		if (activeLink) {
-			moveIndicatorTo(activeLink);
-		}
-	});
-
-	// Initial positioning: zero transition first, then enable 300ms transition
-	function initIndicator() {
-		onScroll();
-		const activeLink = document.querySelector<HTMLElement>(`.desktop-nav-link[href="#${currentActiveId}"]`);
-		if (activeLink) {
-			if (!isInitialized) {
-				// Instant placement without animation on first load
-				navIndicator?.classList.remove('transition-all', 'duration-300', 'ease-out');
-				moveIndicatorTo(activeLink);
-				isInitialized = true;
-
-				// Enable smooth transition for all future moves after initial paint
-				requestAnimationFrame(() => {
-					requestAnimationFrame(() => {
-						navIndicator?.classList.add('transition-all', 'duration-300', 'ease-out');
-					});
-				});
-			} else {
-				moveIndicatorTo(activeLink);
+	window.addEventListener(
+		"scroll",
+		() => {
+			if (!ticking) {
+				ticking = true;
+				requestAnimationFrame(update);
 			}
-		}
-	}
-
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initIndicator);
-	} else {
-		initIndicator();
-	}
-	// Fallback after fonts/styles load
-	window.addEventListener('load', initIndicator);
-	setTimeout(initIndicator, 200);
+		},
+		{ passive: true },
+	);
+	window.addEventListener("load", update);
+	update();
 </script>
